@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Vivek Anupindi – Research Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Netflix-style research portfolio of Vivek Anupindi, Data Engineering & Information Systems researcher." />
+
+  <style>
+    :root {
+      --bg: #000000;
+      --bg-alt: #141414;
+      --card: #181818;
+      --accent: #e50914;
+      --accent-soft: #b81d24;
+      --text: #ffffff;
+      --muted: #b3b3b3;
+      --radius: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
+      background: radial-gradient(circle at top, #111 0%, #000 45%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 4rem;
+    }
+
+    /* NAVBAR */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    .logo span.secondary {
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.25em;
+      font-size: 0.7rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 0;
+      background: var(--accent);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+      gap: 2rem;
+      padding: 2.5rem 1.5rem;
+      border-radius: 24px;
+      background: radial-gradient(circle at top left, #222 0%, #050505 55%, #000 100%);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.8);
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(229, 9, 20, 0.2) 0%, transparent 45%),
+        radial-gradient(circle at 100% 0%, rgba(184, 29, 36, 0.16) 0%, transparent 50%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .hero-main,
+    .hero-side {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-summary {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #e5e5e5;
+      margin-bottom: 1.4rem;
+      max-width: 34rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .badge {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.25rem 0.65rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.55rem 1.15rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(229, 9, 20, 0.6);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(229, 9, 20, 0.8);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta span:not(:last-child)::after {
+      content: "•";
+      margin: 0 0.4rem;
+      opacity: 0.6;
+    }
+
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .avatar {
+      width: 210px;
+      height: 260px;
+      border-radius: 18px;
+      border: 3px solid rgba(255, 255, 255, 0.65);
+      background: radial-gradient(circle at 30% 0%, #fff 0%, #999 45%, #111 75%);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 2.4rem;
+      text-transform: uppercase;
+    }
+
+    .hero-contact {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .hero-contact a {
+      color: #fff;
+      text-decoration: underline;
+      text-decoration-color: rgba(255, 255, 255, 0.35);
+    }
+
+    /* ROWS / CAROUSELS */
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+      padding: 0 0.25rem;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .row {
+      display: flex;
+      gap: 0.85rem;
+      overflow-x: auto;
+      padding: 0.35rem 0.25rem 0.5rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-soft) transparent;
+    }
+
+    .row::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .row::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .row::-webkit-scrollbar-thumb {
+      background: linear-gradient(90deg, var(--accent-soft), var(--accent));
+      border-radius: 999px;
+    }
+
+    .card {
+      flex: 0 0 240px;
+      background: linear-gradient(145deg, #181818, #101010);
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      cursor: default;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.95);
+      border-color: rgba(229, 9, 20, 0.7);
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 0.4rem;
+      left: 0.45rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: rgba(0, 0, 0, 0.7);
+      color: var(--muted);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .card-header {
+      height: 165px; /* increased to make room for image */
+      background: radial-gradient(circle at top, #333 0%, #111 50%, #000 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0.75rem;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.05rem;
+    }
+
+    .card-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .card-body {
+      padding: 0.75rem 0.75rem 0.85rem;
+      font-size: 0.8rem;
+      color: #e5e5e5;
+    }
+
+    .card-body ul {
+      list-style: disc;
+      padding-left: 1.1rem;
+    }
+
+    .card-body li + li {
+      margin-top: 0.25rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.45rem;
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      border-radius: 999px;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--muted);
+    }
+
+    /* CARD IMAGES */
+    .card-image {
+      width: 100%;
+      height: 60px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+      background: radial-gradient(circle at top, #333 0%, #000 70%);
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* MINI GRAPHS */
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.45rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .stat-bar {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .stat-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+    }
+
+    .mini-graph {
+      margin-top: 0.45rem;
+    }
+
+    .mini-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .mini-bar {
+      width: 100%;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .mini-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent-soft), var(--accent));
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-decoration-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 780px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 1.6rem 1.3rem;
+      }
+      .hero-side {
+        order: -1;
+      }
+      .hero-title {
+        font-size: 1.7rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        padding-inline: 0.8rem;
+      }
+      .card {
+        flex-basis: 210px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="logo">
+        VIVEK'S Academic & Professional Portfolio
+        <span class="secondary">RESEARCH ORIGINALS</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#tech">Tech & Certs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-main">
+        <div class="hero-kicker">Researcher | Prospective PHD | Data | Healthcare Analysis</div>
+        <h1 class="hero-title">Vivek Anupindi</h1>
+        <p class="hero-subtitle">Data Engineering & Information Systems Researcher · Prospective PhD</p>
+
+        <p class="hero-summary">
+          Graduate student (M.S. Information Systems, 4.0/4.0) with a research focus on data engineering,
+          HealthCare Analytics, and scalable  systems. I bridge industry experience at IBM and TCS
+          with academic work in data platforms, data quality, and analytics for decision support, aiming to
+          pursue a PhD in data-intensive systems and applied engineering research.
+        </p>
+
+        <div class="hero-badges">
+          <span class="badge">Research: HealthCare Analysis</span>
+          <span class="badge">Data Science</span>
+          <span class="badge">AI Quality & Governance</span>
+          <span class="badge">Analytics for Decision Support</span>
+          <span class="badge"> Cloud Architectures</span>
+        </div>
+
+        <div class="hero-actions">
+          <!-- Replace href with your actual CV link -->
+          <a href="Vivek_Anupindi_CV.pdf" class="btn btn-primary">
+            ▶ Download CV
+          </a>
+          <a href="#education" class="btn btn-ghost">
+            ⏵ Explore Academic Profile
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <span>Saint Louis, MO</span>
+          <span>M.S. Information Systems · 4.0/4.0</span>
+          <span>Interested in PhD opportunities</span>
+        </div>
+      </div>
+
+      <aside class="hero-side" id="contact">
+        <div class="avatar">
+            <img src="https://d2gjqh9j26unp0.cloudfront.net/profilepic/c981c9b22a86b5564c1cf6590856ab95" alt="Vivek Anupindi" />
+        </div>
+        <div class="hero-contact">
+          <div><strong>Contact</strong></div>
+          <div><a href="mailto:vivekanupindi@gmail.com">vivekanupindi@gmail.com</a></div>
+          <div><a href="tel:+13143271714">+1 (314) 327-1714</a></div>
+          <div>
+            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+              LinkedIn Profile
+            </a>
+            &nbsp;·&nbsp;
+            <a href="https://github.com" target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- EDUCATION FIRST -->
+    <section class="section" id="education">
+      <div class="section-header">
+        <h2 class="section-title">Education</h2>
+        <p class="section-subtitle">Academic foundation for research in data engineering and information systems.</p>
+      </div>
+      <div class="row">
+        <!-- MS -->
+        <article class="card">
+          <span class="card-tag">Graduate</span>
+          <div class="card-header">
+            <img src="https://static.vecteezy.com/system/resources/previews/009/330/110/non_2x/slu-letter-logo-design-on-black-background-slu-creative-initials-letter-logo-concept-slu-letter-design-vector.jpg" />
+            <h3 class="card-title">M.S. in Information Systems</h3>
+            <div class="card-meta">Saint Louis University · 08/2023 – 05/2025</div>
+          </div>
+          <div class="card-body">
+            <p>
+              GPA: <strong>4.0 / 4.0</strong>. Coursework and research projects focused on data engineering,
+              analytics, cloud technologies, and decision-support systems.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Data Engineering</span>
+              <span class="pill">Cloud Analytics</span>
+              <span class="pill">Information Systems</span>
+            </div>
+            <div class="stat-label">GPA Progress</div>
+            <div class="stat-bar">
+              <div class="stat-fill" style="width: 100%;"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- BTech -->
+        <article class="card">
+          <span class="card-tag">Undergraduate</span>
+          <div class="card-header">
+            <img src="https://inphd.com/wp-content/uploads/JNTU-Hyderabad-Logo.webp" />
+            <h3 class="card-title">B.Tech in Computer Science</h3>
+            <div class="card-meta">B. V. Raju Institute of Technology · Hyderabad</div>
+          </div>
+          <div class="card-body">
+            <p>
+              GPA: <strong>9.0 / 10.0</strong>. Strong foundation in computer science fundamentals with emphasis
+              on software engineering, algorithms, and data-centric systems.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Computer Science</span>
+              <span class="pill">Algorithms</span>
+              <span class="pill">Data Structures</span>
+            </div>
+            <div class="stat-label">GPA Progress</div>
+            <div class="stat-bar">
+              <div class="stat-fill" style="width: 90%;"></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="section-header">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-subtitle">Industry background that informs my research interests.</p>
+      </div>
+      <div class="row">
+        <!-- Deloitte -->
+        <article class="card">
+          <span class="card-tag">Current</span>
+          <div class="card-header">
+            <div class="card-image">
+              <!-- add your own banner image at images/deloitte-banner.jpg -->
+              <img src="https://tse4.mm.bing.net/th/id/OIP.lOkT7ikqI2NPAIBN776_7AHaEK?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="TCS Data Engineering" />
+            </div>
+            <h3 class="card-title">Data Engineer Intern</h3>
+            <div class="card-meta">Deloitte · 01/2025 – Present · Remote, USA</div>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Designed Airflow + Python ETL to ingest 2M+ daily API records into Snowflake with 98% uptime.</li>
+              <li>Optimized SQL/dbt models, cutting analytical query time by 35% across multiple Power BI views.</li>
+              <li>Implemented Great Expectations data quality checks, improving data reliability and SLA adherence.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">Airflow</span>
+              <span class="pill">Snowflake</span>
+              <span class="pill">dbt</span>
+              <span class="pill">Data Quality</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- IBM -->
+        <article class="card">
+          <span class="card-tag">Featured</span>
+          <div class="card-header">
+            <div class="card-image">
+              <!-- add your own banner image at images/ibm-banner.jpg -->
+              <img src="https://www.recreatedesign.co.uk/assets/uploads/2018/01/IBM-banner-1024x410.jpg" alt="IBM Data Engineer" />
+            </div>
+            <h3 class="card-title">Data Engineer</h3>
+            <div class="card-meta">IBM · 01/2020 – 05/2023 · Bangalore, India</div>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Modernized IBM DataStage on Cloud Pak for Data with Docker and OpenShift, reducing deployment time by 60%.</li>
+              <li>Implemented remote engine & Kubernetes-based workload balancing, increasing throughput by 40%.</li>
+              <li>Enabled data lineage and catalog integration via Watson Knowledge Catalog to support governance and audits.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">IBM DataStage</span>
+              <span class="pill">Cloud Pak for Data</span>
+              <span class="pill">Docker</span>
+              <span class="pill">Kubernetes</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- RESEARCH PROJECTS -->
+    <section class="section" id="projects">
+      <div class="section-header">
+        <h2 class="section-title">Academic Research Projects</h2>
+        <p class="section-subtitle">Work that connects data engineering practice with research questions.</p>
+      </div>
+      <div class="row">
+        <article class="card">
+          <span class="card-tag">Data Platforms</span>
+          <div class="card-header">
+            <h3 class="card-title">Cloud-Native ETL for Analytical Workloads</h3>
+            <div class="card-meta">Graduate Research · Saint Louis University</div>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Prototyped end-to-end ETL pipelines on Snowflake using Airflow and dbt to evaluate cost vs. latency trade-offs.</li>
+              <li>Benchmarked query performance and warehouse sizing strategies across multiple workloads.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">Snowflake</span>
+              <span class="pill">Airflow</span>
+              <span class="pill">dbt</span>
+              <span class="pill">Cost Optimization</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="card-tag">Analytics</span>
+          <div class="card-header">
+            <h3 class="card-title">Data-Driven Decision Dashboards</h3>
+            <div class="card-meta">Graduate Coursework · Information Systems</div>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Built BI dashboards with Power BI integrating cleaned datasets from Python ETL scripts and SQL transformations.</li>
+              <li>Explored design patterns for interpretability and stakeholder-centric analytics.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">Power BI</span>
+              <span class="pill">Python</span>
+              <span class="pill">SQL</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section class="section" id="publications">
+      <div class="section-header">
+        <h2 class="section-title">Publications</h2>
+        <p class="section-subtitle">Formal outputs of my research journey (placeholder list – update as you publish).</p>
+      </div>
+      <div class="row">
+        <article class="card">
+          <span class="card-tag">In Progress</span>
+          <div class="card-header">
+            <h3 class="card-title">Data Engineering for Cloud Analytics</h3>
+            <div class="card-meta">Target: IEEE / ACM venue</div>
+          </div>
+          <div class="card-body">
+            <p>
+              Working manuscript exploring design patterns for cost-aware, cloud-native ETL pipelines for analytics
+              platforms, informed by experiments with Snowflake, Airflow, and dbt.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Cloud Analytics</span>
+              <span class="pill">Experimental Study</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TECH + CERTS -->
+    <section class="section" id="tech">
+      <div class="section-header">
+        <h2 class="section-title">Technical Stack & Certifications</h2>
+        <p class="section-subtitle">Tools I use in research and practice, plus formal credentials.</p>
+      </div>
+      <div class="row">
+        <!-- Tech stack 1 -->
+        <article class="card">
+          <span class="card-tag">Data Engineering</span>
+          <div class="card-header">
+            <h3 class="card-title">Core Toolkit</h3>
+            <div class="card-meta">Pipelines · Modeling · Quality</div>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Python (Pandas, NumPy), SQL (optimization, complex joins), ETL pipeline design.</li>
+              <li>Snowflake, dbt, Apache Airflow, IBM DataStage, Azure Data Factory.</li>
+            </ul>
+            <div class="mini-graph">
+              <div class="mini-row">
+                <span>Python</span><span>90%</span>
+              </div>
+              <div class="mini-bar"><div class="mini-fill" style="width: 90%;"></div></div>
+              <div class="mini-row">
+                <span>SQL</span><span>90%</span>
+              </div>
+              <div class="mini-bar"><div class="mini-fill" style="width: 90%;"></div></div>
+              <div class="mini-row">
+                <span>ETL / Pipelines</span><span>85%</span>
+              </div>
+              <div class="mini-bar"><div class="mini-fill" style="width: 85%;"></div></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tech stack 2 -->
+        <article class="card">
+          <span class="card-tag">Analytics</span>
+          <div class="card-header">
+            <h3 class="card-title">Analytics & Visualization</h3>
+            <div class="card-meta">Dashboards · Reporting</div>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Power BI, Tableau for BI dashboards, drill-through, and data storytelling.</li>
+              <li>Python visualization using Matplotlib and Seaborn for exploratory analysis.</li>
+            </ul>
+            <div class="mini-graph">
+              <div class="mini-row">
+                <span>Power BI</span><span>85%</span>
+              </div>
+              <div class="mini-bar"><div class="mini-fill" style="width: 85%;"></div></div>
+              <div class="mini-row">
+                <span>Tableau</span><span>80%</span>
+              </div>
+              <div class="mini-bar"><div class="mini-fill" style="width: 80%;"></div></div>
+              <div class="mini-row">
+                <span>Py Viz</span><span>80%</span>
+              </div>
+              <div class="mini-bar"><div class="mini-fill" style="width: 80%;"></div></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Certifications -->
+        <article class="card">
+          <span class="card-tag">Certifications</span>
+          <div class="card-header">
+            <h3 class="card-title">Cloud & Data Credentials</h3>
+            <div class="card-meta">Selected certifications</div>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>AWS Cloud Practitioner, Microsoft Azure Fundamentals.</li>
+              <li>dbt Fundamentals, Databricks Lakehouse Fundamentals.</li>
+              <li>IBM Certified (Cloud Core, Python), DataCamp Power BI Analyst.</li>
+            </ul>
+            <div class="mini-graph">
+              <div class="mini-row">
+                <span>Cloud</span><span>3+ certs</span>
+              </div>
+              <div class="mini-bar"><div class="mini-fill" style="width: 90%;"></div></div>
+              <div class="mini-row">
+                <span>Data & BI</span><span>3+ certs</span>
+              </div>
+              <div class="mini-bar"><div class="mini-fill" style="width: 85%;"></div></div>
+              <div class="mini-row">
+                <span>Platform-specific</span><span>IBM / Databricks</span>
+              </div>
+              <div class="mini-bar"><div class="mini-fill" style="width: 80%;"></div></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      © <span id="year"></span> Vivek Anupindi · Netflix-inspired academic & professional portfolio.
+    </footer>
+  </div>
+
+  <script>
+    // tiny JS just for year + smooth scrolling
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", e => {
+        const target = document.querySelector(a.getAttribute("href"));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
+</body>
+</html>
