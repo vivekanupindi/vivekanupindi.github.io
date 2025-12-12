@@ -14,7 +14,7 @@
       --accent: #e50914;
       --accent-soft: #b81d24;
       --text: #ffffff;
-      --muted: #b3b3b3;
+      --muted: #c4c4c4;
       --radius: 10px;
     }
 
@@ -30,6 +30,7 @@
       background: radial-gradient(circle at top, #111 0%, #000 45%, #000 100%);
       color: var(--text);
       min-height: 100vh;
+      font-size: 16px;
     }
 
     a {
@@ -49,17 +50,19 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1.5rem;
+      gap: 1rem;
     }
 
     .logo {
       display: flex;
-      align-items: baseline;
-      gap: 0.35rem;
+      flex-direction: column;
+      gap: 0.15rem;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       color: var(--accent);
+      max-width: 260px;
     }
 
     .logo span.secondary {
@@ -74,11 +77,14 @@
       gap: 1.25rem;
       font-size: 0.9rem;
       color: var(--muted);
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .nav-links a {
       position: relative;
       padding-bottom: 0.15rem;
+      white-space: nowrap;
     }
 
     .nav-links a::after {
@@ -97,6 +103,10 @@
     }
 
     /* HERO */
+    main {
+      display: block;
+    }
+
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
@@ -248,6 +258,13 @@
       text-transform: uppercase;
     }
 
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .hero-contact {
       text-align: center;
       font-size: 0.85rem;
@@ -272,6 +289,7 @@
       justify-content: space-between;
       margin-bottom: 0.4rem;
       padding: 0 0.25rem;
+      gap: 1rem;
     }
 
     .section-title {
@@ -282,6 +300,7 @@
     .section-subtitle {
       font-size: 0.8rem;
       color: var(--muted);
+      max-width: 32rem;
     }
 
     .row {
@@ -339,7 +358,7 @@
     }
 
     .card-header {
-      height: 165px; /* increased to make room for image */
+      height: 165px;
       background: radial-gradient(circle at top, #333 0%, #111 50%, #000 100%);
       display: flex;
       flex-direction: column;
@@ -360,7 +379,7 @@
 
     .card-body {
       padding: 0.75rem 0.75rem 0.85rem;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: #e5e5e5;
     }
 
@@ -402,6 +421,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
     /* MINI GRAPHS */
@@ -481,8 +501,14 @@
       .hero-title {
         font-size: 1.7rem;
       }
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
       .nav-links {
-        display: none;
+        justify-content: flex-start;
+        font-size: 0.85rem;
+        gap: 0.8rem;
       }
     }
 
@@ -493,6 +519,10 @@
       .card {
         flex-basis: 210px;
       }
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -502,7 +532,7 @@
     <!-- NAV -->
     <header class="nav">
       <div class="logo">
-        VIVEK'S Academic & Professional Portfolio
+        <span>VIVEK'S Academic & Professional Portfolio</span>
         <span class="secondary">RESEARCH ORIGINALS</span>
       </div>
       <nav class="nav-links">
@@ -515,361 +545,464 @@
       </nav>
     </header>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-main">
-        <div class="hero-kicker">Researcher | Prospective PHD | Data | Healthcare Analysis</div>
-        <h1 class="hero-title">Vivek Anupindi</h1>
-        <p class="hero-subtitle">Data Engineering & Information Systems Researcher · Prospective PhD</p>
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-main">
+          <div class="hero-kicker">Researcher | Prospective PhD | Data | Healthcare Analytics</div>
+          <h1 class="hero-title">Vivek Anupindi</h1>
+          <p class="hero-subtitle">Data Engineering & Information Systems Researcher · Prospective PhD</p>
 
-        <p class="hero-summary">
-          Graduate student (M.S. Information Systems, 4.0/4.0) with a research focus on data engineering,
-          HealthCare Analytics, and scalable  systems. I bridge industry experience at IBM and TCS
-          with academic work in data platforms, data quality, and analytics for decision support, aiming to
-          pursue a PhD in data-intensive systems and applied engineering research.
-        </p>
+          <p class="hero-summary">
+            Graduate student (M.S. Information Systems, 4.0/4.0) with a research focus on data engineering,
+            healthcare analytics, and scalable systems. I bridge industry experience at IBM and Deloitte
+            with academic work in data platforms, data quality, and analytics for decision support, aiming to
+            pursue a PhD in data-intensive systems and applied engineering research.
+          </p>
 
-        <div class="hero-badges">
-          <span class="badge">Research: HealthCare Analysis</span>
-          <span class="badge">Data Science</span>
-          <span class="badge">AI Quality & Governance</span>
-          <span class="badge">Analytics for Decision Support</span>
-          <span class="badge"> Cloud Architectures</span>
-        </div>
+          <div class="hero-badges">
+            <span class="badge">Research: Healthcare Analytics</span>
+            <span class="badge">Data Science</span>
+            <span class="badge">AI Quality & Governance</span>
+            <span class="badge">Analytics for Decision Support</span>
+            <span class="badge">Cloud Architectures</span>
+          </div>
 
-        <div class="hero-actions">
-          <!-- Replace href with your actual CV link -->
-          <a href="Vivek Data engineer Resume.pdf" class="btn btn-primary">
-            ▶ Download CV
-          </a>
-          <a href="#education" class="btn btn-ghost">
-            ⏵ Explore Academic Profile
-          </a>
-        </div>
-
-        <div class="hero-meta">
-          <span>Saint Louis, MO</span>
-          <span>M.S. Information Systems · 4.0/4.0</span>
-          <span>Interested in PhD opportunities</span>
-        </div>
-      </div>
-
-      <aside class="hero-side" id="contact">
-        <div class="avatar">
-            <img src="https://d2gjqh9j26unp0.cloudfront.net/profilepic/c981c9b22a86b5564c1cf6590856ab95" alt="Vivek Anupindi" />
-        </div>
-        <div class="hero-contact">
-          <div><strong>Contact</strong></div>
-          <div><a href="mailto:vivekanupindi@gmail.com">vivekanupindi@gmail.com</a></div>
-          <div><a href="tel:+13143271714">+1 (314) 327-1714</a></div>
-          <div>
-            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
-              LinkedIn Profile
+          <div class="hero-actions">
+            <!-- Replace href with your actual CV link -->
+            <a href="Vivek_Anupindi_CV.pdf" class="btn btn-primary">
+              ▶ Download CV
             </a>
-            &nbsp;·&nbsp;
-            <a href="https://github.com" target="_blank" rel="noreferrer">
-              GitHub
+            <a href="#education" class="btn btn-ghost">
+              ⏵ Explore Academic Profile
             </a>
           </div>
+
+          <div class="hero-meta">
+            <span>Saint Louis, MO</span>
+            <span>M.S. Information Systems · 4.0/4.0</span>
+            <span>Interested in PhD opportunities</span>
+          </div>
         </div>
-      </aside>
-    </section>
 
-    <!-- EDUCATION FIRST -->
-    <section class="section" id="education">
-      <div class="section-header">
-        <h2 class="section-title">Education</h2>
-        <p class="section-subtitle">Academic foundation for research in data engineering and information systems.</p>
-      </div>
-      <div class="row">
-        <!-- MS -->
-        <article class="card">
-          <span class="card-tag">Graduate</span>
-          <div class="card-header">
-            <img src="https://static.vecteezy.com/system/resources/previews/009/330/110/non_2x/slu-letter-logo-design-on-black-background-slu-creative-initials-letter-logo-concept-slu-letter-design-vector.jpg" />
-            <h3 class="card-title">M.S. in Information Systems</h3>
-            <div class="card-meta">Saint Louis University · 08/2023 – 05/2025</div>
+        <aside class="hero-side" id="contact">
+          <div class="avatar">
+            <img src="https://d2gjqh9j26unp0.cloudfront.net/profilepic/c981c9b22a86b5564c1cf6590856ab95"
+                 alt="Portrait of Vivek Anupindi" />
           </div>
-          <div class="card-body">
-            <p>
-              GPA: <strong>4.0 / 4.0</strong>. Coursework and research projects focused on data engineering,
-              analytics, cloud technologies, and decision-support systems.
-            </p>
-            <div class="pill-row">
-              <span class="pill">Data Engineering</span>
-              <span class="pill">Cloud Analytics</span>
-              <span class="pill">Information Systems</span>
-            </div>
-            <div class="stat-label">GPA Progress</div>
-            <div class="stat-bar">
-              <div class="stat-fill" style="width: 100%;"></div>
+          <div class="hero-contact">
+            <div><strong>Contact</strong></div>
+            <div><a href="mailto:vivekanupindi@gmail.com">vivekanupindi@gmail.com</a></div>
+            <div><a href="tel:+13143271714">+1 (314) 327-1714</a></div>
+            <div>
+              <!-- Replace with your actual profile URLs -->
+              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+                LinkedIn Profile
+              </a>
+              &nbsp;·&nbsp;
+              <a href="https://github.com" target="_blank" rel="noreferrer">
+                GitHub
+              </a>
             </div>
           </div>
-        </article>
+        </aside>
+      </section>
 
-        <!-- BTech -->
-        <article class="card">
-          <span class="card-tag">Undergraduate</span>
-          <div class="card-header">
-            <img src="https://inphd.com/wp-content/uploads/JNTU-Hyderabad-Logo.webp" />
-            <h3 class="card-title">B.Tech in Computer Science</h3>
-            <div class="card-meta">B. V. Raju Institute of Technology · Hyderabad</div>
-          </div>
-          <div class="card-body">
-            <p>
-              GPA: <strong>9.0 / 10.0</strong>. Strong foundation in computer science fundamentals with emphasis
-              on software engineering, algorithms, and data-centric systems.
-            </p>
-            <div class="pill-row">
-              <span class="pill">Computer Science</span>
-              <span class="pill">Algorithms</span>
-              <span class="pill">Data Structures</span>
-            </div>
-            <div class="stat-label">GPA Progress</div>
-            <div class="stat-bar">
-              <div class="stat-fill" style="width: 90%;"></div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section class="section" id="experience">
-      <div class="section-header">
-        <h2 class="section-title">Experience</h2>
-        <p class="section-subtitle">Industry background that informs my research interests.</p>
-      </div>
-      <div class="row">
-        <!-- Deloitte -->
-        <article class="card">
-          <span class="card-tag">Current</span>
-          <div class="card-header">
-            <div class="card-image">
-              <!-- add your own banner image at images/deloitte-banner.jpg -->
-              <img src="https://tse4.mm.bing.net/th/id/OIP.lOkT7ikqI2NPAIBN776_7AHaEK?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="TCS Data Engineering" />
-            </div>
-            <h3 class="card-title">Data Engineer Intern</h3>
-            <div class="card-meta">Deloitte · 01/2025 – Present · Remote, USA</div>
-          </div>
-          <div class="card-body">
-            <ul>
-              <li>Designed Airflow + Python ETL to ingest 2M+ daily API records into Snowflake with 98% uptime.</li>
-              <li>Optimized SQL/dbt models, cutting analytical query time by 35% across multiple Power BI views.</li>
-              <li>Implemented Great Expectations data quality checks, improving data reliability and SLA adherence.</li>
-            </ul>
-            <div class="pill-row">
-              <span class="pill">Airflow</span>
-              <span class="pill">Snowflake</span>
-              <span class="pill">dbt</span>
-              <span class="pill">Data Quality</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- IBM -->
-        <article class="card">
-          <span class="card-tag">Featured</span>
-          <div class="card-header">
-            <div class="card-image">
-              <!-- add your own banner image at images/ibm-banner.jpg -->
-              <img src="https://www.recreatedesign.co.uk/assets/uploads/2018/01/IBM-banner-1024x410.jpg" alt="IBM Data Engineer" />
-            </div>
-            <h3 class="card-title">Data Engineer</h3>
-            <div class="card-meta">IBM · 01/2020 – 05/2023 · Bangalore, India</div>
-          </div>
-          <div class="card-body">
-            <ul>
-              <li>Modernized IBM DataStage on Cloud Pak for Data with Docker and OpenShift, reducing deployment time by 60%.</li>
-              <li>Implemented remote engine & Kubernetes-based workload balancing, increasing throughput by 40%.</li>
-              <li>Enabled data lineage and catalog integration via Watson Knowledge Catalog to support governance and audits.</li>
-            </ul>
-            <div class="pill-row">
-              <span class="pill">IBM DataStage</span>
-              <span class="pill">Cloud Pak for Data</span>
-              <span class="pill">Docker</span>
-              <span class="pill">Kubernetes</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- RESEARCH PROJECTS -->
-    <section class="section" id="projects">
-      <div class="section-header">
-        <h2 class="section-title">Academic Research Projects</h2>
-        <p class="section-subtitle">Work that connects data engineering practice with research questions.</p>
-      </div>
-      <div class="row">
-        <article class="card">
-          <span class="card-tag">Data Platforms</span>
-          <div class="card-header">
-            <h3 class="card-title">Cloud-Native ETL for Analytical Workloads</h3>
-            <div class="card-meta">Graduate Research · Saint Louis University</div>
-          </div>
-          <div class="card-body">
-            <ul>
-              <li>Prototyped end-to-end ETL pipelines on Snowflake using Airflow and dbt to evaluate cost vs. latency trade-offs.</li>
-              <li>Benchmarked query performance and warehouse sizing strategies across multiple workloads.</li>
-            </ul>
-            <div class="pill-row">
-              <span class="pill">Snowflake</span>
-              <span class="pill">Airflow</span>
-              <span class="pill">dbt</span>
-              <span class="pill">Cost Optimization</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <span class="card-tag">Analytics</span>
-          <div class="card-header">
-            <h3 class="card-title">Data-Driven Decision Dashboards</h3>
-            <div class="card-meta">Graduate Coursework · Information Systems</div>
-          </div>
-          <div class="card-body">
-            <ul>
-              <li>Built BI dashboards with Power BI integrating cleaned datasets from Python ETL scripts and SQL transformations.</li>
-              <li>Explored design patterns for interpretability and stakeholder-centric analytics.</li>
-            </ul>
-            <div class="pill-row">
-              <span class="pill">Power BI</span>
-              <span class="pill">Python</span>
-              <span class="pill">SQL</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- PUBLICATIONS -->
-    <section class="section" id="publications">
-      <div class="section-header">
-        <h2 class="section-title">Publications</h2>
-        <p class="section-subtitle">Formal outputs of my research journey (placeholder list – update as you publish).</p>
-      </div>
-      <div class="row">
-        <article class="card">
-          <span class="card-tag">In Progress</span>
-          <div class="card-header">
-            <h3 class="card-title">Data Engineering for Cloud Analytics</h3>
-            <div class="card-meta">Target: IEEE / ACM venue</div>
-          </div>
-          <div class="card-body">
-            <p>
-              Working manuscript exploring design patterns for cost-aware, cloud-native ETL pipelines for analytics
-              platforms, informed by experiments with Snowflake, Airflow, and dbt.
-            </p>
-            <div class="pill-row">
-              <span class="pill">Cloud Analytics</span>
-              <span class="pill">Experimental Study</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- TECH + CERTS -->
-    <section class="section" id="tech">
-      <div class="section-header">
-        <h2 class="section-title">Technical Stack & Certifications</h2>
-        <p class="section-subtitle">Tools I use in research and practice, plus formal credentials.</p>
-      </div>
-      <div class="row">
-        <!-- Tech stack 1 -->
-        <article class="card">
-          <span class="card-tag">Data Engineering</span>
-          <div class="card-header">
-            <h3 class="card-title">Core Toolkit</h3>
-            <div class="card-meta">Pipelines · Modeling · Quality</div>
-          </div>
-          <div class="card-body">
-            <ul>
-              <li>Python (Pandas, NumPy), SQL (optimization, complex joins), ETL pipeline design.</li>
-              <li>Snowflake, dbt, Apache Airflow, IBM DataStage, Azure Data Factory.</li>
-            </ul>
-            <div class="mini-graph">
-              <div class="mini-row">
-                <span>Python</span><span>90%</span>
+      <!-- EDUCATION -->
+      <section class="section" id="education">
+        <div class="section-header">
+          <h2 class="section-title">Education</h2>
+          <p class="section-subtitle">Academic foundation for research in data engineering and information systems.</p>
+        </div>
+        <div class="row">
+          <!-- MS -->
+          <article class="card">
+            <span class="card-tag">Graduate</span>
+            <div class="card-header">
+              <div class="card-image">
+                <img src="https://static.vecteezy.com/system/resources/previews/009/330/110/non_2x/slu-letter-logo-design-on-black-background-slu-creative-initials-letter-logo-concept-slu-letter-design-vector.jpg"
+                     alt="Saint Louis University logo" />
               </div>
-              <div class="mini-bar"><div class="mini-fill" style="width: 90%;"></div></div>
-              <div class="mini-row">
-                <span>SQL</span><span>90%</span>
-              </div>
-              <div class="mini-bar"><div class="mini-fill" style="width: 90%;"></div></div>
-              <div class="mini-row">
-                <span>ETL / Pipelines</span><span>85%</span>
-              </div>
-              <div class="mini-bar"><div class="mini-fill" style="width: 85%;"></div></div>
+              <h3 class="card-title">M.S. in Information Systems</h3>
+              <div class="card-meta">Saint Louis University · 08/2023 – 05/2025</div>
             </div>
-          </div>
-        </article>
+            <div class="card-body">
+              <p>
+                GPA: <strong>4.0 / 4.0</strong>. Coursework and research projects focused on data engineering,
+                analytics, cloud technologies, and decision-support systems.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Data Engineering</span>
+                <span class="pill">Cloud Analytics</span>
+                <span class="pill">Information Systems</span>
+              </div>
+              <div class="stat-label">GPA Progress</div>
+              <div class="stat-bar">
+                <div class="stat-fill" style="width: 100%;"></div>
+              </div>
+            </div>
+          </article>
 
-        <!-- Tech stack 2 -->
-        <article class="card">
-          <span class="card-tag">Analytics</span>
-          <div class="card-header">
-            <h3 class="card-title">Analytics & Visualization</h3>
-            <div class="card-meta">Dashboards · Reporting</div>
-          </div>
-          <div class="card-body">
-            <ul>
-              <li>Power BI, Tableau for BI dashboards, drill-through, and data storytelling.</li>
-              <li>Python visualization using Matplotlib and Seaborn for exploratory analysis.</li>
-            </ul>
-            <div class="mini-graph">
-              <div class="mini-row">
-                <span>Power BI</span><span>85%</span>
+          <!-- BTech -->
+          <article class="card">
+            <span class="card-tag">Undergraduate</span>
+            <div class="card-header">
+              <div class="card-image">
+                <img src="https://inphd.com/wp-content/uploads/JNTU-Hyderabad-Logo.webp"
+                     alt="JNTU Hyderabad / BVRIT logo" />
               </div>
-              <div class="mini-bar"><div class="mini-fill" style="width: 85%;"></div></div>
-              <div class="mini-row">
-                <span>Tableau</span><span>80%</span>
-              </div>
-              <div class="mini-bar"><div class="mini-fill" style="width: 80%;"></div></div>
-              <div class="mini-row">
-                <span>Py Viz</span><span>80%</span>
-              </div>
-              <div class="mini-bar"><div class="mini-fill" style="width: 80%;"></div></div>
+              <h3 class="card-title">B.Tech in Computer Science</h3>
+              <div class="card-meta">B. V. Raju Institute of Technology · Hyderabad</div>
             </div>
-          </div>
-        </article>
+            <div class="card-body">
+              <p>
+                GPA: <strong>9.0 / 10.0</strong>. Strong foundation in computer science fundamentals with emphasis
+                on software engineering, algorithms, and data-centric systems.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Computer Science</span>
+                <span class="pill">Algorithms</span>
+                <span class="pill">Data Structures</span>
+              </div>
+              <div class="stat-label">GPA Progress</div>
+              <div class="stat-bar">
+                <div class="stat-fill" style="width: 90%;"></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
-        <!-- Certifications -->
-        <article class="card">
-          <span class="card-tag">Certifications</span>
-          <div class="card-header">
-            <h3 class="card-title">Cloud & Data Credentials</h3>
-            <div class="card-meta">Selected certifications</div>
-          </div>
-          <div class="card-body">
-            <ul>
-              <li>AWS Cloud Practitioner, Microsoft Azure Fundamentals.</li>
-              <li>dbt Fundamentals, Databricks Lakehouse Fundamentals.</li>
-              <li>IBM Certified (Cloud Core, Python), DataCamp Power BI Analyst.</li>
-            </ul>
-            <div class="mini-graph">
-              <div class="mini-row">
-                <span>Cloud</span><span>3+ certs</span>
+      <!-- EXPERIENCE -->
+      <section class="section" id="experience">
+        <div class="section-header">
+          <h2 class="section-title">Experience</h2>
+          <p class="section-subtitle">Industry background that informs my research interests.</p>
+        </div>
+        <div class="row">
+          <!-- Deloitte -->
+          <article class="card">
+            <span class="card-tag">Current</span>
+            <div class="card-header">
+              <div class="card-image">
+                <img src="https://tse4.mm.bing.net/th/id/OIP.lOkT7ikqI2NPAIBN776_7AHaEK?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+                     alt="Deloitte logo banner" />
               </div>
-              <div class="mini-bar"><div class="mini-fill" style="width: 90%;"></div></div>
-              <div class="mini-row">
-                <span>Data & BI</span><span>3+ certs</span>
-              </div>
-              <div class="mini-bar"><div class="mini-fill" style="width: 85%;"></div></div>
-              <div class="mini-row">
-                <span>Platform-specific</span><span>IBM / Databricks</span>
-              </div>
-              <div class="mini-bar"><div class="mini-fill" style="width: 80%;"></div></div>
+              <h3 class="card-title">Data Engineer Intern</h3>
+              <div class="card-meta">Deloitte · 01/2025 – Present · Remote, USA</div>
             </div>
-          </div>
-        </article>
-      </div>
-    </section>
+            <div class="card-body">
+              <ul>
+                <li>Designed Airflow + Python ETL to ingest 2M+ daily API records into Snowflake with 98% uptime.</li>
+                <li>Optimized SQL/dbt models, cutting analytical query time by 35% across multiple Power BI views.</li>
+                <li>Implemented Great Expectations data quality checks, improving data reliability and SLA adherence.</li>
+              </ul>
+              <div class="pill-row">
+                <span class="pill">Airflow</span>
+                <span class="pill">Snowflake</span>
+                <span class="pill">dbt</span>
+                <span class="pill">Data Quality</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- IBM -->
+          <article class="card">
+            <span class="card-tag">Featured</span>
+            <div class="card-header">
+              <div class="card-image">
+                <img src="https://www.recreatedesign.co.uk/assets/uploads/2018/01/IBM-banner-1024x410.jpg"
+                     alt="IBM banner" />
+              </div>
+              <h3 class="card-title">Data Engineer</h3>
+              <div class="card-meta">IBM · 01/2020 – 05/2023 · Bangalore, India</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Modernized IBM DataStage on Cloud Pak for Data with Docker and OpenShift, reducing deployment time by 60%.</li>
+                <li>Implemented remote engine & Kubernetes-based workload balancing, increasing throughput by 40%.</li>
+                <li>Enabled data lineage and catalog integration via Watson Knowledge Catalog to support governance and audits.</li>
+              </ul>
+              <div class="pill-row">
+                <span class="pill">IBM DataStage</span>
+                <span class="pill">Cloud Pak for Data</span>
+                <span class="pill">Docker</span>
+                <span class="pill">Kubernetes</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- RESEARCH PROJECTS -->
+      <section class="section" id="projects">
+        <div class="section-header">
+          <h2 class="section-title">Academic Research Projects</h2>
+          <p class="section-subtitle">Work that connects data engineering practice with research questions.</p>
+        </div>
+        <div class="row">
+          <!-- Cloud-Native ETL -->
+          <article class="card">
+            <span class="card-tag">Data Platforms</span>
+            <div class="card-header">
+              <h3 class="card-title">Cloud-Native ETL for Analytical Workloads</h3>
+              <div class="card-meta">Graduate Research · Saint Louis University</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Prototyped end-to-end ETL pipelines on Snowflake using Airflow and dbt to evaluate cost vs. latency trade-offs.</li>
+                <li>Benchmarked query performance and warehouse sizing strategies across multiple workloads.</li>
+              </ul>
+              <div class="pill-row">
+                <span class="pill">Snowflake</span>
+                <span class="pill">Airflow</span>
+                <span class="pill">dbt</span>
+                <span class="pill">Cost Optimization</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Data-Driven Dashboards -->
+          <article class="card">
+            <span class="card-tag">Analytics</span>
+            <div class="card-header">
+              <h3 class="card-title">Data-Driven Decision Dashboards</h3>
+              <div class="card-meta">Graduate Coursework · Information Systems</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Built BI dashboards with Power BI integrating cleaned datasets from Python ETL scripts and SQL transformations.</li>
+                <li>Explored design patterns for interpretability and stakeholder-centric analytics.</li>
+              </ul>
+              <div class="pill-row">
+                <span class="pill">Power BI</span>
+                <span class="pill">Python</span>
+                <span class="pill">SQL</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- iPaaS + Active Directory Integration -->
+          <article class="card">
+            <span class="card-tag">Identity & Access</span>
+            <div class="card-header">
+              <h3 class="card-title">Integration of iPaaS and Active Directory for Automated Access Management</h3>
+              <div class="card-meta">Global Graduate · SLU ITS · Feb 2024 – May 2024</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Worked as a Global Graduate at SLU ITS, contributing to the integration of the local iPaaS (TeamDynamix) project system with Active Directory for automated access management.</li>
+                <li>Designed, tested, and deployed iPaaS workflows to automate group membership assignments in Active Directory based on new employee onboarding.</li>
+                <li>Implemented role-based group access controls aligned with IAM policies, reducing manual intervention and access errors.</li>
+                <li>Collaborated with cross-functional teams to streamline onboarding processes and improve operational efficiency.</li>
+              </ul>
+              <div class="pill-row">
+                <span class="pill">TeamDynamix</span>
+                <span class="pill">Active Directory</span>
+                <span class="pill">IAM</span>
+                <span class="pill">Microsoft Azure</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Data Visualization Associate Internship -->
+          <article class="card">
+            <span class="card-tag">Visualization</span>
+            <div class="card-header">
+              <h3 class="card-title">Business Data Visualization & Insights</h3>
+              <div class="card-meta">Data Visualization Associate Internship · SLU · Oct 2023 – Dec 2023</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Designed and developed interactive dashboards to visualize key business metrics, enabling data-driven decision-making.</li>
+                <li>Performed data cleaning and preprocessing to ensure accuracy, consistency, and reliability of datasets.</li>
+                <li>Analyzed large datasets to identify trends, patterns, and actionable insights for stakeholders.</li>
+                <li>Collaborated with team members to translate analytical findings into clear, concise reports.</li>
+              </ul>
+              <div class="pill-row">
+                <span class="pill">Data Visualization</span>
+                <span class="pill">Power BI / Tableau</span>
+                <span class="pill">Data Cleaning</span>
+                <span class="pill">Business Analytics</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- AI for Type 1 Diabetes -->
+          <article class="card">
+            <span class="card-tag">Healthcare AI</span>
+            <div class="card-header">
+              <h3 class="card-title">AI-Assisted Glucose Prediction for Type 1 Diabetes</h3>
+              <div class="card-meta">Personal Research Concept · In Progress</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Motivated by lived experience as a Type 1 diabetic and the observation that most glucose meters only display readings without predictive intelligence.</li>
+                <li>Exploring machine learning approaches to forecast short-term glucose trends using historical meter/CGM data to anticipate hypo- and hyperglycemic events.</li>
+                <li>Investigating opportunities for personalized decision support (alerts, recommendations) to complement existing glucose monitoring devices.</li>
+              </ul>
+              <div class="pill-row">
+                <span class="pill">Type 1 Diabetes</span>
+                <span class="pill">Predictive Modeling</span>
+                <span class="pill">Time-Series Data</span>
+                <span class="pill">Clinical Decision Support</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- PUBLICATIONS -->
+      <section class="section" id="publications">
+        <div class="section-header">
+          <h2 class="section-title">Publications</h2>
+          <p class="section-subtitle">Peer-reviewed and in-progress work from my research journey.</p>
+        </div>
+        <div class="row">
+          <!-- Published paper -->
+          <article class="card">
+            <span class="card-tag">Published</span>
+            <div class="card-header">
+              <h3 class="card-title">Comparative Evaluation of Logistic Regression for ICD-10 Code Classification Using the CodiEsp Clinical Text Dataset</h3>
+              <div class="card-meta">
+                IJRASET · Paper ID: IJRASET76293 · Author: Vivek Anupindi
+              </div>
+            </div>
+            <div class="card-body">
+              <p>
+                Empirical study evaluating logistic regression for ICD-10 code classification on the CodiEsp clinical text dataset, with a focus on model performance, feature engineering, and error patterns in clinical NLP workflows.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Clinical NLP</span>
+                <span class="pill">ICD-10 Coding</span>
+                <span class="pill">Logistic Regression</span>
+                <span class="pill">CodiEsp Dataset</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- In-progress manuscript -->
+          <article class="card">
+            <span class="card-tag">In Progress</span>
+            <div class="card-header">
+              <h3 class="card-title">Data Engineering for Cloud Analytics</h3>
+              <div class="card-meta">Working Manuscript · Target: IEEE / ACM venue</div>
+            </div>
+            <div class="card-body">
+              <p>
+                Ongoing manuscript exploring design patterns for cost-aware, cloud-native ETL pipelines for analytics platforms, informed by experiments with Snowflake, Airflow, and dbt.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Cloud Analytics</span>
+                <span class="pill">Experimental Study</span>
+                <span class="pill">ETL Design</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- TECH + CERTS -->
+      <section class="section" id="tech">
+        <div class="section-header">
+          <h2 class="section-title">Technical Stack & Certifications</h2>
+          <p class="section-subtitle">Tools I use in research and practice, plus formal credentials.</p>
+        </div>
+        <div class="row">
+          <!-- Tech stack 1 -->
+          <article class="card">
+            <span class="card-tag">Data Engineering</span>
+            <div class="card-header">
+              <h3 class="card-title">Core Toolkit</h3>
+              <div class="card-meta">Pipelines · Modeling · Quality</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Python (Pandas, NumPy), SQL (optimization, complex joins), ETL pipeline design.</li>
+                <li>Snowflake, dbt, Apache Airflow, IBM DataStage, Azure Data Factory.</li>
+              </ul>
+              <div class="mini-graph">
+                <div class="mini-row">
+                  <span>Python</span><span>90%</span>
+                </div>
+                <div class="mini-bar"><div class="mini-fill" style="width: 90%;"></div></div>
+                <div class="mini-row">
+                  <span>SQL</span><span>90%</span>
+                </div>
+                <div class="mini-bar"><div class="mini-fill" style="width: 90%;"></div></div>
+                <div class="mini-row">
+                  <span>ETL / Pipelines</span><span>85%</span>
+                </div>
+                <div class="mini-bar"><div class="mini-fill" style="width: 85%;"></div></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tech stack 2 -->
+          <article class="card">
+            <span class="card-tag">Analytics</span>
+            <div class="card-header">
+              <h3 class="card-title">Analytics & Visualization</h3>
+              <div class="card-meta">Dashboards · Reporting</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Power BI, Tableau for BI dashboards, drill-through, and data storytelling.</li>
+                <li>Python visualization using Matplotlib and Seaborn for exploratory analysis.</li>
+              </ul>
+              <div class="mini-graph">
+                <div class="mini-row">
+                  <span>Power BI</span><span>85%</span>
+                </div>
+                <div class="mini-bar"><div class="mini-fill" style="width: 85%;"></div></div>
+                <div class="mini-row">
+                  <span>Tableau</span><span>80%</span>
+                </div>
+                <div class="mini-bar"><div class="mini-fill" style="width: 80%;"></div></div>
+                <div class="mini-row">
+                  <span>Py Viz</span><span>80%</span>
+                </div>
+                <div class="mini-bar"><div class="mini-fill" style="width: 80%;"></div></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Certifications -->
+          <article class="card">
+            <span class="card-tag">Certifications</span>
+            <div class="card-header">
+              <h3 class="card-title">Cloud & Data Credentials</h3>
+              <div class="card-meta">Selected certifications</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>AWS Cloud Practitioner, Microsoft Azure Fundamentals.</li>
+                <li>dbt Fundamentals, Databricks Lakehouse Fundamentals.</li>
+                <li>IBM Certified (Cloud Core, Python), DataCamp Power BI Analyst.</li>
+              </ul>
+              <div class="mini-graph">
+                <div class="mini-row">
+                  <span>Cloud</span><span>3+ certs</span>
+                </div>
+                <div class="mini-bar"><div class="mini-fill" style="width: 90%;"></div></div>
+                <div class="mini-row">
+                  <span>Data & BI</span><span>3+ certs</span>
+                </div>
+                <div class="mini-bar"><div class="mini-fill" style="width: 85%;"></div></div>
+                <div class="mini-row">
+                  <span>Platform-specific</span><span>IBM / Databricks</span>
+                </div>
+                <div class="mini-bar"><div class="mini-fill" style="width: 80%;"></div></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
 
     <!-- FOOTER -->
     <footer>
-      © <span id="year"></span> Vivek Anupindi · Netflix-inspired academic & professional portfolio.
+      © <span id="year"></span> Vivek Anupindi · Academic & professional portfolio.
     </footer>
   </div>
 
@@ -888,5 +1021,3 @@
   </script>
 </body>
 </html>
-
-
