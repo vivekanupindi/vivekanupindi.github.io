@@ -1,1051 +1,114 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Vivek Anupindi – Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Research portfolio of Vivek Anupindi, Data Engineering & Health Care Systems researcher." />
-
-  <style>
-    :root {
-      --bg: #000000;
-      --bg-alt: #141414;
-      --card: #181818;
-      --accent: #e50914;
-      --accent-soft: #b81d24;
-      --text: #ffffff;
-      --muted: #c4c4c4;
-      --radius: 10px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, sans-serif;
-      background: radial-gradient(circle at top, #111 0%, #000 45%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-      font-size: 16px;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.5rem 1rem 4rem;
-    }
-
-    /* NAVBAR */
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      gap: 1rem;
-    }
-
-    .logo {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.95rem;
-      color: var(--accent);
-      max-width: 260px;
-    }
-
-    .logo span.secondary {
-      font-weight: 300;
-      color: var(--muted);
-      letter-spacing: 0.25em;
-      font-size: 0.7rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.25rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .nav-links a {
-      position: relative;
-      padding-bottom: 0.15rem;
-      white-space: nowrap;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 2px;
-      width: 0;
-      background: var(--accent);
-      transition: width 0.2s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    /* HERO */
-    main {
-      display: block;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-      gap: 2rem;
-      padding: 2.5rem 1.5rem;
-      border-radius: 24px;
-      background: radial-gradient(circle at top left, #222 0%, #050505 55%, #000 100%);
-      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.8);
-      margin-bottom: 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: -20%;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(229, 9, 20, 0.2) 0%, transparent 45%),
-        radial-gradient(circle at 100% 0%, rgba(184, 29, 36, 0.16) 0%, transparent 50%);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    .hero-main,
-    .hero-side {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-kicker {
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-title {
-      font-size: 2.1rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-      color: var(--muted);
-      margin-bottom: 0.85rem;
-    }
-
-    .hero-summary {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #e5e5e5;
-      margin-bottom: 1.4rem;
-      max-width: 34rem;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-bottom: 1.4rem;
-    }
-
-    .badge {
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 0.25rem 0.65rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-      backdrop-filter: blur(4px);
-      background: rgba(0, 0, 0, 0.4);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .btn {
-      border-radius: 999px;
-      padding: 0.55rem 1.15rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
-      color: #fff;
-      box-shadow: 0 12px 30px rgba(229, 9, 20, 0.6);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(229, 9, 20, 0.8);
-    }
-
-    .btn-ghost {
-      background: rgba(255, 255, 255, 0.04);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-1px);
-    }
-
-    .btn-sm {
-      padding: 0.4rem 0.9rem;
-      font-size: 0.8rem;
-    }
-
-    .hero-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .hero-meta span:not(:last-child)::after {
-      content: "•";
-      margin: 0 0.4rem;
-      opacity: 0.6;
-    }
-
-    .hero-side {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .avatar {
-      width: 210px;
-      height: 260px;
-      border-radius: 18px;
-      border: 3px solid rgba(255, 255, 255, 0.65);
-      background: radial-gradient(circle at 30% 0%, #fff 0%, #999 45%, #111 75%);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 2.4rem;
-      text-transform: uppercase;
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .hero-contact {
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .hero-contact a {
-      color: #fff;
-      text-decoration: underline;
-      text-decoration-color: rgba(255, 255, 255, 0.35);
-    }
-
-    /* ROWS / CAROUSELS */
-    .section {
-      margin-bottom: 2rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      margin-bottom: 0.4rem;
-      padding: 0 0.25rem;
-      gap: 1rem;
-    }
-
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
-
-    .section-subtitle {
-      font-size: 0.8rem;
-      color: var(--muted);
-      max-width: 32rem;
-    }
-
-    .row {
-      display: flex;
-      gap: 0.85rem;
-      overflow-x: auto;
-      padding: 0.35rem 0.25rem 0.5rem;
-      scrollbar-width: thin;
-      scrollbar-color: var(--accent-soft) transparent;
-    }
-
-    .row::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .row::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    .row::-webkit-scrollbar-thumb {
-      background: linear-gradient(90deg, var(--accent-soft), var(--accent));
-      border-radius: 999px;
-    }
-
-    .card {
-      flex: 0 0 240px;
-      background: linear-gradient(145deg, #181818, #101010);
-      border-radius: var(--radius);
-      overflow: hidden;
-      position: relative;
-      cursor: default;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.95);
-      border-color: rgba(229, 9, 20, 0.7);
-    }
-
-    .card-tag {
-      position: absolute;
-      top: 0.4rem;
-      left: 0.45rem;
-      padding: 0.15rem 0.45rem;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      background: rgba(0, 0, 0, 0.7);
-      color: var(--muted);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .card-header {
-      height: 165px;
-      background: radial-gradient(circle at top, #333 0%, #111 50%, #000 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0.75rem;
-    }
-
-    .card-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.05rem;
-    }
-
-    .card-meta {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .card-body {
-      padding: 0.75rem 0.75rem 0.85rem;
-      font-size: 0.85rem;
-      color: #e5e5e5;
-    }
-
-    .card-body ul {
-      list-style: disc;
-      padding-left: 1.1rem;
-    }
-
-    .card-body li + li {
-      margin-top: 0.25rem;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.45rem;
-    }
-
-    .pill {
-      font-size: 0.7rem;
-      border-radius: 999px;
-      padding: 0.2rem 0.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: var(--muted);
-    }
-
-    /* CARD IMAGES */
-    .card-image {
-      width: 100%;
-      height: 60px;
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 0.5rem;
-      background: radial-gradient(circle at top, #333 0%, #000 70%);
-    }
-
-    .card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* MINI GRAPHS */
-    .stat-label {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 0.45rem;
-      margin-bottom: 0.15rem;
-    }
-
-    .stat-bar {
-      width: 100%;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      overflow: hidden;
-    }
-
-    .stat-fill {
-      height: 100%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-soft));
-    }
-
-    .mini-graph {
-      margin-top: 0.45rem;
-    }
-
-    .mini-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-bottom: 0.15rem;
-    }
-
-    .mini-bar {
-      width: 100%;
-      height: 5px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      overflow: hidden;
-    }
-
-    .mini-fill {
-      height: 100%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent-soft), var(--accent));
-    }
-
-    /* FOOTER */
-    footer {
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      font-size: 0.78rem;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    footer a {
-      color: var(--muted);
-      text-decoration: underline;
-      text-decoration-color: rgba(255, 255, 255, 0.2);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 780px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-        padding: 1.6rem 1.3rem;
-      }
-      .hero-side {
-        order: -1;
-      }
-      .hero-title {
-        font-size: 1.7rem;
-      }
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .nav-links {
-        justify-content: flex-start;
-        font-size: 0.85rem;
-        gap: 0.8rem;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .page {
-        padding-inline: 0.8rem;
-      }
-      .card {
-        flex-basis: 210px;
-      }
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Vivek Anupindi — Computer Science PhD student at UMBC exploring clinical NLP, machine learning for healthcare, and intelligent data systems.">
+  <meta name="theme-color" content="#101010">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <title>Vivek Anupindi | Research Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
 </head>
-
 <body>
-  <div class="page">
-    <!-- NAV -->
-    <header class="nav">
-      <div class="logo">
-        <span>VIVEK'S Academic & Professional Portfolio</span>
-        <span class="secondary">RESEARCH/Work/Intrests</span>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Vivek Anupindi home"><span class="brand-mark">VA</span><span>Vivek <b>Anupindi</b></span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <a href="#research">Research</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a href="#about">About</a><a href="#highlights">Highlights</a>
+      <a class="nav-contact" href="#contact">Contact <span aria-hidden="true">↗</span></a>
+      <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">☼</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-backdrop" aria-hidden="true"><span class="orb orb-one"></span><span class="orb orb-two"></span><span class="grid-glow"></span></div>
+      <div class="hero-content">
+        <p class="eyebrow"><span class="status-dot"></span> COMPUTER SCIENCE · UMBC · PH.D. STUDENT</p>
+        <h1 id="hero-title">Building intelligent systems<br><span>for human health.</span></h1>
+        <p class="hero-lede">I’m Vivek Anupindi, a Computer Science Ph.D. student at the University of Maryland, Baltimore County. My interests sit at the intersection of clinical NLP, machine learning for healthcare, predictive modeling, and reliable data systems.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#research"><span aria-hidden="true">▶</span> Explore my research</a>
+          <a class="button button-secondary" href="assets/Vivek_Anupindi_CV.pdf" target="_blank" rel="noopener">View CV <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-meta"><span>📍 Baltimore, Maryland</span><span>Clinical NLP</span><span>Healthcare AI</span><span>Data Engineering</span></div>
       </div>
-      <nav class="nav-links">
-        <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#tech">Tech & Certs</a>
-        <a href="#contact"><b>Contact Details</b></a>
-      </nav>
-    </header>
+      <aside class="hero-feature" aria-label="Featured research">
+        <div class="feature-label"><span class="red-line"></span> FEATURED RESEARCH</div>
+        <div class="feature-art art-clinical" aria-hidden="true"><span class="art-cross">+</span><span class="art-wave"></span><span class="art-code">ICD—10<br>Clinical text<br>Multi-label NLP</span></div>
+        <p class="feature-kicker">CLINICAL NLP · ICD-10</p>
+        <h2>From clinical narratives to structured codes</h2>
+        <p>Exploring machine-learning approaches for automated diagnostic-code classification from clinical text.</p>
+        <a class="text-link" href="#publications">Explore publication <span aria-hidden="true">→</span></a>
+      </aside>
+      <a class="scroll-cue" href="#research"><span></span> SCROLL TO EXPLORE</a>
+    </section>
 
-    <main>
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero-main">
-          <div class="hero-kicker">Researcher | Prospective PhD | Data | Healthcare Analytics</div>
-          <h1 class="hero-title">Vivek Anupindi</h1>
-          <p class="hero-subtitle">Data Engineering & Health Care Analytics Systems Researcher · Prospective PhD</p>
+    <section class="content-section" id="research">
+      <div class="section-heading"><div><p class="eyebrow">THE RESEARCH LIBRARY</p><h2>Topics I’m exploring</h2></div><p class="section-note">A selection of research directions and projects connecting machine learning, health data, and dependable systems.</p></div>
+      <div class="rail-controls"><span class="rail-label">RESEARCH COLLECTIONS</span><div><button class="rail-btn" data-scroll="research-rail" data-direction="left" aria-label="Scroll research cards left">←</button><button class="rail-btn" data-scroll="research-rail" data-direction="right" aria-label="Scroll research cards right">→</button></div></div>
+      <div class="card-rail" id="research-rail">
+        <article class="research-card"><div class="poster poster-clinical"><span class="poster-index">01 / NLP</span><div class="poster-graphic clinical-graphic"><span>ICD</span><i>10</i><b>TEXT → CODE</b></div><span class="poster-foot">CLINICAL LANGUAGE</span></div><div class="card-info"><p class="card-category">NATURAL LANGUAGE PROCESSING</p><h3>Automated ICD-10 Coding</h3><p>Clinical text classification, CodiEsp data, label alignment, and multi-label prediction.</p><button class="detail-button" data-detail="clinical">View research details <span>↗</span></button></div></article>
+        <article class="research-card"><div class="poster poster-glucose"><span class="poster-index">02 / TIME SERIES</span><div class="pulse-chart" aria-hidden="true"><svg viewBox="0 0 300 130" role="img"><path d="M0 95 L25 87 L45 96 L63 45 L82 73 L102 62 L121 85 L141 80 L160 28 L178 63 L200 72 L221 51 L243 67 L264 35 L300 47" fill="none" stroke="currentColor" stroke-width="3"/><path d="M0 110 H300 M0 75 H300 M0 40 H300" stroke="currentColor" opacity=".15" stroke-dasharray="4 6"/></svg></div><span class="poster-foot">FORECAST · INTERPRET · SUPPORT</span></div><div class="card-info"><p class="card-category">HEALTHCARE AI</p><h3>Glucose Prediction</h3><p>Investigating temporal models for short-term glucose forecasting using contextual signals.</p><button class="detail-button" data-detail="glucose">View research details <span>↗</span></button></div></article>
+        <article class="research-card"><div class="poster poster-data"><span class="poster-index">03 / SYSTEMS</span><div class="data-stack" aria-hidden="true"><span>INGEST</span><span>TRANSFORM</span><span>VALIDATE</span><span>ANALYZE</span></div><span class="poster-foot">DATA → DECISIONS</span></div><div class="card-info"><p class="card-category">DATA ENGINEERING</p><h3>Cloud-Native Analytics</h3><p>ETL architecture, orchestration, data quality, and dependable ML-ready pipelines.</p><button class="detail-button" data-detail="data">View research details <span>↗</span></button></div></article>
+        <article class="research-card"><div class="poster poster-burnout"><span class="poster-index">04 / HEALTH ANALYTICS</span><div class="burnout-art" aria-hidden="true"><span>WORKLOAD</span><span>WELL-BEING</span><span>INSIGHT</span></div><span class="poster-foot">PATTERNS IN HEALTHCARE</span></div><div class="card-info"><p class="card-category">HEALTHCARE ANALYTICS</p><h3>Physician Burnout Analysis</h3><p>Exploratory and statistical analysis of workload, behavioral, emotional, and specialty trends.</p><button class="detail-button" data-detail="burnout">View project details <span>↗</span></button></div></article>
+        <article class="research-card"><div class="poster poster-monitor"><span class="poster-index">05 / MONITORING</span><div class="monitor-grid"><span>HR</span><span>BP</span><span>SpO₂</span><span>GLU</span></div><span class="poster-foot">SIGNALS · FLAGS · REPORTS</span></div><div class="card-info"><p class="card-category">HEALTH DATA SYSTEMS</p><h3>Smart Health Monitoring</h3><p>A Python project tracking health measurements, flagging rule-based anomalies, and generating reports.</p><button class="detail-button" data-detail="monitoring">View project details <span>↗</span></button></div></article>
+      </div>
+    </section>
 
-          <p class="hero-summary">
-            Graduate student (M.S. Information Systems, 4.0/4.0) with a research focus on data engineering,
-            healthcare analytics, and scalable systems. I bridge industry experience at IBM and TCS
-            with academic work in data platforms, data quality, and analytics for decision support, aiming to
-            pursue a PhD in data-intensive systems and applied engineering research.
-          </p>
+    <section class="feature-strip" aria-label="Research approach"><div><p class="eyebrow">MY APPROACH</p><h2>Useful AI needs<br><span>trustworthy data.</span></h2></div><p>I’m interested in the full path from messy, real-world data to models and systems that can support careful, evidence-based decisions—from clinical text processing to time-series prediction and reliable data pipelines.</p><a class="text-link" href="#about">More about my background <span>→</span></a></section>
 
-          <div class="hero-badges">
-            <span class="badge">Research: Healthcare Analytics</span>
-            <span class="badge">Data Science</span>
-            <span class="badge">AI Quality & Governance</span>
-            <span class="badge">Analytics for Decision Support</span>
-            <span class="badge">Cloud Architectures</span>
-            <span Class = "badge">Data Analytics</span>
-          </div>
+    <section class="content-section" id="publications">
+      <div class="section-heading"><div><p class="eyebrow">WRITING & SCHOLARSHIP</p><h2>Publications & manuscripts</h2></div><p class="section-note">Publication status is shown as listed in my current CV.</p></div>
+      <div class="publication-list">
+        <article class="publication-item"><div class="pub-number">01</div><div class="pub-main"><span class="pub-status published">PUBLISHED · 2025</span><h3>Comparative Evaluation of Logistic Regression for ICD-10 Code Classification Using the CodiEsp Clinical Text Dataset</h3><p>International Journal for Research in Applied Science & Engineering Technology (IJRASET), vol. 13, no. XII, 2025.</p><p class="doi">DOI: 10.22214/ijraset.2025.76293</p></div><a class="pub-link" href="https://doi.org/10.22214/ijraset.2025.76293" target="_blank" rel="noopener" aria-label="Open published paper">↗</a></article>
+        <article class="publication-item"><div class="pub-number">02</div><div class="pub-main"><span class="pub-status review">UNDER REVIEW</span><h3>Automated ICD-10 Coding from Spanish Clinical Text: A Comparative Study</h3><p>Comparative study of machine-learning approaches for multi-label diagnostic-code classification using Spanish clinical text.</p></div><span class="pub-link muted-link" aria-label="No public paper link supplied">—</span></article>
+        <article class="publication-item"><div class="pub-number">03</div><div class="pub-main"><span class="pub-status review">UNDER REVIEW</span><h3>Data Engineering Patterns for Cloud-Native Analytics</h3><p>Research manuscript on cloud-native data engineering patterns, as listed in the current CV.</p></div><span class="pub-link muted-link" aria-label="No public paper link supplied">—</span></article>
+      </div>
+    </section>
 
-          <div class="hero-actions">
-          <a
-  href="Vivek_Data_Engineer_Resume.pdf"
-  class="btn btn-primary"
-  download="Vivek_Data_Engineer_Resume.pdf"
->
-  ▶ Download CV
-</a>
-            <a href="#education" class="btn btn-ghost">
-              ⏵ Explore Academic Profile
-            </a>
-          </div>
+    <section class="content-section" id="experience">
+      <div class="section-heading"><div><p class="eyebrow">CAREER TIMELINE</p><h2>Experience that shapes my work</h2></div><p class="section-note">Research, teaching, and engineering experience across academic and industry settings.</p></div>
+      <div class="timeline">
+        <article class="timeline-item"><div class="timeline-date">FALL 2026</div><div class="timeline-body"><p class="timeline-type">TEACHING</p><h3>Teaching Assistant · CMSC 487: Network Security</h3><p>University of Maryland, Baltimore County</p><ul><li>Assist with grading and evaluation of assignments and assessments.</li><li>Support students with course questions and provide feedback on submitted work.</li></ul></div><span class="timeline-mark"></span></article>
+        <article class="timeline-item"><div class="timeline-date">MAY – DEC 2025</div><div class="timeline-body"><p class="timeline-type">DATA ENGINEERING</p><h3>Data Engineer Consultant · Tata Consultancy Services</h3><p>Remote, USA</p><ul><li>Developed Python- and Airflow-based ETL pipelines processing 2M+ daily API records into Snowflake.</li><li>Optimized SQL and dbt transformations, reducing Power BI query times by 35%.</li><li>Implemented automated data-quality validation with Great Expectations and configuration-driven DataOps templates.</li></ul></div><span class="timeline-mark"></span></article>
+        <article class="timeline-item"><div class="timeline-date">JAN 2020 – MAY 2023</div><div class="timeline-body"><p class="timeline-type">DATA ENGINEERING</p><h3>Data Engineer · IBM</h3><p>Bangalore, India</p><ul><li>Modernized enterprise ETL workflows using Docker, OpenShift, and Cloud Pak for Data.</li><li>Built data virtualization and multi-source integration solutions across PostgreSQL, Oracle, and NoSQL systems.</li><li>Worked with Kubernetes-based workload management and CI/CD automation using Jenkins, OpenShift Pipelines, and ArgoCD.</li></ul></div><span class="timeline-mark"></span></article>
+      </div>
+    </section>
 
-          <div class="hero-meta">
-            <span>Saint Louis, MO</span>
-            <span>M.S. Information Systems · 4.0/4.0</span>
-            <span>Interested in PhD opportunities</span>
-          </div>
-        </div>
+    <section class="content-section" id="about">
+      <div class="section-heading"><div><p class="eyebrow">BACKGROUND</p><h2>About & education</h2></div><p class="section-note">A foundation in computer science and information systems, applied to healthcare and data-intensive problems.</p></div>
+      <div class="about-grid">
+        <div class="about-copy"><p class="large-copy">I work across the boundary between <span>data systems</span> and <span>applied machine learning</span>, with a particular interest in healthcare data and the challenges of turning complex information into reliable predictions and insights.</p><p>My background combines professional data engineering with graduate study and independent research. I’m interested in methods that are not only technically effective, but also carefully evaluated and useful in realistic settings.</p><div class="interest-tags"><span>Clinical NLP</span><span>Machine Learning for Healthcare</span><span>Time-Series Modeling</span><span>Healthcare Analytics</span><span>Intelligent Data Systems</span><span>Data Quality</span></div></div>
+        <div class="education-stack"><article class="education-item"><span class="edu-year">2026 — PRESENT</span><h3>Ph.D. in Computer Science</h3><p>University of Maryland, Baltimore County · Baltimore, MD</p></article><article class="education-item"><span class="edu-year">AUG 2023 — MAY 2025</span><h3>M.S. in Information Systems</h3><p>Saint Louis University · GPA 4.0 / 4.0</p></article><article class="education-item"><span class="edu-year">UNDERGRADUATE</span><h3>B.Tech. in Computer Science</h3><p>B. V. Raju Institute of Technology (JNTU Hyderabad) · GPA 9.0 / 10.0</p></article></div>
+      </div>
+    </section>
 
-        <aside class="hero-side" id="contact">
-          <div class="avatar">
-            <img src="https://d2gjqh9j26unp0.cloudfront.net/profilepic/c981c9b22a86b5564c1cf6590856ab95"
-                 alt="Portrait of Vivek Anupindi" />
-          </div>
-          <div class="hero-contact Details</strong></div>
-            <div><a href="mailto:vivekanupindi@gmail.com">vivekanupindi@gmail.com</a></div>
-            <div><a href="tel:+13143271714">+1 (314) 327-1714</a></div>
-            <div>
-              <!-- Replace with your actual profile URLs -->
-              <a href="https://www.linkedin.com/in/vivek-anupindi-6214831a0/" target="_blank" rel="noreferrer">
-                LinkedIn Profile
-              </a>
-              &nbsp;·&nbsp;
-              <a href="https://github.com/vivekanupindi"  target="_blank" rel="noreferrer">
-                GitHub
-              </a>
-            </div>
-          </div>
-        </aside>
-      </section>
+    <section class="content-section compact-section" id="skills">
+      <div class="section-heading"><div><p class="eyebrow">TOOLS OF THE TRADE</p><h2>Technical toolkit</h2></div><p class="section-note">Grouped by how I use them, rather than subjective skill percentages.</p></div>
+      <div class="skills-grid"><article><span class="skill-icon">⌘</span><h3>Programming & ML</h3><p>Python, SQL, R, Bash, scikit-learn, TensorFlow, PyTorch, NLP, transformers, time-series modeling.</p></article><article><span class="skill-icon">↔</span><h3>Data Engineering</h3><p>Apache Airflow, dbt, Kafka, DataStage, Azure Data Factory, ETL design, data quality, data lineage.</p></article><article><span class="skill-icon">☁</span><h3>Cloud & Platforms</h3><p>Snowflake, AWS, Azure, IBM Cloud, Kubernetes, OpenShift, Docker, Cloud Pak for Data.</p></article><article><span class="skill-icon">▥</span><h3>Analytics & BI</h3><p>Power BI, Tableau, exploratory data analysis, statistical analysis, data visualization.</p></article></div>
+      <div class="certifications"><p class="eyebrow">CERTIFICATIONS · AS LISTED IN CV</p><p>Microsoft Certified: Power BI Data Analyst · Databricks Certified Data Engineer · Databricks Certified Generative AI · Databricks Fundamentals · Microsoft Azure AI Fundamentals · Microsoft Azure Fundamentals · IBM Cloud Core · IBM Python</p></div>
+    </section>
 
-      <!-- EDUCATION -->
-      <section class="section" id="education">
-        <div class="section-header">
-          <h2 class="section-title">Education</h2>
-          <p class="section-subtitle">Academic foundation for research in data engineering and information systems.</p>
-        </div>
-        <div class="row">
-          <!-- MS -->
-          <article class="card">
-            <span class="card-tag">Graduate</span>
-            <div class="card-header">
-              <div class="card-image">
-                <img src="https://static.vecteezy.com/system/resources/previews/009/330/110/non_2x/slu-letter-logo-design-on-black-background-slu-creative-initials-letter-logo-concept-slu-letter-design-vector.jpg"
-                     alt="Saint Louis University logo" />
-              </div>
-              <h3 class="card-title">M.S. in Information Systems</h3>
-              <div class="card-meta">Saint Louis University · 08/2023 – 05/2025</div>
-            </div>
-            <div class="card-body">
-              <p>
-                GPA: <strong>4.0 / 4.0</strong>. Coursework and research projects focused on data engineering,
-                analytics, cloud technologies, and decision-support systems.
-              </p>
-              <div class="pill-row">
-                <span class="pill">Data Engineering</span>
-                <span class="pill">Cloud Analytics</span>
-                <span class="pill">Information Systems</span>
-              </div>
-              <div class="stat-label">GPA Progress</div>
-              <div class="stat-bar">
-                <div class="stat-fill" style="width: 100%;"></div>
-              </div>
-            </div>
-          </article>
+    <section class="content-section compact-section" id="highlights">
+      <div class="section-heading"><div><p class="eyebrow">BEYOND THE PROJECTS</p><h2>Academic highlights</h2></div><p class="section-note">Selected coursework, service, recognition, and professional activities from my CV.</p></div>
+      <div class="highlights-grid">
+        <article class="highlight-card"><p class="eyebrow">HONORS & AWARDS</p><h3>Academic recognition</h3><ul><li>Graduate Dean’s List, Saint Louis University.</li><li>Graduate Merit-Based Scholarship, Saint Louis University.</li><li>Academic excellence in the M.S. in Information Systems program (GPA 4.0/4.0).</li></ul></article>
+        <article class="highlight-card"><p class="eyebrow">SERVICE & COMMUNITY</p><h3>Research reading group</h3><p>Led reading-group activities focused on computer science research and technical literature with the Srinivasa Ramanujan Computer Science Education Undergraduate Research Group.</p></article>
+        <article class="highlight-card"><p class="eyebrow">COURSEWORK</p><h3>Relevant graduate study</h3><p>Machine Learning, Artificial Intelligence, Big Data Analytics, Cloud Computing, Research Methods, Health Informatics, and Advanced Databases.</p></article>
+        <article class="highlight-card"><p class="eyebrow">PROFESSIONAL ACTIVITIES</p><h3>Engineering community</h3><p>Participant, DFI–India Engineering Conference (2022) and Indian National Academy of Engineering events.</p></article>
+      </div>
+    </section>
 
-          <!-- BTech -->
-          <article class="card">
-            <span class="card-tag">Undergraduate</span>
-            <div class="card-header">
-              <div class="card-image">
-                <img src="https://inphd.com/wp-content/uploads/JNTU-Hyderabad-Logo.webp"
-                     alt="JNTU Hyderabad / BVRIT logo" />
-              </div>
-              <h3 class="card-title">B.Tech in Computer Science</h3>
-              <div class="card-meta">B. V. Raju Institute of Technology · Hyderabad</div>
-            </div>
-            <div class="card-body">
-              <p>
-                GPA: <strong>9.0 / 10.0</strong>. Strong foundation in computer science fundamentals with emphasis
-                on software engineering, algorithms, and data-centric systems.
-              </p>
-              <div class="pill-row">
-                <span class="pill">Computer Science</span>
-                <span class="pill">Algorithms</span>
-                <span class="pill">Data Structures</span>
-              </div>
-              <div class="stat-label">GPA Progress</div>
-              <div class="stat-bar">
-                <div class="stat-fill" style="width: 90%;"></div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
+    <section class="contact-section" id="contact"><div class="contact-glow" aria-hidden="true"></div><div class="contact-content"><p class="eyebrow">LET’S CONNECT</p><h2>Interested in research<br>or collaboration?</h2><p>If your work overlaps with clinical NLP, healthcare AI, predictive modeling, or intelligent data systems, I’d be glad to connect.</p><div class="contact-actions"><a class="button button-primary" href="mailto:vivekanupindi@umbc.edu">Email me <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="https://github.com/vivekanupindi" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="https://www.linkedin.com/in/vivek-anupindi-6214831a0/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></div><p class="contact-email">vivekanupindi@umbc.edu</p></div></section>
+  </main>
+  <footer class="site-footer"><a class="brand footer-brand" href="#top"><span class="brand-mark">VA</span><span>Vivek <b>Anupindi</b></span></a><p>Research · Healthcare AI · Data Systems</p><a href="#top" class="back-top">Back to top ↑</a><small>© <span id="year"></span> Vivek Anupindi. Built with HTML, CSS & JavaScript.</small></footer>
 
-      <!-- EXPERIENCE -->
-      <section class="section" id="experience">
-        <div class="section-header">
-          <h2 class="section-title">Experience</h2>
-          <p class="section-subtitle">Industry background that informs my research interests.</p>
-        </div>
-        <div class="row">
-          <!-- Deloitte -->
-          <article class="card">
-            <span class="card-tag">Current</span>
-            <div class="card-header">
-              <div class="card-image">
-                <img src="https://tse4.mm.bing.net/th/id/OIP.lOkT7ikqI2NPAIBN776_7AHaEK?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
-                     alt="Deloitte logo banner" />
-              </div>
-              <h3 class="card-title">Data Engineer Intern</h3>
-              <div class="card-meta">Deloitte · 01/2025 – Present · Remote, USA</div>
-            </div>
-            <div class="card-body">
-              <ul>
-                <li>Designed Airflow + Python ETL to ingest 2M+ daily API records into Snowflake with 98% uptime.</li>
-                <li>Optimized SQL/dbt models, cutting analytical query time by 35% across multiple Power BI views.</li>
-                <li>Implemented Great Expectations data quality checks, improving data reliability and SLA adherence.</li>
-              </ul>
-              <div class="pill-row">
-                <span class="pill">Airflow</span>
-                <span class="pill">Snowflake</span>
-                <span class="pill">dbt</span>
-                <span class="pill">Data Quality</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- IBM -->
-          <article class="card">
-            <span class="card-tag">Featured</span>
-            <div class="card-header">
-              <div class="card-image">
-                <img src="https://www.recreatedesign.co.uk/assets/uploads/2018/01/IBM-banner-1024x410.jpg"
-                     alt="IBM banner" />
-              </div>
-              <h3 class="card-title">Data Engineer</h3>
-              <div class="card-meta">IBM · 01/2020 – 05/2023 · Bangalore, India</div>
-            </div>
-            <div class="card-body">
-              <ul>
-                <li>Modernized IBM DataStage on Cloud Pak for Data with Docker and OpenShift, reducing deployment time by 60%.</li>
-                <li>Implemented remote engine & Kubernetes-based workload balancing, increasing throughput by 40%.</li>
-                <li>Enabled data lineage and catalog integration via Watson Knowledge Catalog to support governance and audits.</li>
-              </ul>
-              <div class="pill-row">
-                <span class="pill">IBM DataStage</span>
-                <span class="pill">Cloud Pak for Data</span>
-                <span class="pill">Docker</span>
-                <span class="pill">Kubernetes</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- RESEARCH PROJECTS -->
-      <section class="section" id="projects">
-        <div class="section-header">
-          <h2 class="section-title">Academic Research Projects</h2>
-          <p class="section-subtitle">Work that connects data engineering practice with research questions.</p>
-        </div>
-        <div class="row">
-          <!-- Cloud-Native ETL -->
-          <article class="card">
-            <span class="card-tag">Data Platforms</span>
-            <div class="card-header">
-              <h3 class="card-title">Cloud-Native ETL for Analytical Workloads</h3>
-              <div class="card-meta">Graduate Research · Saint Louis University</div>
-            </div>
-            <div class="card-body">
-              <ul>
-                <li>Prototyped end-to-end ETL pipelines on Snowflake using Airflow and dbt to evaluate cost vs. latency trade-offs.</li>
-                <li>Benchmarked query performance and warehouse sizing strategies across multiple workloads.</li>
-              </ul>
-              <div class="pill-row">
-                <span class="pill">Snowflake</span>
-                <span class="pill">Airflow</span>
-                <span class="pill">dbt</span>
-                <span class="pill">Cost Optimization</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Data-Driven Dashboards -->
-          <article class="card">
-            <span class="card-tag">Analytics</span>
-            <div class="card-header">
-              <h3 class="card-title">Data-Driven Decision Dashboards</h3>
-              <div class="card-meta">Graduate Coursework · Information Systems</div>
-            </div>
-            <div class="card-body">
-              <ul>
-                <li>Built BI dashboards with Power BI integrating cleaned datasets from Python ETL scripts and SQL transformations.</li>
-                <li>Explored design patterns for interpretability and stakeholder-centric analytics.</li>
-              </ul>
-              <div class="pill-row">
-                <span class="pill">Power BI</span>
-                <span class="pill">Python</span>
-                <span class="pill">SQL</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- iPaaS + Active Directory Integration -->
-          <article class="card">
-            <span class="card-tag">Identity & Access</span>
-            <div class="card-header">
-              <h3 class="card-title">Integration of iPaaS and Active Directory for Automated Access Management</h3>
-              <div class="card-meta">Global Graduate · SLU ITS · Feb 2024 – May 2024</div>
-            </div>
-            <div class="card-body">
-              <ul>
-                <li>Worked as a Global Graduate at SLU ITS, contributing to the integration of the local iPaaS (TeamDynamix) project system with Active Directory for automated access management.</li>
-                <li>Designed, tested, and deployed iPaaS workflows to automate group membership assignments in Active Directory based on new employee onboarding.</li>
-                <li>Implemented role-based group access controls aligned with IAM policies, reducing manual intervention and access errors.</li>
-                <li>Collaborated with cross-functional teams to streamline onboarding processes and improve operational efficiency.</li>
-              </ul>
-              <div class="pill-row">
-                <span class="pill">TeamDynamix</span>
-                <span class="pill">Active Directory</span>
-                <span class="pill">IAM</span>
-                <span class="pill">Microsoft Azure</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Data Visualization Associate Internship -->
-          <article class="card">
-            <span class="card-tag">Visualization</span>
-            <div class="card-header">
-              <h3 class="card-title">Business Data Visualization & Insights</h3>
-              <div class="card-meta">Data Visualization Associate Internship · SLU · Oct 2023 – Dec 2023</div>
-            </div>
-            <div class="card-body">
-              <ul>
-                <li>Designed and developed interactive dashboards to visualize key business metrics, enabling data-driven decision-making.</li>
-                <li>Performed data cleaning and preprocessing to ensure accuracy, consistency, and reliability of datasets.</li>
-                <li>Analyzed large datasets to identify trends, patterns, and actionable insights for stakeholders.</li>
-                <li>Collaborated with team members to translate analytical findings into clear, concise reports.</li>
-              </ul>
-              <div class="pill-row">
-                <span class="pill">Data Visualization</span>
-                <span class="pill">Power BI / Tableau</span>
-                <span class="pill">Data Cleaning</span>
-                <span class="pill">Business Analytics</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- AI for Type 1 Diabetes -->
-          <article class="card">
-            <span class="card-tag">Healthcare AI</span>
-            <div class="card-header">
-              <h3 class="card-title">AI-Assisted Glucose Prediction for Type 1 Diabetes</h3>
-              <div class="card-meta">Personal Research Concept · In Progress</div>
-            </div>
-            <div class="card-body">
-              <ul>
-                <li>Motivated by lived experience as a Type 1 diabetic and the observation that most glucose meters only display readings without predictive intelligence.</li>
-                <li>Exploring machine learning approaches to forecast short-term glucose trends using historical meter/CGM data to anticipate hypo- and hyperglycemic events.</li>
-                <li>Investigating opportunities for personalized decision support (alerts, recommendations) to complement existing glucose monitoring devices.</li>
-              </ul>
-              <div class="pill-row">
-                <span class="pill">Type 1 Diabetes</span>
-                <span class="pill">Predictive Modeling</span>
-                <span class="pill">Time-Series Data</span>
-                <span class="pill">Clinical Decision Support</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- PUBLICATIONS -->
-      <section class="section" id="publications">
-        <div class="section-header">
-          <h2 class="section-title">Publications</h2>
-          <p class="section-subtitle">Peer-reviewed and in-progress work from my research journey.</p>
-        </div>
-        <div class="row">
-          <!-- Published paper -->
-          <article class="card">
-            <span class="card-tag">Published</span>
-            <div class="card-header">
-              <h3 class="card-title">Comparative Evaluation of Logistic Regression for ICD-10 Code Classification Using the CodiEsp Clinical Text Dataset</h3>
-              <div class="card-meta">
-                IJRASET · Paper ID: IJRASET76293 · Author: Vivek Anupindi
-              </div>
-            </div>
-            <div class="card-body">
-              <p>
-                Empirical study evaluating logistic regression for ICD-10 code classification on the CodiEsp clinical text dataset, with a focus on model performance, feature engineering, and error patterns in clinical NLP workflows.
-              </p>
-              <div class="pill-row">
-                <span class="pill">Clinical NLP</span>
-                <span class="pill">ICD-10 Coding</span>
-                <span class="pill">Logistic Regression</span>
-                <span class="pill">CodiEsp Dataset</span>
-              </div>
-
-              <!-- Link button -->
-              <div style="margin-top: 1rem;">
-                <a href="https://doi.org/10.22214/ijraset.2025.76293"
-                   target="_blank" rel="noreferrer"
-                   class="btn btn-primary btn-sm">
-                  🔗 View Publication
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- In-progress manuscript -->
-          <article class="card">
-            <span class="card-tag">In Progress</span>
-            <div class="card-header">
-              <h3 class="card-title">Data Engineering for Cloud Analytics</h3>
-              <div class="card-meta">Working Manuscript · Target: IEEE / ACM venue</div>
-            </div>
-            <div class="card-body">
-              <p>
-                Ongoing manuscript exploring design patterns for cost-aware, cloud-native ETL pipelines for analytics platforms, informed by experiments with Snowflake, Airflow, and dbt.
-              </p>
-              <div class="pill-row">
-                <span class="pill">Cloud Analytics</span>
-                <span class="pill">Experimental Study</span>
-                <span class="pill">ETL Design</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- TECH + CERTS -->
-      <section class="section" id="tech">
-        <div class="section-header">
-          <h2 class="section-title">Technical Stack & Certifications</h2>
-          <p class="section-subtitle">Tools I use in research and practice, plus formal credentials.</p>
-        </div>
-        <div class="row">
-          <!-- Tech stack 1 -->
-          <article class="card">
-            <span class="card-tag">Data Engineering</span>
-            <div class="card-header">
-              <h3 class="card-title">Core Toolkit</h3>
-              <div class="card-meta">Pipelines · Modeling · Quality</div>
-            </div>
-            <div class="card-body">
-              <ul>
-                <li>Python (Pandas, NumPy), SQL (optimization, complex joins), ETL pipeline design.</li>
-                <li>Snowflake, dbt, Apache Airflow, IBM DataStage, Azure Data Factory.</li>
-              </ul>
-              <div class="mini-graph">
-                <div class="mini-row">
-                  <span>Python</span><span>90%</span>
-                </div>
-                <div class="mini-bar"><div class="mini-fill" style="width: 90%;"></div></div>
-                <div class="mini-row">
-                  <span>SQL</span><span>90%</span>
-                </div>
-                <div class="mini-bar"><div class="mini-fill" style="width: 90%;"></div></div>
-                <div class="mini-row">
-                  <span>ETL / Pipelines</span><span>85%</span>
-                </div>
-                <div class="mini-bar"><div class="mini-fill" style="width: 85%;"></div></div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Tech stack 2 -->
-          <article class="card">
-            <span class="card-tag">Analytics</span>
-            <div class="card-header">
-              <h3 class="card-title">Analytics & Visualization</h3>
-              <div class="card-meta">Dashboards · Reporting</div>
-            </div>
-            <div class="card-body">
-              <ul>
-                <li>Power BI, Tableau for BI dashboards, drill-through, and data storytelling.</li>
-                <li>Python visualization using Matplotlib and Seaborn for exploratory analysis.</li>
-              </ul>
-              <div class="mini-graph">
-                <div class="mini-row">
-                  <span>Power BI</span><span>85%</span>
-                </div>
-                <div class="mini-bar"><div class="mini-fill" style="width: 85%;"></div></div>
-                <div class="mini-row">
-                  <span>Tableau</span><span>80%</span>
-                </div>
-                <div class="mini-bar"><div class="mini-fill" style="width: 80%;"></div></div>
-                <div class="mini-row">
-                  <span>Py Viz</span><span>80%</span>
-                </div>
-                <div class="mini-bar"><div class="mini-fill" style="width: 80%;"></div></div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Certifications -->
-          <article class="card">
-            <span class="card-tag">Certifications</span>
-            <div class="card-header">
-              <h3 class="card-title">Cloud & Data Credentials</h3>
-              <div class="card-meta">Selected certifications</div>
-            </div>
-            <div class="card-body">
-              <ul>
-                <li>AWS Cloud Practitioner, Microsoft Azure Fundamentals.</li>
-                <li>dbt Fundamentals, Databricks Lakehouse Fundamentals.</li>
-                <li>IBM Certified (Cloud Core, Python), DataCamp Power BI Analyst.</li>
-              </ul>
-              <div class="mini-graph">
-                <div class="mini-row">
-                  <span>Cloud</span><span>3+ certs</span>
-                </div>
-                <div class="mini-bar"><div class="mini-fill" style="width: 90%;"></div></div>
-                <div class="mini-row">
-                  <span>Data & BI</span><span>3+ certs</span>
-                </div>
-                <div class="mini-bar"><div class="mini-fill" style="width: 85%;"></div></div>
-                <div class="mini-row">
-                  <span>Platform-specific</span><span>IBM / Databricks</span>
-                </div>
-                <div class="mini-bar"><div class="mini-fill" style="width: 80%;"></div></div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-      © <span id="year"></span> Vivek Anupindi · Academic & professional portfolio.
-    </footer>
-  </div>
-
-  <script>
-    // tiny JS just for year + smooth scrolling
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", e => {
-        const target = document.querySelector(a.getAttribute("href"));
-        if (!target) return;
-        e.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+  <dialog class="detail-dialog" id="detail-dialog" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="Close details">×</button><p class="eyebrow" id="dialog-kicker">RESEARCH DETAILS</p><h2 id="dialog-title">Research details</h2><div id="dialog-body"></div></dialog>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
