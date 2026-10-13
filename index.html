@@ -1,816 +1,500 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Vivek Anupindi — Computer Science PhD student at UMBC exploring clinical NLP, machine learning for healthcare, and intelligent data systems.">
   <meta name="theme-color" content="#101010">
-  <meta name="description" content="Vivek Anupindi — Computer Science Ph.D. student at UMBC exploring clinical NLP, healthcare AI, predictive modeling, and reliable data systems.">
-  <meta name="author" content="Vivek Anupindi">
-
-  <title>Vivek Anupindi | AI for Health & Data Systems</title>
-
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <title>Vivek Anupindi | Research Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="styles.css">
-  <script src="main.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
 </head>
-
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- NAVIGATION -->
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="Vivek Anupindi home">
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Vivek Anupindi home">
       <span class="brand-mark">VA</span>
       <span>Vivek <b>Anupindi</b></span>
     </a>
-
-    <button class="menu-toggle" type="button"
-      aria-label="Toggle navigation" aria-expanded="false"
-      aria-controls="primary-navigation">
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
     </button>
-
-    <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
       <a href="#research">Research</a>
       <a href="#publications">Publications</a>
       <a href="#experience">Experience</a>
       <a href="#about">About</a>
       <a href="#highlights">Highlights</a>
-      <a class="nav-contact" href="#contact">Contact <span>↗</span></a>
-
-      <button class="theme-toggle" type="button"
-        aria-label="Switch theme" aria-pressed="false"
-        title="Switch theme">☼</button>
+      <a class="nav-contact" href="#contact">Contact <span aria-hidden="true">↗</span></a>
+      <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">☼</button>
     </nav>
   </header>
 
-  <main id="main-content">
+  <main id="main">
 
-    <!-- HERO -->
-    <section class="hero" id="home">
+    <!-- HERO: preserved -->
+    <section class="hero" aria-labelledby="hero-title">
       <div class="hero-backdrop" aria-hidden="true">
-        <div class="grid-glow"></div>
-        <div class="orb orb-one"></div>
-        <div class="orb orb-two"></div>
+        <span class="orb orb-one"></span>
+        <span class="orb orb-two"></span>
+        <span class="grid-glow"></span>
       </div>
-
       <div class="hero-content">
-        <figure class="headshot-wrap">
-          <img
-            class="headshot"
-            src="assets/headshot.jpeg"
-            alt="Portrait of Vivek Anupindi"
-            width="400"
-            height="400"
-            fetchpriority="high">
-        </figure>
-
-        <p class="eyebrow">
-          <span class="status-dot"></span>
-          COMPUTER SCIENCE · UMBC · PH.D. STUDENT
-        </p>
-
-        <h1>
-          Building intelligent systems
-          <span>for human health.</span>
-        </h1>
-
-        <p class="hero-lede">
-          I'm Vivek Anupindi, a Computer Science Ph.D. student at the
-          University of Maryland, Baltimore County. My interests connect
-          clinical natural language processing, machine learning for
-          healthcare, predictive modeling, and dependable data systems.
-          I bring together research experience and industry engineering
-          to explore how intelligent systems can support better decisions.
-        </p>
-
+        <p class="eyebrow"><span class="status-dot"></span> COMPUTER SCIENCE · UMBC · PH.D. STUDENT</p>
+        <h1 id="hero-title">Building intelligent systems<br><span>for human health.</span></h1>
+        <p class="hero-lede">I’m Vivek Anupindi, a Computer Science Ph.D. student at the University of Maryland, Baltimore County. My interests sit at the intersection of clinical NLP, machine learning for healthcare, predictive modeling, and reliable data systems.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#research">
-            Explore my research <span aria-hidden="true">↘</span>
-          </a>
-
-          <a class="button button-secondary"
-            href="assets/Vivek_Anupindi_CV.pdf" target="_blank"
-            rel="noopener noreferrer">
-            View CV <span aria-hidden="true">↗</span>
-          </a>
+          <a class="button button-primary" href="#research"><span aria-hidden="true">▶</span> Explore my research</a>
+          <a class="button button-secondary" href="assets/Vivek_Anupindi_CV.pdf" target="_blank" rel="noopener">View CV <span aria-hidden="true">↗</span></a>
         </div>
-
-        <div class="hero-meta" aria-label="Research interests">
+        <div class="hero-meta">
           <span>📍 Baltimore, Maryland</span>
           <span>Clinical NLP</span>
           <span>Healthcare AI</span>
           <span>Data Engineering</span>
         </div>
       </div>
-
-      <!-- Compact featured research card -->
       <aside class="hero-feature" aria-label="Featured research">
-        <div class="feature-label">
-          <span class="red-line"></span>
-          FEATURED RESEARCH
-        </div>
-
-        <div class="feature-art" aria-hidden="true">
+        <div class="feature-label"><span class="red-line"></span> FEATURED RESEARCH</div>
+        <div class="feature-art art-clinical" aria-hidden="true">
           <span class="art-cross">+</span>
-          <div class="art-code">
-            <div>ICD-10</div>
-            <div>Clinical text</div>
-            <div>Multi-label NLP</div>
-          </div>
+          <span class="art-wave"></span>
+          <span class="art-code">ICD—10<br>Clinical text<br>Multi-label NLP</span>
         </div>
-
         <p class="feature-kicker">CLINICAL NLP · ICD-10</p>
         <h2>From clinical narratives to structured codes</h2>
-        <p>
-          Investigating machine-learning methods for automated diagnostic
-          code classification from Spanish clinical text.
-        </p>
-
-        <a class="text-link" href="#publications">
-          Explore publication <span aria-hidden="true">→</span>
-        </a>
+        <p>Exploring machine-learning approaches for automated diagnostic-code classification from clinical text.</p>
+        <a class="text-link" href="#publications">Explore publication <span aria-hidden="true">→</span></a>
       </aside>
-
-      <a class="scroll-cue" href="#research">
-        <span></span> SCROLL TO EXPLORE
-      </a>
+      <a class="scroll-cue" href="#research"><span></span> SCROLL TO EXPLORE</a>
     </section>
 
-    <!-- RESEARCH PROJECTS -->
+    <!-- RESEARCH PROJECTS: original cards retained, three added -->
     <section class="content-section" id="research">
       <div class="section-heading">
         <div>
           <p class="eyebrow">THE RESEARCH LIBRARY</p>
-          <h2>Projects I'm exploring</h2>
+          <h2>Topics I’m exploring</h2>
         </div>
-        <p class="section-note">
-          Research and engineering projects spanning clinical language,
-          predictive analytics, health monitoring, and scalable data systems.
-        </p>
+        <p class="section-note">A selection of research directions and projects connecting machine learning, health data, and dependable systems.</p>
       </div>
 
       <div class="rail-controls">
-        <span class="rail-label">SELECTED PROJECTS</span>
+        <span class="rail-label">RESEARCH COLLECTIONS</span>
         <div>
-          <button class="rail-btn" type="button"
-            data-scroll="research-rail" data-direction="left"
-            aria-label="Scroll projects left">←</button>
-          <button class="rail-btn" type="button"
-            data-scroll="research-rail" data-direction="right"
-            aria-label="Scroll projects right">→</button>
+          <button class="rail-btn" data-scroll="research-rail" data-direction="left" aria-label="Scroll research cards left">←</button>
+          <button class="rail-btn" data-scroll="research-rail" data-direction="right" aria-label="Scroll research cards right">→</button>
         </div>
       </div>
 
       <div class="card-rail" id="research-rail">
 
-        <!-- PROJECT 1 -->
+        <!-- 01: Existing project -->
         <article class="research-card">
           <div class="poster poster-clinical">
-            <span class="poster-index">01 / CLINICAL NLP</span>
-            <div class="poster-graphic clinical-graphic" aria-hidden="true">
-              <span>ICD</span><i>+</i><b>10</b>
+            <span class="poster-index">01 / NLP</span>
+            <div class="poster-graphic clinical-graphic">
+              <span>ICD</span><i>10</i><b>TEXT → CODE</b>
             </div>
-            <span class="poster-foot">TEXT → DIAGNOSTIC CODES</span>
+            <span class="poster-foot">CLINICAL LANGUAGE</span>
           </div>
           <div class="card-info">
-            <p class="card-category">PUBLISHED RESEARCH</p>
-            <h3>Automated ICD-10 Classification</h3>
-            <p>
-              Built a clinical NLP pipeline using Spanish clinical text
-              from the CodiEsp dataset, TF-IDF features, and logistic
-              regression baselines.
-            </p>
-            <button class="detail-button" type="button"
-              data-detail="clinical">
-              Explore project <span>↗</span>
-            </button>
+            <p class="card-category">NATURAL LANGUAGE PROCESSING</p>
+            <h3>Automated ICD-10 Coding</h3>
+            <p>Clinical text classification, CodiEsp data, label alignment, and multi-label prediction.</p>
+            <button class="detail-button" data-detail="clinical">View research details <span>↗</span></button>
           </div>
         </article>
 
-        <!-- PROJECT 2 -->
+        <!-- 02: Existing project -->
         <article class="research-card">
           <div class="poster poster-glucose">
-            <span class="poster-index">02 / PREDICTIVE MODELING</span>
-            <svg class="pulse-chart" viewBox="0 0 280 105"
-              role="img" aria-label="Illustrative glucose time-series graph">
-              <path d="M0 25 H280 M0 52 H280 M0 79 H280"
-                stroke="currentColor" opacity=".16" fill="none"/>
-              <path d="M0 60 L22 55 L42 68 L62 36 L82 45 L105 21
-                L125 47 L146 42 L167 74 L187 62 L208 31 L231 44
-                L251 24 L280 35"
-                stroke="currentColor" stroke-width="3"
-                fill="none" stroke-linejoin="round" stroke-linecap="round"/>
-              <circle cx="208" cy="31" r="5" fill="currentColor"/>
-            </svg>
-            <span class="poster-foot">TIME SERIES · FORECASTING</span>
+            <span class="poster-index">02 / TIME SERIES</span>
+            <div class="pulse-chart" aria-hidden="true">
+              <svg viewBox="0 0 300 130" role="img" aria-label="Illustrative time-series graph">
+                <path d="M0 95 L25 87 L45 96 L63 45 L82 73 L102 62 L121 85 L141 80 L160 28 L178 63 L200 72 L221 51 L243 67 L264 35 L300 47" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M0 110 H300 M0 75 H300 M0 40 H300" stroke="currentColor" opacity=".15" stroke-dasharray="4 6"/>
+              </svg>
+            </div>
+            <span class="poster-foot">FORECAST · INTERPRET · SUPPORT</span>
           </div>
           <div class="card-info">
-            <p class="card-category">INDEPENDENT RESEARCH</p>
-            <h3>AI-Assisted Glucose Prediction</h3>
-            <p>
-              Exploring short-term glucose forecasting with temporal
-              machine learning, LSTM networks, transformer architectures,
-              and contextual features.
-            </p>
-            <button class="detail-button" type="button"
-              data-detail="glucose">
-              Explore project <span>↗</span>
-            </button>
+            <p class="card-category">HEALTHCARE AI</p>
+            <h3>Glucose Prediction</h3>
+            <p>Investigating temporal models for short-term glucose forecasting using contextual signals.</p>
+            <button class="detail-button" data-detail="glucose">View research details <span>↗</span></button>
           </div>
         </article>
 
-        <!-- PROJECT 3 -->
+        <!-- 03: Existing project -->
         <article class="research-card">
           <div class="poster poster-data">
-            <span class="poster-index">03 / DATA SYSTEMS</span>
+            <span class="poster-index">03 / SYSTEMS</span>
             <div class="data-stack" aria-hidden="true">
-              <span>INGESTION</span>
-              <span>TRANSFORMATION</span>
-              <span>ORCHESTRATION</span>
-              <span>ANALYTICS</span>
+              <span>INGEST</span><span>TRANSFORM</span><span>VALIDATE</span><span>ANALYZE</span>
             </div>
-            <span class="poster-foot">AIRFLOW · DBT · SNOWFLAKE</span>
+            <span class="poster-foot">DATA → DECISIONS</span>
           </div>
           <div class="card-info">
-            <p class="card-category">CLOUD DATA ARCHITECTURE</p>
-            <h3>Cloud Analytics & ML Deployment</h3>
-            <p>
-              Investigating cloud-native ETL patterns, orchestration,
-              query optimization, warehouse scaling, and data preparation
-              for downstream machine learning.
-            </p>
-            <button class="detail-button" type="button"
-              data-detail="data">
-              Explore project <span>↗</span>
-            </button>
+            <p class="card-category">DATA ENGINEERING</p>
+            <h3>Cloud-Native Analytics</h3>
+            <p>ETL architecture, orchestration, data quality, and dependable ML-ready pipelines.</p>
+            <button class="detail-button" data-detail="data">View research details <span>↗</span></button>
           </div>
         </article>
 
-        <!-- PROJECT 4 -->
+        <!-- 04: Existing project -->
         <article class="research-card">
           <div class="poster poster-burnout">
-            <span class="poster-index">04 / HEALTH INFORMATICS</span>
+            <span class="poster-index">04 / HEALTH ANALYTICS</span>
             <div class="burnout-art" aria-hidden="true">
-              <span>WORKLOAD</span>
-              <span>EXHAUSTION</span>
-              <span>WELL-BEING</span>
+              <span>WORKLOAD</span><span>WELL-BEING</span><span>INSIGHT</span>
             </div>
-            <span class="poster-foot">EXPLORATORY & CORRELATION ANALYSIS</span>
+            <span class="poster-foot">PATTERNS IN HEALTHCARE</span>
           </div>
           <div class="card-info">
-            <p class="card-category">MASTER'S RESEARCH PROJECT</p>
+            <p class="card-category">HEALTHCARE ANALYTICS</p>
             <h3>Physician Burnout Analysis</h3>
-            <p>
-              Analyzed workload, emotional and behavioral indicators,
-              specialty-level patterns, and potential system-level
-              approaches to reducing documentation burden.
-            </p>
-            <button class="detail-button" type="button"
-              data-detail="burnout">
-              Explore project <span>↗</span>
-            </button>
+            <p>Exploratory and statistical analysis of workload, behavioral, emotional, and specialty trends.</p>
+            <button class="detail-button" data-detail="burnout">View project details <span>↗</span></button>
           </div>
         </article>
 
-        <!-- PROJECT 5 -->
+        <!-- 05: Existing project -->
         <article class="research-card">
           <div class="poster poster-monitor">
-            <span class="poster-index">05 / HEALTH TECHNOLOGY</span>
-            <div class="monitor-grid" aria-hidden="true">
-              <span>HR</span><span>BP</span>
-              <span>SpO₂</span><span>°C</span>
+            <span class="poster-index">05 / MONITORING</span>
+            <div class="monitor-grid">
+              <span>HR</span><span>BP</span><span>SpO₂</span><span>GLU</span>
             </div>
-            <span class="poster-foot">PYTHON · VITALS · ANOMALY FLAGS</span>
+            <span class="poster-foot">SIGNALS · FLAGS · REPORTS</span>
           </div>
           <div class="card-info">
-            <p class="card-category">INDEPENDENT PROJECT</p>
-            <h3>Smart Health Monitoring System</h3>
-            <p>
-              Developed a Python application concept to track vital
-              measurements, flag unusual readings, and generate basic
-              reports for monitoring.
-            </p>
-            <button class="detail-button" type="button"
-              data-detail="monitoring">
-              Explore project <span>↗</span>
-            </button>
+            <p class="card-category">HEALTH DATA SYSTEMS</p>
+            <h3>Smart Health Monitoring</h3>
+            <p>A Python project tracking health measurements, flagging rule-based anomalies, and generating reports.</p>
+            <button class="detail-button" data-detail="monitoring">View project details <span>↗</span></button>
+          </div>
+        </article>
+
+        <!-- 06: Added project -->
+        <article class="research-card">
+          <div class="poster poster-data">
+            <span class="poster-index">06 / AUTOMATION</span>
+            <div class="data-stack" aria-hidden="true">
+              <span>IDENTITY</span><span>PROVISIONING</span><span>SYNCHRONIZATION</span><span>VALIDATION</span>
+            </div>
+            <span class="poster-foot">WORKFLOW · ACCESS · INTEGRATION</span>
+          </div>
+          <div class="card-info">
+            <p class="card-category">GRADUATE IT EXPERIENCE</p>
+            <h3>Automated Access Management</h3>
+            <p>University systems integration involving TeamDynamix workflows, Active Directory provisioning, access lifecycle automation, and integration testing.</p>
+            <div class="interest-tags">
+              <span>Automation</span><span>Active Directory</span><span>Integration</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 07: Added project -->
+        <article class="research-card">
+          <div class="poster poster-clinical">
+            <span class="poster-index">07 / MULTILINGUAL NLP</span>
+            <div class="poster-graphic clinical-graphic">
+              <span>TEXT</span><i>→</i><b>ICD-10</b>
+            </div>
+            <span class="poster-foot">BASELINES · TRANSFORMERS · EVALUATION</span>
+          </div>
+          <div class="card-info">
+            <p class="card-category">RESEARCH MANUSCRIPT</p>
+            <h3>Spanish Clinical Text Classification</h3>
+            <p>Comparing traditional machine-learning baselines with multilingual transformer approaches for multi-label diagnostic-code classification.</p>
+            <div class="interest-tags">
+              <span>Clinical NLP</span><span>Transformers</span><span>Multi-label ML</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 08: Added project; retain only if it reflects work you completed -->
+        <article class="research-card">
+          <div class="poster poster-burnout">
+            <span class="poster-index">08 / DATA ANALYTICS</span>
+            <div class="burnout-art" aria-hidden="true">
+              <span>EXPLORE</span><span>ANALYZE</span><span>INTERPRET</span>
+            </div>
+            <span class="poster-foot">STATISTICS · VISUALIZATION · INSIGHTS</span>
+          </div>
+          <div class="card-info">
+            <p class="card-category">HEALTH INFORMATICS</p>
+            <h3>Healthcare Data Exploration</h3>
+            <p>Exploratory analysis of healthcare-related datasets using statistical methods, visualizations, and predictive modeling to investigate patterns.</p>
+            <div class="interest-tags">
+              <span>Python</span><span>Statistics</span><span>Visualization</span>
+            </div>
           </div>
         </article>
 
       </div>
     </section>
 
-    <!-- RESEARCH DIRECTION -->
-    <section class="feature-strip">
+    <!-- Original research approach -->
+    <section class="feature-strip" aria-label="Research approach">
       <div>
-        <p class="eyebrow">WHERE RESEARCH MEETS ENGINEERING</p>
-        <h2>Reliable data.<br><span>Meaningful intelligence.</span></h2>
+        <p class="eyebrow">MY APPROACH</p>
+        <h2>Useful AI needs<br><span>trustworthy data.</span></h2>
       </div>
-      <p>
-        My work connects data infrastructure and machine learning:
-        building reliable pipelines, evaluating predictive approaches,
-        and studying how computational systems can help solve problems
-        in healthcare and clinical informatics.
-      </p>
-      <a class="text-link" href="#experience">
-        Explore my experience <span>→</span>
-      </a>
+      <p>I’m interested in the full path from messy, real-world data to models and systems that can support careful, evidence-based decisions—from clinical text processing to time-series prediction and reliable data pipelines.</p>
+      <a class="text-link" href="#about">More about my background <span>→</span></a>
     </section>
 
-    <!-- PUBLICATIONS -->
+    <!-- Original publications -->
     <section class="content-section" id="publications">
       <div class="section-heading">
-        <div>
-          <p class="eyebrow">PUBLICATIONS & MANUSCRIPTS</p>
-          <h2>Research in progress</h2>
-        </div>
-        <p class="section-note">
-          Selected publication and research writing. Manuscript statuses
-          are labeled separately to distinguish published work from ongoing work.
-        </p>
+        <div><p class="eyebrow">WRITING & SCHOLARSHIP</p><h2>Publications & manuscripts</h2></div>
+        <p class="section-note">Publication status is shown as listed in my current CV.</p>
       </div>
-
       <div class="publication-list">
-
         <article class="publication-item">
-          <span class="pub-number">01</span>
+          <div class="pub-number">01</div>
           <div class="pub-main">
             <span class="pub-status published">PUBLISHED · 2025</span>
-            <h3>
-              Comparative Evaluation of Logistic Regression for ICD-10
-              Code Classification Using the CodiEsp Clinical Text Dataset
-            </h3>
-            <p>Vivek Anupindi · International Journal for Research in Applied Science & Engineering Technology</p>
-            <p>
-              Evaluates a TF-IDF and logistic-regression approach to
-              classifying diagnostic codes from Spanish clinical text.
-            </p>
-            <p class="doi">
-              DOI:
-              <a href="https://doi.org/10.22214/ijraset.2025.76293"
-                target="_blank" rel="noopener noreferrer">
-                10.22214/ijraset.2025.76293 ↗
-              </a>
-            </p>
+            <h3>Comparative Evaluation of Logistic Regression for ICD-10 Code Classification Using the CodiEsp Clinical Text Dataset</h3>
+            <p>International Journal for Research in Applied Science & Engineering Technology (IJRASET), vol. 13, no. XII, 2025.</p>
+            <p class="doi">DOI: 10.22214/ijraset.2025.76293</p>
           </div>
-          <a class="pub-link"
-            href="https://doi.org/10.22214/ijraset.2025.76293"
-            target="_blank" rel="noopener noreferrer"
-            aria-label="Open publication DOI">↗</a>
+          <a class="pub-link" href="https://doi.org/10.22214/ijraset.2025.76293" target="_blank" rel="noopener" aria-label="Open published paper">↗</a>
         </article>
-
         <article class="publication-item">
-          <span class="pub-number">02</span>
+          <div class="pub-number">02</div>
           <div class="pub-main">
-            <span class="pub-status review">IN PREPARATION</span>
+            <span class="pub-status review">UNDER REVIEW</span>
             <h3>Automated ICD-10 Coding from Spanish Clinical Text: A Comparative Study</h3>
-            <p>Research manuscript</p>
-            <p>
-              Investigates comparisons between traditional machine-learning
-              baselines and multilingual transformer-based methods for
-              multi-label clinical text classification.
-            </p>
+            <p>Comparative study of machine-learning approaches for multi-label diagnostic-code classification using Spanish clinical text.</p>
           </div>
-          <span class="pub-link muted-link" aria-hidden="true">↗</span>
+          <span class="pub-link muted-link" aria-label="No public paper link supplied">—</span>
         </article>
-
         <article class="publication-item">
-          <span class="pub-number">03</span>
+          <div class="pub-number">03</div>
           <div class="pub-main">
-            <span class="pub-status review">IN PREPARATION</span>
+            <span class="pub-status review">UNDER REVIEW</span>
             <h3>Data Engineering Patterns for Cloud-Native Analytics</h3>
-            <p>Research manuscript</p>
-            <p>
-              Studies architectural trade-offs involving ETL pipelines,
-              workflow orchestration, warehouse performance, and
-              machine-learning infrastructure.
-            </p>
+            <p>Research manuscript on cloud-native data engineering patterns, as listed in the current CV.</p>
           </div>
-          <span class="pub-link muted-link" aria-hidden="true">↗</span>
+          <span class="pub-link muted-link" aria-label="No public paper link supplied">—</span>
         </article>
-
       </div>
     </section>
 
-    <!-- PROFESSIONAL AND ACADEMIC EXPERIENCE -->
+    <!-- EXPERIENCE: original roles retained, SLU role added -->
     <section class="content-section" id="experience">
       <div class="section-heading">
-        <div>
-          <p class="eyebrow">PROFESSIONAL & ACADEMIC EXPERIENCE</p>
-          <h2>Building systems, learning through research</h2>
-        </div>
-        <p class="section-note">
-          Industry engineering, university systems integration, and
-          teaching-related experience across data platforms and computer science.
-        </p>
+        <div><p class="eyebrow">CAREER TIMELINE</p><h2>Experience that shapes my work</h2></div>
+        <p class="section-note">Research, teaching, and engineering experience across academic and industry settings.</p>
       </div>
-
       <div class="timeline">
 
-        <!-- UMBC -->
+        <!-- Existing UMBC role -->
         <article class="timeline-item">
-          <span class="timeline-date">FALL 2026 – PRESENT</span>
-          <span class="timeline-mark" aria-hidden="true"></span>
+          <div class="timeline-date">FALL 2026</div>
           <div class="timeline-body">
-            <p class="timeline-type">ACADEMIC · TEACHING</p>
-            <h3>Teaching Assistant — Network Security</h3>
-            <p>University of Maryland, Baltimore County (UMBC) · Baltimore, Maryland</p>
+            <p class="timeline-type">TEACHING</p>
+            <h3>Teaching Assistant · CMSC 487: Network Security</h3>
+            <p>University of Maryland, Baltimore County</p>
             <ul>
-              <li>
-                Support course activities and student learning in computer
-                science and network security.
-              </li>
-              <li>
-                Assist with assignment-related guidance and course support
-                in accordance with instructor expectations.
-              </li>
+              <li>Assist with grading and evaluation of assignments and assessments.</li>
+              <li>Support students with course questions and provide feedback on submitted work.</li>
             </ul>
           </div>
+          <span class="timeline-mark"></span>
         </article>
 
-        <!-- TCS -->
+        <!-- Existing TCS role, retained and expanded -->
         <article class="timeline-item">
-          <span class="timeline-date">MAY 2025 – DEC 2025</span>
-          <span class="timeline-mark" aria-hidden="true"></span>
+          <div class="timeline-date">MAY – DEC 2025</div>
           <div class="timeline-body">
-            <p class="timeline-type">INDUSTRY · DATA ENGINEERING</p>
-            <h3>Data Engineer Consultant</h3>
-            <p>Tata Consultancy Services (TCS) · Remote, USA</p>
+            <p class="timeline-type">DATA ENGINEERING</p>
+            <h3>Data Engineer Consultant · Tata Consultancy Services</h3>
+            <p>Remote, USA</p>
             <ul>
-              <li>
-                Built Python- and Apache Airflow-based ETL pipelines that
-                ingested more than 2 million API records daily into Snowflake,
-                using REST APIs and parameterized DAGs.
-              </li>
-              <li>
-                Optimized SQL and dbt transformations, reducing Power BI
-                dashboard query time by 35% across more than five views.
-              </li>
-              <li>
-                Integrated more than 15 Great Expectations checks with
-                Snowflake and S3, contributing to 99.4% SLA compliance
-                and fewer data-defect tickets.
-              </li>
-              <li>
-                Developed YAML- and Jinja2-based pipeline templates to
-                reduce duplication and improve project onboarding.
-              </li>
-              <li>
-                Worked with Git, dbt Cloud, Snowflake lineage, and
-                modular data transformation patterns.
-              </li>
+              <li>Developed Python- and Airflow-based ETL pipelines processing 2M+ daily API records into Snowflake.</li>
+              <li>Optimized SQL and dbt transformations, reducing Power BI query times by 35%.</li>
+              <li>Implemented automated data-quality validation with Great Expectations and configuration-driven DataOps templates.</li>
+              <li>Worked with modular transformations, pipeline monitoring, and data reliability practices.</li>
             </ul>
-            <div class="interest-tags">
-              <span>Python</span><span>Airflow</span><span>Snowflake</span>
-              <span>dbt</span><span>SQL</span><span>Data Quality</span>
-            </div>
           </div>
+          <span class="timeline-mark"></span>
         </article>
 
-        <!-- SLU GRADUATE ASSISTANT -->
+        <!-- Added SLU graduate assistant experience -->
         <article class="timeline-item">
-          <span class="timeline-date">GRADUATE STUDIES</span>
-          <span class="timeline-mark" aria-hidden="true"></span>
+          <div class="timeline-date">GRADUATE STUDIES</div>
           <div class="timeline-body">
-            <p class="timeline-type">UNIVERSITY · SYSTEMS INTEGRATION</p>
-            <h3>Global Graduate Assistant — SLU ITS</h3>
+            <p class="timeline-type">UNIVERSITY IT · SYSTEMS INTEGRATION</p>
+            <h3>Global Graduate Assistant · SLU ITS</h3>
             <p>Saint Louis University · St. Louis, Missouri</p>
             <ul>
-              <li>
-                Designed, tested, and deployed automated access-management
-                workflows integrating the university's iPass
-                (TeamDynamix) ticketing and project-management system
-                with Active Directory.
-              </li>
-              <li>
-                Developed secure provisioning logic to streamline user
-                access lifecycles and reduce manual intervention.
-              </li>
-              <li>
-                Built workflow automation rules and performed end-to-end
-                validation to verify reliable synchronization between systems.
-              </li>
-              <li>
-                Contributed to operational efficiency and access-management
-                compliance through systems integration and testing.
-              </li>
+              <li>Worked on automated access-management workflows connecting iPass (TeamDynamix) with Active Directory.</li>
+              <li>Helped streamline user provisioning and access lifecycle processes through workflow automation.</li>
+              <li>Tested integration and synchronization workflows to improve reliability and reduce manual intervention.</li>
+              <li>Contributed to operational efficiency and access-management processes in a university IT environment.</li>
             </ul>
             <div class="interest-tags">
-              <span>TeamDynamix</span><span>Active Directory</span>
-              <span>Workflow Automation</span><span>Systems Integration</span>
+              <span>TeamDynamix</span>
+              <span>Active Directory</span>
+              <span>Workflow Automation</span>
+              <span>Systems Integration</span>
             </div>
           </div>
+          <span class="timeline-mark"></span>
         </article>
 
-        <!-- IBM -->
+        <!-- Existing IBM role, retained -->
         <article class="timeline-item">
-          <span class="timeline-date">JAN 2020 – MAY 2023</span>
-          <span class="timeline-mark" aria-hidden="true"></span>
+          <div class="timeline-date">JAN 2020 – MAY 2023</div>
           <div class="timeline-body">
-            <p class="timeline-type">INDUSTRY · DATA PLATFORMS</p>
-            <h3>Data Engineer</h3>
-            <p>IBM · Bangalore, India</p>
+            <p class="timeline-type">DATA ENGINEERING</p>
+            <h3>Data Engineer · IBM</h3>
+            <p>Bangalore, India</p>
             <ul>
-              <li>
-                Modernized DataStage deployments using Docker, OpenShift,
-                and Cloud Pak for Data, reducing deployment time by 60%.
-              </li>
-              <li>
-                Integrated IBM Data Virtualization for multi-source queries,
-                reducing ETL latency by 35% and data movement by 45%
-                across PostgreSQL, Oracle, and NoSQL sources.
-              </li>
-              <li>
-                Worked on remote-engine and Kubernetes-based workload
-                balancing, improving job throughput and resource utilization.
-              </li>
-              <li>
-                Supported data lineage and governance through Watson
-                Knowledge Catalog and automated data-quality checks.
-              </li>
-              <li>
-                Built CI/CD workflows using Jenkins, Git, OpenShift Pipelines,
-                and Argo CD to improve release and deployment automation.
-              </li>
+              <li>Modernized enterprise ETL workflows using Docker, OpenShift, and Cloud Pak for Data.</li>
+              <li>Built data virtualization and multi-source integration solutions across PostgreSQL, Oracle, and NoSQL systems.</li>
+              <li>Worked with Kubernetes-based workload management and CI/CD automation using Jenkins, OpenShift Pipelines, and ArgoCD.</li>
+              <li>Supported data lineage, governance, and automated data-quality checks.</li>
             </ul>
-            <div class="interest-tags">
-              <span>IBM DataStage</span><span>Docker</span>
-              <span>Kubernetes</span><span>OpenShift</span>
-              <span>CI/CD</span><span>Data Virtualization</span>
-            </div>
           </div>
+          <span class="timeline-mark"></span>
         </article>
 
       </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- Original about and education -->
     <section class="content-section" id="about">
       <div class="section-heading">
-        <div>
-          <p class="eyebrow">A LITTLE ABOUT ME</p>
-          <h2>Research with a systems perspective</h2>
-        </div>
+        <div><p class="eyebrow">BACKGROUND</p><h2>About & education</h2></div>
+        <p class="section-note">A foundation in computer science and information systems, applied to healthcare and data-intensive problems.</p>
       </div>
-
       <div class="about-grid">
         <div class="about-copy">
-          <p class="large-copy">
-            I work at the intersection of
-            <span>machine learning, health informatics, and data engineering.</span>
-          </p>
-          <p>
-            My background combines enterprise data engineering with graduate
-            study in information systems and ongoing doctoral study in computer
-            science. I am interested in how reliable data pipelines and
-            carefully evaluated machine-learning models can support
-            healthcare analytics and clinical decision support.
-          </p>
-          <p>
-            My project experience includes clinical text classification,
-            health-related predictive modeling, physician burnout analysis,
-            smart health monitoring, and cloud-native analytics architecture.
-          </p>
-
+          <p class="large-copy">I work across the boundary between <span>data systems</span> and <span>applied machine learning</span>, with a particular interest in healthcare data and the challenges of turning complex information into reliable predictions and insights.</p>
+          <p>My background combines professional data engineering with graduate study and independent research. I’m interested in methods that are not only technically effective, but also carefully evaluated and useful in realistic settings.</p>
           <div class="interest-tags">
             <span>Clinical NLP</span>
-            <span>AI for Healthcare</span>
-            <span>Predictive Modeling</span>
-            <span>Time-Series ML</span>
-            <span>Data Engineering</span>
-            <span>Cloud Systems</span>
-            <span>Health Informatics</span>
+            <span>Machine Learning for Healthcare</span>
+            <span>Time-Series Modeling</span>
+            <span>Healthcare Analytics</span>
+            <span>Intelligent Data Systems</span>
+            <span>Data Quality</span>
           </div>
         </div>
-
-        <div class="education">
-          <p class="eyebrow">EDUCATION</p>
-
+        <div class="education-stack">
           <article class="education-item">
-            <span class="edu-year">2026 – PRESENT</span>
+            <span class="edu-year">2026 — PRESENT</span>
             <h3>Ph.D. in Computer Science</h3>
-            <p>University of Maryland, Baltimore County (UMBC)</p>
-            <p>Research interests: AI, healthcare analytics, and intelligent systems.</p>
+            <p>University of Maryland, Baltimore County · Baltimore, MD</p>
           </article>
-
           <article class="education-item">
-            <span class="edu-year">AUG 2023 – MAY 2025</span>
+            <span class="edu-year">AUG 2023 — MAY 2025</span>
             <h3>M.S. in Information Systems</h3>
-            <p>Saint Louis University</p>
-            <p>GPA: 4.0 / 4.0</p>
-            <p>
-              Coursework: Machine Learning, Artificial Intelligence,
-              Big Data Analytics, Cloud Computing, Research Methods,
-              Health Informatics, and Advanced Databases.
-            </p>
+            <p>Saint Louis University · GPA 4.0 / 4.0</p>
           </article>
-
           <article class="education-item">
             <span class="edu-year">UNDERGRADUATE</span>
-            <h3>B.Tech in Computer Science</h3>
-            <p>B. V. Raju Institute of Technology · JNTU Hyderabad</p>
-            <p>GPA: 9.0 / 10.0</p>
+            <h3>B.Tech. in Computer Science</h3>
+            <p>B. V. Raju Institute of Technology (JNTU Hyderabad) · GPA 9.0 / 10.0</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- TECHNICAL TOOLKIT -->
-    <section class="content-section" id="skills">
+    <!-- Original technical toolkit -->
+    <section class="content-section compact-section" id="skills">
       <div class="section-heading">
-        <div>
-          <p class="eyebrow">TECHNICAL TOOLKIT</p>
-          <h2>Tools I work with</h2>
-        </div>
-        <p class="section-note">
-          Technologies and methods drawn from my engineering work,
-          coursework, and research projects.
-        </p>
+        <div><p class="eyebrow">TOOLS OF THE TRADE</p><h2>Technical toolkit</h2></div>
+        <p class="section-note">Grouped by how I use them, rather than subjective skill percentages.</p>
       </div>
-
       <div class="skills-grid">
-        <article>
-          <span class="skill-icon" aria-hidden="true">⌘</span>
-          <h3>Programming & Analysis</h3>
-          <p>Python, SQL, R, Bash, exploratory data analysis, statistical analysis.</p>
-        </article>
-
-        <article>
-          <span class="skill-icon" aria-hidden="true">◈</span>
-          <h3>Machine Learning & NLP</h3>
-          <p>Scikit-learn, TensorFlow, PyTorch, NLP, transformers, time-series models.</p>
-        </article>
-
-        <article>
-          <span class="skill-icon" aria-hidden="true">⇄</span>
-          <h3>Data Engineering</h3>
-          <p>Apache Airflow, dbt, Apache Kafka, IBM DataStage, Azure Data Factory.</p>
-        </article>
-
-        <article>
-          <span class="skill-icon" aria-hidden="true">☁</span>
-          <h3>Cloud & Platforms</h3>
-          <p>AWS, Snowflake, Azure, IBM Cloud, Cloud Pak for Data, OpenShift.</p>
-        </article>
-
-        <article>
-          <span class="skill-icon" aria-hidden="true">✓</span>
-          <h3>Data Quality & Testing</h3>
-          <p>Great Expectations, schema validation, integration testing, regression testing.</p>
-        </article>
-
-        <article>
-          <span class="skill-icon" aria-hidden="true">▤</span>
-          <h3>Containers & Delivery</h3>
-          <p>Docker, Kubernetes, Jenkins, Git, OpenShift Pipelines, Argo CD.</p>
-        </article>
-
-        <article>
-          <span class="skill-icon" aria-hidden="true">▥</span>
-          <h3>Analytics & Reporting</h3>
-          <p>Power BI, Tableau, Python reporting, dashboard performance optimization.</p>
-        </article>
-
-        <article>
-          <span class="skill-icon" aria-hidden="true">⌁</span>
-          <h3>Databases & Integration</h3>
-          <p>PostgreSQL, Oracle, MongoDB, Cassandra, SQL and NoSQL, data virtualization.</p>
-        </article>
+        <article><span class="skill-icon">⌘</span><h3>Programming & ML</h3><p>Python, SQL, R, Bash, scikit-learn, TensorFlow, PyTorch, NLP, transformers, time-series modeling.</p></article>
+        <article><span class="skill-icon">↔</span><h3>Data Engineering</h3><p>Apache Airflow, dbt, Kafka, DataStage, Azure Data Factory, ETL design, data quality, data lineage.</p></article>
+        <article><span class="skill-icon">☁</span><h3>Cloud & Platforms</h3><p>Snowflake, AWS, Azure, IBM Cloud, Kubernetes, OpenShift, Docker, Cloud Pak for Data.</p></article>
+        <article><span class="skill-icon">▥</span><h3>Analytics & BI</h3><p>Power BI, Tableau, exploratory data analysis, statistical analysis, data visualization.</p></article>
+      </div>
+      <div class="certifications">
+        <p class="eyebrow">CERTIFICATIONS · AS LISTED IN CV</p>
+        <p>Microsoft Certified: Power BI Data Analyst · Databricks Certified Data Engineer · Databricks Certified Generative AI · Databricks Fundamentals · Microsoft Azure AI Fundamentals · Microsoft Azure Fundamentals · IBM Cloud Core · IBM Python</p>
       </div>
     </section>
 
-    <!-- ACADEMIC HIGHLIGHTS -->
-    <section class="content-section" id="highlights">
+    <!-- Original highlights -->
+    <section class="content-section compact-section" id="highlights">
       <div class="section-heading">
-        <div>
-          <p class="eyebrow">BEYOND THE PROJECTS</p>
-          <h2>Academic highlights</h2>
-        </div>
-        <p class="section-note">
-          Academic recognition, research engagement, and technical development.
-        </p>
+        <div><p class="eyebrow">BEYOND THE PROJECTS</p><h2>Academic highlights</h2></div>
+        <p class="section-note">Selected coursework, service, recognition, and professional activities from my CV.</p>
       </div>
-
       <div class="highlights-grid">
         <article class="highlight-card">
-          <p class="eyebrow">ACADEMIC HONOR</p>
-          <h3>Graduate Dean's List</h3>
-          <p>
-            Saint Louis University. Recognition for academic excellence
-            during graduate studies.
-          </p>
+          <p class="eyebrow">HONORS & AWARDS</p>
+          <h3>Academic recognition</h3>
+          <ul>
+            <li>Graduate Dean’s List, Saint Louis University.</li>
+            <li>Graduate Merit-Based Scholarship, Saint Louis University.</li>
+            <li>Academic excellence in the M.S. in Information Systems program (GPA 4.0/4.0).</li>
+          </ul>
         </article>
-
         <article class="highlight-card">
-          <p class="eyebrow">SCHOLARSHIP</p>
-          <h3>Graduate Merit-Based Scholarship</h3>
-          <p>
-            Received a merit-based scholarship at admission to Saint Louis
-            University in recognition of academic performance and potential.
-          </p>
+          <p class="eyebrow">SERVICE & COMMUNITY</p>
+          <h3>Research reading group</h3>
+          <p>Led reading-group activities focused on computer science research and technical literature with the Srinivasa Ramanujan Computer Science Education Undergraduate Research Group.</p>
         </article>
-
         <article class="highlight-card">
-          <p class="eyebrow">RESEARCH ENGAGEMENT</p>
-          <h3>Computer Science Reading Group</h3>
-          <p>
-            Active member of the Srinivasa Ramanujan Computer Science
-            Education Undergraduate Research Group; resume notes
-            reading-group leadership beginning during undergraduate study.
-          </p>
+          <p class="eyebrow">COURSEWORK</p>
+          <h3>Relevant graduate study</h3>
+          <p>Machine Learning, Artificial Intelligence, Big Data Analytics, Cloud Computing, Research Methods, Health Informatics, and Advanced Databases.</p>
         </article>
-
         <article class="highlight-card">
-          <p class="eyebrow">ENGINEERING COMMUNITY</p>
-          <h3>Technical Conferences & Events</h3>
-          <p>
-            Participated in the DFI–India Engineering Conference (2022)
-            and events hosted by the Indian National Academy of Engineering.
-          </p>
+          <p class="eyebrow">PROFESSIONAL ACTIVITIES</p>
+          <h3>Engineering community</h3>
+          <p>Participant, DFI–India Engineering Conference (2022) and Indian National Academy of Engineering events.</p>
         </article>
-      </div>
-
-      <div class="certifications">
-        <p class="eyebrow">CERTIFICATIONS & TRAINING</p>
-        <p>
-          IBM Cloud Core · Microsoft Azure AI Fundamentals · Microsoft Azure
-          Fundamentals · IBM Python Course · Databricks Fundamentals ·
-          Microsoft Certified Power BI Data Analyst · Databricks Certified
-          Generative AI · IBM/Coursera Machine Learning and Artificial
-          Intelligence Fundamentals · Databricks Certified Data Engineer
-        </p>
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- Original contact details retained -->
     <section class="contact-section" id="contact">
+      <div class="contact-glow" aria-hidden="true"></div>
       <div class="contact-content">
-        <p class="eyebrow">LET'S CONNECT</p>
-        <h2>Have a research idea?</h2>
-        <p>
-          I'm interested in connecting with researchers, faculty, and
-          collaborators working on healthcare AI, clinical NLP,
-          predictive modeling, and reliable data systems.
-        </p>
-
+        <p class="eyebrow">LET’S CONNECT</p>
+        <h2>Interested in research<br>or collaboration?</h2>
+        <p>If your work overlaps with clinical NLP, healthcare AI, predictive modeling, or intelligent data systems, I’d be glad to connect.</p>
         <div class="contact-actions">
-          <a class="button button-primary"
-            href="mailto:vivek.anupindi@umbc.edu">
-            Email me <span aria-hidden="true">↗</span>
-          </a>
-
-          <a class="button button-secondary"
-            href="assets/Vivek_Anupindi_CV.pdf"
-            target="_blank" rel="noopener noreferrer">
-            View my CV
-          </a>
+          <a class="button button-primary" href="mailto:vivek.anupindi@umbc.edu">Email me <span aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href="https://github.com/vivekanupindi" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/vivek-anupindi-6214831a0/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
         </div>
-
-        <p class="contact-email">
-          <a href="mailto:vivek.anupindi@umbc.edu">
-            vivek.anupindi@umbc.edu
-          </a>
-        </p>
+        <p class="contact-email">vivek.anupindi@umbc.edu</p>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
-    <a class="brand footer-brand" href="#home">
-      <span class="brand-mark">VA</span>
-      <span>Vivek <b>Anupindi</b></span>
-    </a>
-
-    <p>Computer Science · AI for Health · Data Systems</p>
-
-    <a class="back-top" href="#home">Back to top ↑</a>
-
-    <small>
-      © <span id="year">2026</span> Vivek Anupindi.
-      Built for research, collaboration, and continuous learning.
-    </small>
+    <a class="brand footer-brand" href="#top"><span class="brand-mark">VA</span><span>Vivek <b>Anupindi</b></span></a>
+    <p>Research · Healthcare AI · Data Systems</p>
+    <a href="#top" class="back-top">Back to top ↑</a>
+    <small>© <span id="year"></span> Vivek Anupindi. Built with HTML, CSS & JavaScript.</small>
   </footer>
 
-  <!-- PROJECT DETAILS DIALOG -->
-  <dialog class="detail-dialog" id="detail-dialog"
-    aria-labelledby="dialog-title">
-    <button class="dialog-close" type="button"
-      aria-label="Close project details">×</button>
-
-    <p class="eyebrow" id="dialog-kicker">PROJECT DETAILS</p>
-    <h2 id="dialog-title">Research project</h2>
-    <div id="dialog-body">
-      <p>Project details will appear here.</p>
-    </div>
+  <dialog class="detail-dialog" id="detail-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close" aria-label="Close details">×</button>
+    <p class="eyebrow" id="dialog-kicker">RESEARCH DETAILS</p>
+    <h2 id="dialog-title">Research details</h2>
+    <div id="dialog-body"></div>
   </dialog>
-
 </body>
 </html>
