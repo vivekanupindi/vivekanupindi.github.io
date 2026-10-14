@@ -945,3 +945,31 @@ a.pub-link:hover { border-color: var(--red); color: var(--red); }
     transition-duration: .01ms !important;
   }
 }
+
+/* Profile headshot */
+.hero-headshot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.headshot-image {
+  width: min(100%, 320px);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 680px) {
+  .hero-headshot {
+    margin-top: 12px;
+  }
+
+  .headshot-image {
+    width: min(75%, 260px);
+  }
+}
