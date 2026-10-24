@@ -1489,3 +1489,116 @@ body.a11y-reduce-motion .research-card:hover .monitor-grid {
     transform: none !important;
   }
 }
+
+
+/* =========================================
+   Subtle portfolio motion
+   Keep motion cinematic, brief, and optional.
+   ========================================= */
+
+@keyframes portfolio-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes portfolio-glow-drift {
+  from {
+    transform: translate3d(-8px, 5px, 0) scale(.96);
+  }
+  to {
+    transform: translate3d(12px, -9px, 0) scale(1.06);
+  }
+}
+
+@keyframes portfolio-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-content .headshot-wrap,
+  .hero-content > .eyebrow,
+  .hero-content > h1,
+  .hero-content > .hero-lede,
+  .hero-content > .hero-actions,
+  .hero-content > .hero-meta,
+  .hero-feature {
+    animation: portfolio-fade-up 640ms cubic-bezier(.2, .7, .2, 1) both;
+  }
+
+  .hero-content > .eyebrow { animation-delay: 70ms; }
+  .hero-content > h1 { animation-delay: 130ms; }
+  .hero-content > .hero-lede { animation-delay: 190ms; }
+  .hero-content > .hero-actions { animation-delay: 250ms; }
+  .hero-content > .hero-meta { animation-delay: 310ms; }
+  .hero-feature { animation-delay: 180ms; }
+
+  .orb-one {
+    animation: portfolio-glow-drift 12s ease-in-out infinite alternate;
+  }
+
+  .orb-two {
+    animation: portfolio-glow-drift 16s ease-in-out infinite alternate-reverse;
+  }
+
+  body.motion-ready .reveal-on-scroll:not(.is-revealed) {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  body.motion-ready .reveal-on-scroll.is-revealed {
+    animation: portfolio-fade-up 560ms cubic-bezier(.2, .7, .2, 1);
+  }
+
+  .detail-dialog[open] {
+    animation: portfolio-dialog-in 220ms ease-out;
+  }
+}
+
+/* The site's accessibility switch must override every decorative effect. */
+body.a11y-reduce-motion .hero-content .headshot-wrap,
+body.a11y-reduce-motion .hero-content > .eyebrow,
+body.a11y-reduce-motion .hero-content > h1,
+body.a11y-reduce-motion .hero-content > .hero-lede,
+body.a11y-reduce-motion .hero-content > .hero-actions,
+body.a11y-reduce-motion .hero-content > .hero-meta,
+body.a11y-reduce-motion .hero-feature,
+body.a11y-reduce-motion .orb-one,
+body.a11y-reduce-motion .orb-two,
+body.a11y-reduce-motion .reveal-on-scroll,
+body.a11y-reduce-motion .detail-dialog[open] {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Never hide content or animate it for visitors who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content .headshot-wrap,
+  .hero-content > .eyebrow,
+  .hero-content > h1,
+  .hero-content > .hero-lede,
+  .hero-content > .hero-actions,
+  .hero-content > .hero-meta,
+  .hero-feature,
+  .orb-one,
+  .orb-two,
+  .reveal-on-scroll,
+  .detail-dialog[open] {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
