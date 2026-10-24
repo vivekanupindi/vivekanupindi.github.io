@@ -2,7 +2,8 @@
 
 Personal research portfolio for **Vivek Anupindi**
 
-**Live portfolio:** [https://vivekanupindi.github.io/](https://vivekanupindi.github.io/)
+**Custom-domain target:** [https://vivekanupindi.com/](https://vivekanupindi.com/)  
+**Current GitHub Pages address:** [https://vivekanupindi.github.io/](https://vivekanupindi.github.io/) (use until domain DNS and Pages configuration are ready)
 
 The visual design takes inspiration from cinematic streaming interfaces—dark surfaces, bold typography, red accents, and horizontal project cards—adapted for a personal academic portfolio. This is an independently built portfolio and is not affiliated with Netflix.
 
@@ -34,6 +35,8 @@ The visual design takes inspiration from cinematic streaming interfaces—dark s
 - **About and education** — background, academic programs, and research interests.
 - **Technical toolkit and academic highlights** — grouped skills, certifications, awards, coursework, and activities.
 - **Contact links** — email, GitHub, and LinkedIn.
+- **Research console** — a terminal-inspired snapshot of research focus and project directions, with a command-style link to the personal journal.
+- **Books & Films page** — a separate, editorial-style page for personal book notes, movie favorites, watchlists, and short reviews.
 
 Publication statuses and project descriptions reflect the information currently listed on the portfolio. They should be kept synchronized with the current CV and publication records.
 
@@ -92,7 +95,9 @@ There is no framework, package manager, build pipeline, or backend required for 
 
 ```text
 .
-├── index.html                  # Portfolio sections and accessibility panel markup
+├── index.html                  # Portfolio, research console, and accessibility panel
+├── blog.html                   # Separate Books & Films journal page
+├── CNAME                       # Requested custom domain (requires DNS setup)
 ├── styles.css                  # Main styles, responsive rules, themes, and motion
 ├── main.js                     # Interactions, stored preferences, and motion behavior
 ├── README.md                   # Project overview and maintenance guide
@@ -178,13 +183,14 @@ When adding new animation, include reduced-motion behavior and test both the sys
 
 ## Deployment
 
-The repository is named for a GitHub Pages user site. To publish updates:
+The repository is published with GitHub Pages. The requested custom domain is `vivekanupindi.com`; a `CNAME` file is included as part of the proposed change, but DNS must be configured before the domain can serve the site safely.
 
-1. Review and merge the desired changes into `main`.
-2. Check the repository's **Settings → Pages** configuration to confirm the intended publishing source.
-3. Wait for the GitHub Pages deployment workflow/build to finish, if one is configured.
-4. Open [https://vivekanupindi.github.io/](https://vivekanupindi.github.io/) and verify the deployed page, images, CV link, navigation, theme toggle, accessibility panel, and dialogs.
-5. If changes do not appear, check the Pages deployment status and browser cache before making additional code changes.
+1. Review and merge changes into `main` only when the custom-domain DNS setup is ready.
+2. At the domain registrar or DNS provider, configure the apex domain for GitHub Pages using GitHub's current documented A/AAAA records. If using `www.vivekanupindi.com`, create a CNAME pointing to `vivekanupindi.github.io`.
+3. In the repository's **Settings → Pages**, verify the publishing source and custom-domain value.
+4. Wait for DNS propagation and the GitHub Pages HTTPS certificate status to become healthy before relying on the new domain.
+5. Verify `https://vivekanupindi.com/`, `blog.html`, the CV link, navigation, theme toggle, accessibility panel, and project dialogs. Keep `https://vivekanupindi.github.io/` as a known fallback during setup.
+6. If the domain does not resolve or HTTPS is not ready, inspect DNS and Pages settings before making additional code changes.
 
 ## Testing checklist
 
