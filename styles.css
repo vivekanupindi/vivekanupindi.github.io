@@ -973,3 +973,328 @@ a.pub-link:hover { border-color: var(--red); color: var(--red); }
     width: min(75%, 260px);
   }
 }
+
+
+/* =========================================
+   Accessibility tools panel and preferences
+   ========================================= */
+
+.accessibility-toggle {
+  position: fixed;
+  right: 22px;
+  bottom: 20px;
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 11px 16px;
+  border: 2px solid var(--red);
+  border-radius: 999px;
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 8px 26px #0005;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+}
+.accessibility-toggle:hover { background: var(--red-dark); }
+.accessibility-toggle-icon { font-size: 18px; line-height: 1; }
+
+.accessibility-panel[hidden] { display: none !important; }
+.accessibility-panel {
+  position: fixed;
+  inset: 0 0 0 auto;
+  z-index: 100;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: min(505px, 100vw);
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  border-left: 1px solid #314668;
+  background: #1b2745;
+  color: #eef3ff;
+  box-shadow: -18px 0 55px #0007;
+  font-family: "DM Sans", Arial, sans-serif;
+}
+.accessibility-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 25px 26px 19px;
+  border-bottom: 4px solid #75c2e4;
+}
+.accessibility-kicker {
+  margin: 0 0 5px;
+  color: #9bdaf3;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+.accessibility-panel-header h2 {
+  margin: 0 0 10px;
+  color: #75c2e4;
+  font-size: clamp(25px, 4vw, 34px);
+  line-height: 1.2;
+  letter-spacing: -.025em;
+}
+.accessibility-panel-intro {
+  max-width: 360px;
+  margin: 0;
+  color: #d4deef;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.accessibility-close {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: #c3cee2;
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 1;
+}
+.accessibility-close:hover { background: #ffffff10; color: #fff; }
+.accessibility-panel-content {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 22px 26px 26px;
+  scrollbar-color: #8b9bb1 #27324b;
+  scrollbar-width: auto;
+}
+.accessibility-group {
+  margin: 0 0 22px;
+  padding: 24px 22px 18px;
+  border: 1px solid #1f2d4b;
+  border-radius: 12px;
+  background: #15213d;
+}
+.accessibility-group h3 {
+  margin: 0 0 20px;
+  color: #f1f4fc;
+  font-size: 20px;
+  line-height: 1.35;
+  letter-spacing: -.02em;
+}
+.accessibility-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 48px;
+  margin: 7px 0;
+  padding: 5px 2px;
+  border-radius: 6px;
+  color: #e2e9f6;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.45;
+}
+.accessibility-option input {
+  flex: 0 0 auto;
+  width: 23px;
+  height: 23px;
+  margin: 0 0 0 2px;
+  accent-color: #75c2e4;
+  cursor: pointer;
+}
+.accessibility-option:focus-within {
+  outline: 2px solid #75c2e4;
+  outline-offset: 4px;
+}
+.accessibility-panel-footer {
+  padding: 12px 26px 22px;
+  background: #1b2745;
+}
+.accessibility-reset {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  padding: 13px 18px;
+  border: 2px solid #e33447;
+  border-radius: 8px;
+  background: #e33447;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+}
+.accessibility-reset:hover { background: #c92537; }
+.accessibility-panel-footer p {
+  margin: 10px 0 0;
+  color: #becbe0;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.accessibility-toggle:focus-visible,
+.accessibility-panel button:focus-visible,
+.accessibility-panel input:focus-visible {
+  outline: 3px solid #9fe5ff;
+  outline-offset: 4px;
+}
+
+/* User-selected accessibility preferences */
+body.a11y-high-contrast {
+  color-scheme: dark;
+  --bg: #000;
+  --panel: #000;
+  --panel2: #000;
+  --text: #fff;
+  --muted: #fff;
+  --line: #fff;
+  --red: #ffff00;
+  --red-dark: #ffff00;
+  background: #000;
+  color: #fff;
+}
+body.a11y-high-contrast .site-header,
+body.a11y-high-contrast .hero-backdrop,
+body.a11y-high-contrast .feature-strip,
+body.a11y-high-contrast .contact-section,
+body.a11y-high-contrast .site-footer,
+body.a11y-high-contrast .detail-dialog {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #ffff00 !important;
+}
+body.a11y-high-contrast .feature-strip > p,
+body.a11y-high-contrast .contact-section > div > p:not(.eyebrow):not(.contact-email),
+body.a11y-high-contrast .contact-email,
+body.a11y-high-contrast .site-footer > p,
+body.a11y-high-contrast .site-footer small,
+body.a11y-high-contrast .hero-lede,
+body.a11y-high-contrast .section-note,
+body.a11y-high-contrast .card-info > p,
+body.a11y-high-contrast .timeline-body > p,
+body.a11y-high-contrast .timeline-body ul,
+body.a11y-high-contrast .pub-main p,
+body.a11y-high-contrast .about-copy > p,
+body.a11y-high-contrast .education-item p,
+body.a11y-high-contrast .skills-grid p,
+body.a11y-high-contrast .highlight-card p,
+body.a11y-high-contrast .highlight-card li,
+body.a11y-high-contrast .interest-tags span,
+body.a11y-high-contrast .certifications p,
+body.a11y-high-contrast .detail-dialog p:not(.eyebrow) {
+  color: #fff !important;
+}
+body.a11y-high-contrast .hero h1 span,
+body.a11y-high-contrast .eyebrow,
+body.a11y-high-contrast .timeline-type,
+body.a11y-high-contrast .card-category,
+body.a11y-high-contrast .feature-kicker,
+body.a11y-high-contrast .pub-number,
+body.a11y-high-contrast .edu-year,
+body.a11y-high-contrast .large-copy span,
+body.a11y-high-contrast .text-link span {
+  color: #ffff00 !important;
+}
+body.a11y-high-contrast .research-card,
+body.a11y-high-contrast .skills-grid article,
+body.a11y-high-contrast .highlight-card,
+body.a11y-high-contrast .education-item,
+body.a11y-high-contrast .publication-item,
+body.a11y-high-contrast .publication-list,
+body.a11y-high-contrast .certifications,
+body.a11y-high-contrast .interest-tags span,
+body.a11y-high-contrast .button-secondary,
+body.a11y-high-contrast .theme-toggle,
+body.a11y-high-contrast .rail-btn {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #ffff00 !important;
+}
+body.a11y-high-contrast .button-primary {
+  background: #ffff00 !important;
+  border-color: #ffff00 !important;
+  color: #000 !important;
+}
+body.a11y-high-contrast .pub-status,
+body.a11y-high-contrast .pub-status.published,
+body.a11y-high-contrast .pub-status.review {
+  color: #ffff00 !important;
+}
+body.a11y-high-contrast :focus-visible {
+  outline: 3px solid #ffff00 !important;
+  outline-offset: 4px !important;
+}
+
+body.a11y-large-text {
+  font-size: 18px;
+}
+body.a11y-large-text :is(
+  p, li, label, .site-nav, .hero-meta span, .section-note, .hero-lede,
+  .card-category, .card-info > p:not(.card-category), .detail-button,
+  .timeline-date, .timeline-type, .timeline-body > p, .timeline-body li,
+  .pub-status, .pub-main p, .about-copy > p, .education-item p,
+  .skills-grid p, .highlight-card p, .highlight-card li, .certifications p,
+  .interest-tags span, .site-footer > p, .site-footer small, .contact-email,
+  .accessibility-option, .accessibility-panel-intro, .accessibility-panel-footer p
+) {
+  font-size: max(18px, 1.12em) !important;
+  line-height: 1.65;
+}
+body.a11y-dyslexia-font,
+body.a11y-dyslexia-font *:not(.accessibility-toggle-icon) {
+  font-family: Verdana, Arial, sans-serif !important;
+  letter-spacing: .025em;
+  word-spacing: .05em;
+}
+body.a11y-reduce-motion *,
+body.a11y-reduce-motion *::before,
+body.a11y-reduce-motion *::after {
+  scroll-behavior: auto !important;
+  animation-duration: .01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: .01ms !important;
+}
+body.a11y-enhanced-focus :focus-visible {
+  outline: 3px solid #ffe66d !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 0 0 2px #111 !important;
+}
+body.a11y-underline-links a:not(.brand) {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: .18em !important;
+}
+body.a11y-increased-spacing :is(p, li, .hero-lede, .section-note, .card-info, .timeline-body, .pub-main, .about-copy, .education-item, .contact-content) {
+  line-height: 2 !important;
+}
+body.a11y-highlight-headings :is(h1, h2, h3) {
+  text-decoration: underline;
+  text-decoration-color: #75c2e4;
+  text-decoration-thickness: 2px;
+  text-underline-offset: .18em;
+}
+
+@media (max-width: 560px) {
+  .accessibility-toggle {
+    right: 12px;
+    bottom: 12px;
+    min-height: 44px;
+    padding: 10px 13px;
+  }
+  .accessibility-panel { width: 100vw; }
+  .accessibility-panel-header { padding: 20px 18px 15px; gap: 12px; }
+  .accessibility-panel-content { padding: 16px 15px 18px; }
+  .accessibility-group { padding: 19px 17px 14px; }
+  .accessibility-group h3 { font-size: 18px; }
+  .accessibility-option { font-size: 15px; }
+  .accessibility-panel-footer { padding: 10px 15px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accessibility-toggle,
+  .accessibility-panel,
+  .accessibility-reset {
+    transition: none !important;
+    animation: none !important;
+  }
+}

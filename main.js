@@ -85,6 +85,120 @@
     }
 
     // --------------------------------------
+    // ACCESSIBILITY TOOLS PANEL
+    // --------------------------------------
+
+    const accessibilityToggle = document.querySelector(".accessibility-toggle");
+    const accessibilityPanel = document.getElementById("accessibility-panel");
+    const accessibilityClose = document.querySelector(".accessibility-close");
+    const accessibilityReset = document.querySelector(".accessibility-reset");
+    const accessibilityStorageKey = "vivek-portfolio-accessibility";
+    const accessibilitySettings = {
+      highContrast: { className: "a11y-high-contrast" },
+      largeText: { className: "a11y-large-text" },
+      dyslexiaFont: { className: "a11y-dyslexia-font" },
+      reduceMotion: { className: "a11y-reduce-motion" },
+      enhancedFocus: { className: "a11y-enhanced-focus" },
+      underlineLinks: { className: "a11y-underline-links" },
+      increasedSpacing: { className: "a11y-increased-spacing" },
+      highlightHeadings: { className: "a11y-highlight-headings" }
+    };
+
+    function readAccessibilitySettings() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(accessibilityStorageKey) || "{}");
+        return saved && typeof saved === "object" ? saved : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveAccessibilitySettings() {
+      const selected = {};
+      Object.entries(accessibilitySettings).forEach(([key, setting]) => {
+        const checkbox = document.querySelector('[data-a11y-setting="' + key + '"]');
+        selected[key] = Boolean(checkbox && checkbox.checked);
+      });
+
+      try {
+        localStorage.setItem(accessibilityStorageKey, JSON.stringify(selected));
+      } catch {
+        // Preferences still apply for the current page if storage is unavailable.
+      }
+    }
+
+    function setAccessibilitySetting(key, enabled) {
+      const setting = accessibilitySettings[key];
+      if (!setting) return;
+
+      body.classList.toggle(setting.className, enabled);
+      const checkbox = document.querySelector('[data-a11y-setting="' + key + '"]');
+      if (checkbox) checkbox.checked = enabled;
+    }
+
+    const savedAccessibilitySettings = readAccessibilitySettings();
+    Object.keys(accessibilitySettings).forEach((key) => {
+      setAccessibilitySetting(key, savedAccessibilitySettings[key] === true);
+      const checkbox = document.querySelector('[data-a11y-setting="' + key + '"]');
+      if (checkbox) {
+        checkbox.addEventListener("change", () => {
+          setAccessibilitySetting(key, checkbox.checked);
+          saveAccessibilitySettings();
+        });
+      }
+    });
+
+    function openAccessibilityPanel() {
+      if (!accessibilityPanel || !accessibilityToggle) return;
+      accessibilityPanel.hidden = false;
+      accessibilityToggle.setAttribute("aria-expanded", "true");
+      accessibilityToggle.setAttribute("aria-label", "Close accessibility tools");
+      if (accessibilityClose) accessibilityClose.focus();
+    }
+
+    function closeAccessibilityPanel(returnFocus = true) {
+      if (!accessibilityPanel || !accessibilityToggle) return;
+      accessibilityPanel.hidden = true;
+      accessibilityToggle.setAttribute("aria-expanded", "false");
+      accessibilityToggle.setAttribute("aria-label", "Open accessibility tools");
+      if (returnFocus) accessibilityToggle.focus();
+    }
+
+    if (accessibilityToggle) {
+      accessibilityToggle.addEventListener("click", () => {
+        const isOpen = accessibilityPanel && !accessibilityPanel.hidden;
+        if (isOpen) {
+          closeAccessibilityPanel(false);
+        } else {
+          openAccessibilityPanel();
+        }
+      });
+    }
+
+    if (accessibilityClose) {
+      accessibilityClose.addEventListener("click", () => closeAccessibilityPanel());
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && accessibilityPanel && !accessibilityPanel.hidden) {
+        closeAccessibilityPanel();
+      }
+    });
+
+    if (accessibilityReset) {
+      accessibilityReset.addEventListener("click", () => {
+        Object.keys(accessibilitySettings).forEach((key) => {
+          setAccessibilitySetting(key, false);
+        });
+        try {
+          localStorage.removeItem(accessibilityStorageKey);
+        } catch {
+          // Reset still applies to the current page if storage is unavailable.
+        }
+      });
+    }
+
+    // --------------------------------------
     // Mobile navigation
     // --------------------------------------
 
