@@ -1298,3 +1298,194 @@ body.a11y-highlight-headings :is(h1, h2, h3) {
     animation: none !important;
   }
 }
+
+
+/* =========================================
+   PORTFOLIO MOTION ENHANCEMENTS
+   ========================================= */
+
+@keyframes portfolio-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes portfolio-orb-drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(12px, -9px, 0) scale(1.035); }
+  100% { transform: translate3d(-9px, 11px, 0) scale(.985); }
+}
+
+.hero-content .headshot-wrap,
+.hero-content > .eyebrow,
+.hero-content > h1,
+.hero-content > .hero-lede,
+.hero-content > .hero-actions,
+.hero-content > .hero-meta,
+.hero-feature,
+.scroll-cue {
+  animation: portfolio-fade-up 620ms cubic-bezier(.2, .7, .2, 1) both;
+}
+
+.hero-content .headshot-wrap { animation-delay: 0ms; }
+.hero-content > .eyebrow { animation-delay: 70ms; }
+.hero-content > h1 { animation-delay: 135ms; }
+.hero-content > .hero-lede { animation-delay: 205ms; }
+.hero-content > .hero-actions { animation-delay: 275ms; }
+.hero-content > .hero-meta { animation-delay: 345ms; }
+.hero-feature { animation-delay: 210ms; }
+.scroll-cue { animation-delay: 430ms; }
+
+.hero-backdrop .orb {
+  animation: portfolio-orb-drift 15s ease-in-out infinite alternate;
+}
+
+.poster-graphic,
+.pulse-chart,
+.data-stack,
+.burnout-art,
+.monitor-grid {
+  transition: transform 260ms ease;
+}
+
+.research-card:hover .poster-graphic,
+.research-card:hover .pulse-chart,
+.research-card:hover .data-stack,
+.research-card:hover .burnout-art,
+.research-card:hover .monitor-grid {
+  transform: translateY(-3px);
+}
+
+/* JS adds these classes only when scroll-reveal support is available. */
+.motion-ready .motion-reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.motion-ready .motion-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 560ms ease-out,
+    transform 560ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.motion-ready .card-rail .research-card:nth-child(2).is-visible,
+.motion-ready .publication-list .publication-item:nth-child(2).is-visible,
+.motion-ready .timeline .timeline-item:nth-child(2).is-visible,
+.motion-ready .education-stack .education-item:nth-child(2).is-visible,
+.motion-ready .skills-grid > article:nth-child(2).is-visible,
+.motion-ready .highlights-grid > article:nth-child(2).is-visible {
+  transition-delay: 70ms;
+}
+
+.motion-ready .card-rail .research-card:nth-child(3).is-visible,
+.motion-ready .timeline .timeline-item:nth-child(3).is-visible,
+.motion-ready .education-stack .education-item:nth-child(3).is-visible,
+.motion-ready .skills-grid > article:nth-child(3).is-visible,
+.motion-ready .highlights-grid > article:nth-child(3).is-visible {
+  transition-delay: 125ms;
+}
+
+.motion-ready .card-rail .research-card:nth-child(4).is-visible,
+.motion-ready .timeline .timeline-item:nth-child(4).is-visible,
+.motion-ready .skills-grid > article:nth-child(4).is-visible,
+.motion-ready .highlights-grid > article:nth-child(4).is-visible {
+  transition-delay: 175ms;
+}
+
+.motion-ready .card-rail .research-card:nth-child(5).is-visible {
+  transition-delay: 220ms;
+}
+
+.motion-ready .research-card.motion-reveal.is-visible:hover {
+  transform: translateY(-4px);
+}
+
+/* The in-dialog transition is short and deliberately restrained. */
+@keyframes portfolio-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.detail-dialog[open] {
+  animation: portfolio-dialog-in 210ms ease-out both;
+}
+
+/* The in-panel preference and the operating-system preference both win. */
+body.a11y-reduce-motion .hero-content .headshot-wrap,
+body.a11y-reduce-motion .hero-content > .eyebrow,
+body.a11y-reduce-motion .hero-content > h1,
+body.a11y-reduce-motion .hero-content > .hero-lede,
+body.a11y-reduce-motion .hero-content > .hero-actions,
+body.a11y-reduce-motion .hero-content > .hero-meta,
+body.a11y-reduce-motion .hero-feature,
+body.a11y-reduce-motion .scroll-cue,
+body.a11y-reduce-motion .hero-backdrop .orb,
+body.a11y-reduce-motion .detail-dialog[open] {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+body.a11y-reduce-motion .motion-reveal,
+body.a11y-reduce-motion .motion-ready .motion-reveal:not(.is-visible),
+body.a11y-reduce-motion .motion-ready .motion-reveal.is-visible {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+body.a11y-reduce-motion .research-card:hover,
+body.a11y-reduce-motion .research-card:hover .poster-graphic,
+body.a11y-reduce-motion .research-card:hover .pulse-chart,
+body.a11y-reduce-motion .research-card:hover .data-stack,
+body.a11y-reduce-motion .research-card:hover .burnout-art,
+body.a11y-reduce-motion .research-card:hover .monitor-grid {
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content .headshot-wrap,
+  .hero-content > .eyebrow,
+  .hero-content > h1,
+  .hero-content > .hero-lede,
+  .hero-content > .hero-actions,
+  .hero-content > .hero-meta,
+  .hero-feature,
+  .scroll-cue,
+  .hero-backdrop .orb,
+  .detail-dialog[open] {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .motion-ready .motion-reveal,
+  .motion-ready .motion-reveal:not(.is-visible),
+  .motion-ready .motion-reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .research-card:hover,
+  .research-card:hover .poster-graphic,
+  .research-card:hover .pulse-chart,
+  .research-card:hover .data-stack,
+  .research-card:hover .burnout-art,
+  .research-card:hover .monitor-grid {
+    transform: none !important;
+  }
+}
