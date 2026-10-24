@@ -1298,3 +1298,148 @@ body.a11y-highlight-headings :is(h1, h2, h3) {
     animation: none !important;
   }
 }
+
+/* =========================================
+   Subtle portfolio motion
+   ========================================= */
+
+/* A short, staggered entrance for the hero content. */
+@keyframes portfolio-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-content > .headshot-wrap,
+.hero-content > .eyebrow,
+.hero-content > h1,
+.hero-content > .hero-lede,
+.hero-content > .hero-actions,
+.hero-content > .hero-meta {
+  animation: portfolio-fade-up 620ms cubic-bezier(.2, .7, .2, 1) both;
+}
+
+.hero-content > .headshot-wrap { animation-delay: 0ms; }
+.hero-content > .eyebrow { animation-delay: 70ms; }
+.hero-content > h1 { animation-delay: 130ms; }
+.hero-content > .hero-lede { animation-delay: 200ms; }
+.hero-content > .hero-actions { animation-delay: 270ms; }
+.hero-content > .hero-meta { animation-delay: 340ms; }
+
+.hero-feature {
+  animation: portfolio-fade-up 720ms cubic-bezier(.2, .7, .2, 1) 220ms both;
+}
+
+/* Slowly shifting background light: decorative, never essential to content. */
+@keyframes portfolio-orb-drift-one {
+  from { transform: translate3d(0, 0, 0) scale(.96); }
+  to { transform: translate3d(-18px, 14px, 0) scale(1.08); }
+}
+
+@keyframes portfolio-orb-drift-two {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(16px, -12px, 0) scale(1.1); }
+}
+
+.hero-backdrop .orb-one {
+  animation: portfolio-orb-drift-one 16s ease-in-out infinite alternate;
+}
+
+.hero-backdrop .orb-two {
+  animation: portfolio-orb-drift-two 20s ease-in-out infinite alternate;
+}
+
+/* Scroll reveals are enabled only by JavaScript after feature detection.
+   Without JavaScript or IntersectionObserver, every element stays visible. */
+body.motion-enabled .reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 560ms cubic-bezier(.2, .7, .2, 1),
+    transform 560ms cubic-bezier(.2, .7, .2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+body.motion-enabled .reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* A restrained lift works with both pointer hover and keyboard focus. */
+.research-card:focus-within {
+  transform: translateY(-3px);
+  border-color: #e5091477;
+}
+
+.research-card .poster {
+  transition: filter 240ms ease;
+}
+
+.research-card:hover .poster,
+.research-card:focus-within .poster {
+  filter: saturate(1.08) brightness(1.06);
+}
+
+/* Keep the existing lift interaction after a scroll reveal has completed. */
+body.motion-enabled .research-card.reveal-on-scroll.is-visible:hover,
+body.motion-enabled .research-card.reveal-on-scroll.is-visible:focus-within {
+  transform: translateY(-4px);
+}
+
+/* Light entrance for project detail dialogs. */
+@keyframes portfolio-dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.detail-dialog[open] {
+  animation: portfolio-dialog-enter 220ms ease-out both;
+}
+
+/* The visitor's Reduce Motion switch overrides every optional effect,
+   including scroll reveals, so content stays visible immediately. */
+body.a11y-reduce-motion .hero-content > *,
+body.a11y-reduce-motion .hero-feature,
+body.a11y-reduce-motion .hero-backdrop .orb,
+body.a11y-reduce-motion .detail-dialog[open] {
+  animation: none !important;
+}
+
+body.a11y-reduce-motion .reveal-on-scroll,
+body.motion-enabled.a11y-reduce-motion .reveal-on-scroll {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content > *,
+  .hero-feature,
+  .hero-backdrop .orb,
+  .detail-dialog[open] {
+    animation: none !important;
+  }
+
+  body.motion-enabled .reveal-on-scroll,
+  body.motion-enabled .reveal-on-scroll.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .research-card,
+  .research-card .poster {
+    transition: none !important;
+  }
+}
