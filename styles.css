@@ -2968,3 +2968,27 @@ body.a11y-reduce-motion .site-footer .footer-blog-link:focus-visible {
     transform: none !important;
   }
 }
+
+/* Keep terminal accents warm too; reserve blue for the rest of the portfolio only. */
+.terminal-prompt {
+  color: #ff837a;
+}
+
+.terminal-status {
+  color: #e5b68b;
+}
+
+.terminal-status i {
+  background: #e5b68b;
+  box-shadow: 0 0 10px #e5b68b66;
+  animation: terminal-status-pulse-warm 2.1s ease-in-out infinite;
+}
+
+@keyframes terminal-status-pulse-warm {
+  0%, 100% { opacity: .65; box-shadow: 0 0 0 #e5b68b00; }
+  50% { opacity: 1; box-shadow: 0 0 11px #e5b68b88; }
+}
+
+.terminal-caret {
+  background: #ff837a;
+}
