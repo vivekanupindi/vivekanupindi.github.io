@@ -30,3 +30,15 @@ Selections are saved with `localStorage` in the visitor's browser. The reset con
 ## Scope note
 
 These controls improve customization, but their presence does not establish WCAG 2.2 AA conformance. Formal conformance requires automated and manual testing across the full page, interactions, content, and responsive states.
+
+
+## Motion design
+
+The portfolio uses a short hero entrance, a slow ambient background drift, restrained research-card hover movement, scroll-triggered content reveals, and a brief research-dialog entrance.
+
+- The effects are decorative and do not contain required information.
+- The site's **Reduce Motion** control disables the additional motion and makes scroll-reveal content immediately visible.
+- The page also respects the operating system's `prefers-reduced-motion: reduce` setting.
+- Scroll reveals use `IntersectionObserver` when available; if it is not available, content stays visible without scroll animations.
+
+Test the motion with the in-site Reduce Motion preference enabled and with reduced motion enabled in the operating system. These measures are not a substitute for manual accessibility testing.
