@@ -34,8 +34,8 @@ The visual design takes inspiration from cinematic streaming interfaces—dark s
 - **About and education** — background, academic programs, and research interests.
 - **Technical toolkit and academic highlights** — grouped skills, certifications, awards, coursework, and activities.
 - **Contact links** — email, GitHub, and LinkedIn.
-- **Research console** — a terminal-inspired snapshot of research focus and project directions, with a command-style link to the personal journal.
-- **Books & Films page** — a separate, editorial-style page for personal book notes, movie favorites, watchlists, and short reviews.
+- **Interactive research console** — a terminal-inspired command prompt that accepts predefined commands such as `help`, `whoami`, `cat current_focus.md`, `ls active_projects/`, `open research`, `open publications`, `open experience`, `open about`, `open contact`, `open fun-corner`, and `clear`. The console does not execute arbitrary shell commands.
+- **Fun Corner** — a separate, editorial-style Books & Films page for personal book notes, movie favorites, watchlists, and short reviews.
 
 Publication statuses and project descriptions reflect the information currently listed on the portfolio. They should be kept synchronized with the current CV and publication records.
 
@@ -66,6 +66,10 @@ Preferences are stored in the visitor's browser using `localStorage`. The reset 
 
 See [ACCESSIBILITY.md](ACCESSIBILITY.md) for the available settings and manual verification checklist.
 
+### Interactive research console
+
+The homepage terminal accepts a small set of predefined commands. Type `help` in the console to see the available commands. Supported commands include `whoami`, `cat current_focus.md`, `ls active_projects/`, `open research`, `open publications`, `open experience`, `open about`, `open contact`, `open fun-corner`, and `clear`. Commands navigate within the portfolio or open the Fun Corner; they do not execute shell commands or access a real terminal.
+
 ## Research areas represented
 
 The portfolio currently highlights these interests and project directions:
@@ -95,7 +99,7 @@ There is no framework, package manager, build pipeline, or backend required for 
 ```text
 .
 ├── index.html                  # Portfolio, research console, and accessibility panel
-├── blog.html                   # Separate Books & Films journal page
+├── blog.html                   # Separate Fun Corner (Books & Films) page
 ├── styles.css                  # Main styles, responsive rules, themes, and motion
 ├── main.js                     # Interactions, stored preferences, and motion behavior
 ├── README.md                   # Project overview and maintenance guide
