@@ -2,8 +2,7 @@
 
 Personal research portfolio for **Vivek Anupindi**
 
-**Custom-domain target:** [https://vivekanupindi.com/](https://vivekanupindi.com/)  
-**Current GitHub Pages address:** [https://vivekanupindi.github.io/](https://vivekanupindi.github.io/) (use until domain DNS and Pages configuration are ready)
+**Live portfolio:** [https://vivekanupindi.github.io/](https://vivekanupindi.github.io/)
 
 The visual design takes inspiration from cinematic streaming interfaces—dark surfaces, bold typography, red accents, and horizontal project cards—adapted for a personal academic portfolio. This is an independently built portfolio and is not affiliated with Netflix.
 
@@ -97,7 +96,6 @@ There is no framework, package manager, build pipeline, or backend required for 
 .
 ├── index.html                  # Portfolio, research console, and accessibility panel
 ├── blog.html                   # Separate Books & Films journal page
-├── CNAME                       # Requested custom domain (requires DNS setup)
 ├── styles.css                  # Main styles, responsive rules, themes, and motion
 ├── main.js                     # Interactions, stored preferences, and motion behavior
 ├── README.md                   # Project overview and maintenance guide
@@ -183,14 +181,13 @@ When adding new animation, include reduced-motion behavior and test both the sys
 
 ## Deployment
 
-The repository is published with GitHub Pages. The requested custom domain is `vivekanupindi.com`; a `CNAME` file is included as part of the proposed change, but DNS must be configured before the domain can serve the site safely.
+The site is hosted on GitHub Pages using the default address [https://vivekanupindi.github.io/](https://vivekanupindi.github.io/). No custom domain is configured.
 
-1. Review and merge changes into `main` only when the custom-domain DNS setup is ready.
-2. At the domain registrar or DNS provider, configure the apex domain for GitHub Pages using GitHub's current documented A/AAAA records. If using `www.vivekanupindi.com`, create a CNAME pointing to `vivekanupindi.github.io`.
-3. In the repository's **Settings → Pages**, verify the publishing source and custom-domain value.
-4. Wait for DNS propagation and the GitHub Pages HTTPS certificate status to become healthy before relying on the new domain.
-5. Verify `https://vivekanupindi.com/`, `blog.html`, the CV link, navigation, theme toggle, accessibility panel, and project dialogs. Keep `https://vivekanupindi.github.io/` as a known fallback during setup.
-6. If the domain does not resolve or HTTPS is not ready, inspect DNS and Pages settings before making additional code changes.
+1. Review and merge the changes into `main`.
+2. Confirm the repository's **Settings → Pages** is publishing the intended branch/source.
+3. Check the latest Pages deployment in the **Actions** tab.
+4. Verify the homepage and [Books & Films page](https://vivekanupindi.github.io/blog.html), the CV link, navigation, theme toggle, accessibility panel, and project dialogs.
+5. If a change does not appear, hard-refresh the browser and check the Pages deployment status before making further code changes.
 
 ## Testing checklist
 
