@@ -198,6 +198,48 @@
       });
     }
 
+
+    // --------------------------------------
+    // PORTFOLIO MOTION REVEALS
+    // --------------------------------------
+    // Reveal content as it enters view. Visitors who prefer reduced motion
+    // see all content immediately, and browsers without IntersectionObserver
+    // receive the same fully visible content without the animation.
+    const motionRevealTargets = document.querySelectorAll(
+      ".section-heading, .feature-strip, .contact-content, .research-card, " +
+      ".publication-item, .timeline-item, .education-item, " +
+      ".skills-grid > article, .highlights-grid > article"
+    );
+    const systemPrefersReducedMotion = window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const userPrefersReducedMotion = body.classList.contains("a11y-reduce-motion");
+
+    if (motionRevealTargets.length) {
+      document.documentElement.classList.add("motion-ready");
+
+      if (systemPrefersReducedMotion || userPrefersReducedMotion ||
+          !("IntersectionObserver" in window)) {
+        motionRevealTargets.forEach((item) => item.classList.add("motion-reveal", "is-visible"));
+      } else {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: "0px 0px -32px 0px"
+        });
+
+        motionRevealTargets.forEach((item) => {
+          item.classList.add("motion-reveal");
+          revealObserver.observe(item);
+        });
+      }
+    }
+
     // --------------------------------------
     // Subtle motion and scroll reveals
     // --------------------------------------

@@ -1404,6 +1404,28 @@ body.motion-enabled .research-card.reveal-on-scroll.is-visible:focus-within {
 }
 
 .detail-dialog[open] {
+  animation: portfolio-dialog-in 210ms ease-out both;
+}
+
+/* The in-panel preference and the operating-system preference both win. */
+body.a11y-reduce-motion .hero-content .headshot-wrap,
+body.a11y-reduce-motion .hero-content > .eyebrow,
+body.a11y-reduce-motion .hero-content > h1,
+body.a11y-reduce-motion .hero-content > .hero-lede,
+body.a11y-reduce-motion .hero-content > .hero-actions,
+body.a11y-reduce-motion .hero-content > .hero-meta,
+body.a11y-reduce-motion .hero-feature,
+body.a11y-reduce-motion .scroll-cue,
+body.a11y-reduce-motion .hero-backdrop .orb,
+body.a11y-reduce-motion .detail-dialog[open] {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+body.a11y-reduce-motion .motion-reveal,
+body.a11y-reduce-motion .motion-ready .motion-reveal:not(.is-visible),
+body.a11y-reduce-motion .motion-ready .motion-reveal.is-visible {
   animation: portfolio-dialog-enter 220ms ease-out both;
 }
 
@@ -1423,6 +1445,34 @@ body.motion-enabled.a11y-reduce-motion .reveal-on-scroll {
   transition: none !important;
 }
 
+body.a11y-reduce-motion .research-card:hover,
+body.a11y-reduce-motion .research-card:hover .poster-graphic,
+body.a11y-reduce-motion .research-card:hover .pulse-chart,
+body.a11y-reduce-motion .research-card:hover .data-stack,
+body.a11y-reduce-motion .research-card:hover .burnout-art,
+body.a11y-reduce-motion .research-card:hover .monitor-grid {
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content .headshot-wrap,
+  .hero-content > .eyebrow,
+  .hero-content > h1,
+  .hero-content > .hero-lede,
+  .hero-content > .hero-actions,
+  .hero-content > .hero-meta,
+  .hero-feature,
+  .scroll-cue,
+  .hero-backdrop .orb,
+  .detail-dialog[open] {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .motion-ready .motion-reveal,
+  .motion-ready .motion-reveal:not(.is-visible),
+  .motion-ready .motion-reveal.is-visible {
 @media (prefers-reduced-motion: reduce) {
   .hero-content > *,
   .hero-feature,
@@ -1438,6 +1488,13 @@ body.motion-enabled.a11y-reduce-motion .reveal-on-scroll {
     transition: none !important;
   }
 
+  .research-card:hover,
+  .research-card:hover .poster-graphic,
+  .research-card:hover .pulse-chart,
+  .research-card:hover .data-stack,
+  .research-card:hover .burnout-art,
+  .research-card:hover .monitor-grid {
+    transform: none !important;
   .research-card,
   .research-card .poster {
     transition: none !important;
