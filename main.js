@@ -127,13 +127,12 @@
     });
 
     // --------------------------------------
-    // Motion: one scroll-reveal implementation
+    // Motion: one restartable scroll-reveal controller
     // --------------------------------------
 
     const reducedMotionQuery = window.matchMedia
       ? window.matchMedia("(prefers-reduced-motion: reduce)")
       : null;
-    const systemPrefersReducedMotion = Boolean(reducedMotionQuery && reducedMotionQuery.matches);
 
     const motionTargets = Array.from(document.querySelectorAll([
       ".section-heading",
@@ -149,27 +148,48 @@
 
     let revealObserver = null;
 
-    function revealAllMotionContent() {
-      motionTargets.forEach((element) => {
-        element.classList.add("reveal-on-scroll", "is-visible");
+    function shouldReduceMotion() {
+      return body.classList.contains("a11y-reduce-motion") ||
+        Boolean(reducedMotionQuery && reducedMotionQuery.matches);
+    }
+
+    function disconnectRevealObserver() {
+      if (revealObserver) {
+        revealObserver.disconnect();
+        revealObserver = null;
+      }
+    }
+
+    function prepareMotionTargets() {
+      motionTargets.forEach((element, index) => {
+        element.classList.add("reveal-on-scroll");
+        element.style.setProperty("--reveal-delay", String((index % 4) * 70) + "ms");
       });
     }
 
-    function startMotionReveals() {
-      if (!motionTargets.length) return;
+    function revealAllMotionContent() {
+      motionTargets.forEach((element) => element.classList.add("is-visible"));
+    }
 
-      motionTargets.forEach((element, index) => {
-        element.classList.add("reveal-on-scroll");
-        element.style.setProperty("--reveal-delay", String((index % 4) * 55) + "ms");
-      });
+    function startMotionReveals(replay = false) {
+      disconnectRevealObserver();
+      if (!motionTargets.length) {
+        body.classList.remove("motion-enabled");
+        return;
+      }
 
-      const canAnimate = !systemPrefersReducedMotion &&
-        !body.classList.contains("a11y-reduce-motion") &&
-        "IntersectionObserver" in window;
+      prepareMotionTargets();
 
-      if (!canAnimate) {
+      if (shouldReduceMotion() || !("IntersectionObserver" in window)) {
+        body.classList.remove("motion-enabled");
         revealAllMotionContent();
         return;
+      }
+
+      // Only hide reveal targets once an observer is available to reveal them.
+      // Replaying when motion is switched back on makes the behavior noticeable.
+      if (replay) {
+        motionTargets.forEach((element) => element.classList.remove("is-visible"));
       }
 
       body.classList.add("motion-enabled");
@@ -182,26 +202,24 @@
         });
       }, {
         root: null,
-        rootMargin: "0px 0px -7% 0px",
-        threshold: 0.12
+        rootMargin: "0px 0px -5% 0px",
+        threshold: 0.08
       });
 
       motionTargets.forEach((element) => revealObserver.observe(element));
     }
 
-    startMotionReveals();
-
-    function applyReducedMotionPreference() {
-      if (body.classList.contains("a11y-reduce-motion") ||
-          (reducedMotionQuery && reducedMotionQuery.matches)) {
-        // Do not leave any section hidden if the visitor enables reduced motion.
-        if (revealObserver) {
-          revealObserver.disconnect();
-          revealObserver = null;
-        }
+    function syncMotionPreference() {
+      if (shouldReduceMotion()) {
+        disconnectRevealObserver();
+        body.classList.remove("motion-enabled");
         revealAllMotionContent();
+      } else if (!body.classList.contains("motion-enabled")) {
+        startMotionReveals(true);
       }
     }
+
+    startMotionReveals();
 
     // --------------------------------------
     // Accessibility panel open/close behavior
@@ -245,7 +263,7 @@
         } catch {
           // Reset still applies during this session.
         }
-        applyReducedMotionPreference();
+        syncMotionPreference();
       });
     }
 
@@ -255,7 +273,7 @@
       checkbox.addEventListener("change", () => {
         setAccessibilitySetting(key, checkbox.checked);
         writeStoredJson(accessibilityStorageKey, currentAccessibilitySettings());
-        if (key === "reduceMotion") applyReducedMotionPreference();
+        if (key === "reduceMotion") syncMotionPreference();
       });
     });
 
@@ -266,7 +284,7 @@
     });
 
     if (reducedMotionQuery && typeof reducedMotionQuery.addEventListener === "function") {
-      reducedMotionQuery.addEventListener("change", applyReducedMotionPreference);
+      reducedMotionQuery.addEventListener("change", syncMotionPreference);
     }
 
     // --------------------------------------
