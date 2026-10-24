@@ -5,9 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Vivek Anupindi — Computer Science PhD student at UMBC exploring clinical NLP, machine learning for healthcare, and intelligent data systems.">
   <meta name="theme-color" content="#101010">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vivek Anupindi — Research Portfolio">
+  <meta property="og:description" content="Clinical NLP, healthcare AI, and dependable data systems.">
+  <meta property="og:url" content="https://vivekanupindi.com/">
+  <link rel="canonical" href="https://vivekanupindi.com/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261024-motionfx2">
-  <title>Vivek Anupindi | Research Portfolio</title>
+  <link rel="stylesheet" href="styles.css?v=20261024-domain-blog1">
+  <title>Vivek Anupindi | vivekanupindi.com</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,10 +22,10 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="Vivek Anupindi home"><span class="brand-mark">VA</span><span>Vivek <b>Anupindi</b></span></a>
+    <a class="brand" href="#top" aria-label="Vivek Anupindi home"><span class="brand-mark">VA</span><span class="brand-name">Vivek <b>Anupindi</b><small class="brand-domain">vivekanupindi.com</small></span></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-      <a href="#research">Research</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a href="#about">About</a><a href="#highlights">Highlights</a>
+      <a href="#research">Research</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a href="#about">About</a><a href="#research-console">Console</a><a href="blog.html">Books &amp; Films</a>
       <a class="nav-contact" href="#contact">Contact <span aria-hidden="true">↗</span></a>
       <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">☼</button>
     </nav>
@@ -49,6 +54,35 @@
         <a class="text-link" href="#publications">Explore publication <span aria-hidden="true">→</span></a>
       </aside>
       <a class="scroll-cue" href="#research"><span></span> SCROLL TO EXPLORE</a>
+    </section>
+
+    <section class="content-section terminal-section" id="research-console" aria-labelledby="console-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">RESEARCH CONSOLE</p><h2 id="console-title">What’s running in my world.</h2></div>
+        <p class="section-note">A terminal-inspired snapshot of my current interests, ongoing project directions, and the things I’m exploring beyond research.</p>
+      </div>
+      <div class="terminal-window">
+        <div class="terminal-topbar">
+          <div class="terminal-lights" aria-hidden="true"><span></span><span></span><span></span></div>
+          <p class="terminal-path">vivek@research-lab: <span>~/portfolio</span></p>
+          <span class="terminal-status"><i></i> SESSION ACTIVE</span>
+        </div>
+        <div class="terminal-body">
+          <p class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-command">whoami --research</span></p>
+          <p class="terminal-output"><span class="terminal-arrow">›</span> Ph.D. student · Computer Science · UMBC</p>
+          <p class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-command">cat current_focus.md</span></p>
+          <p class="terminal-output terminal-highlight"># Clinical NLP · Healthcare AI · Reliable data systems</p>
+          <p class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-command">ls active_projects/</span></p>
+          <div class="terminal-tree" aria-label="Featured research directions">
+            <div><span class="terminal-folder" aria-hidden="true">▰</span><a href="#research">clinical-nlp/</a><span class="terminal-arrow">→</span><span class="terminal-description">Clinical text and multi-label ICD-10 coding</span></div>
+            <div><span class="terminal-folder" aria-hidden="true">▰</span><a href="#research">health-forecasting/</a><span class="terminal-arrow">→</span><span class="terminal-description">Exploratory glucose time-series prediction</span></div>
+            <div><span class="terminal-folder" aria-hidden="true">▰</span><a href="#research">data-systems/</a><span class="terminal-arrow">→</span><span class="terminal-description">Pipelines, analytics, and dependable data</span></div>
+          </div>
+          <p class="terminal-line terminal-last-command"><span class="terminal-prompt">$</span><a class="terminal-command-link" href="blog.html">open off-the-clock</a><span class="terminal-comment"># books, films &amp; notes</span></p>
+          <a class="terminal-launch" href="blog.html">Explore Books &amp; Films <span aria-hidden="true">↗</span></a>
+          <span class="terminal-caret" aria-hidden="true"></span>
+        </div>
+      </div>
     </section>
 
     <section class="content-section" id="research">
@@ -110,7 +144,7 @@
 
     <section class="contact-section" id="contact"><div class="contact-glow" aria-hidden="true"></div><div class="contact-content"><p class="eyebrow">LET’S CONNECT</p><h2>Interested in research<br>or collaboration?</h2><p>If your work overlaps with clinical NLP, healthcare AI, predictive modeling, or intelligent data systems, I’d be glad to connect.</p><div class="contact-actions"><a class="button button-primary" href="mailto:vivek.anupindi@umbc.edu">Email me <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="https://github.com/vivekanupindi" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="https://www.linkedin.com/in/vivek-anupindi-6214831a0/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></div><p class="contact-email">vivek.anupindi@umbc.edu</p></div></section>
   </main>
-  <footer class="site-footer"><a class="brand footer-brand" href="#top"><span class="brand-mark">VA</span><span>Vivek <b>Anupindi</b></span></a><p>Research · Healthcare AI · Data Systems</p><a href="#top" class="back-top">Back to top ↑</a><small>© <span id="year"></span> Vivek Anupindi. <a href="https://www.netflix.com" target="_blank" rel="noopener noreferrer">Inspired By Netflix</a>.Built with Passion.</small></footer>
+  <footer class="site-footer"><a class="brand footer-brand" href="#top"><span class="brand-mark">VA</span><span class="brand-name">Vivek <b>Anupindi</b><small class="brand-domain">vivekanupindi.com</small></span></a><p>Research · Healthcare AI · Data Systems</p><a href="blog.html" class="footer-blog-link">Books &amp; Films ↗</a><a href="#top" class="back-top">Back to top ↑</a><small>© <span id="year"></span> Vivek Anupindi · <a href="https://vivekanupindi.com/">vivekanupindi.com</a></small></footer>
 
   <!-- Accessibility tools: user-controlled display and navigation preferences -->
   <button
@@ -195,6 +229,6 @@
   </aside>
 
   <dialog class="detail-dialog" id="detail-dialog" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="Close details">×</button><p class="eyebrow" id="dialog-kicker">RESEARCH DETAILS</p><h2 id="dialog-title">Research details</h2><div id="dialog-body"></div></dialog>
-  <script src="main.js?v=20261024-motionfx2" defer></script>
+  <script src="main.js?v=20261024-domain-blog1" defer></script>
 </body>
 </html>

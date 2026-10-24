@@ -136,6 +136,11 @@
 
     const motionTargets = Array.from(document.querySelectorAll([
       ".section-heading",
+      ".culture-section-heading",
+      ".culture-hero-content",
+      ".culture-card",
+      ".culture-note-strip",
+      ".culture-notes-panel",
       ".feature-strip",
       ".research-card",
       ".publication-item",
@@ -312,7 +317,7 @@
       });
 
       window.addEventListener("resize", () => {
-        if (window.innerWidth > 760) closeMenu();
+        if (window.innerWidth > 900) closeMenu();
       });
     }
 
