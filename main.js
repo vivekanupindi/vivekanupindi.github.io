@@ -263,7 +263,7 @@
         } catch {
           // Reset still applies during this session.
         }
-        applyReducedMotionPreference();
+        syncMotionPreference();
       });
     }
 
@@ -273,7 +273,7 @@
       checkbox.addEventListener("change", () => {
         setAccessibilitySetting(key, checkbox.checked);
         writeStoredJson(accessibilityStorageKey, currentAccessibilitySettings());
-        if (key === "reduceMotion") applyReducedMotionPreference();
+        if (key === "reduceMotion") syncMotionPreference();
       });
     });
 
@@ -284,7 +284,7 @@
     });
 
     if (reducedMotionQuery && typeof reducedMotionQuery.addEventListener === "function") {
-      reducedMotionQuery.addEventListener("change", applyReducedMotionPreference);
+      reducedMotionQuery.addEventListener("change", syncMotionPreference);
     }
 
     // --------------------------------------
