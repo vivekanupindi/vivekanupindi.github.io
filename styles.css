@@ -1541,10 +1541,16 @@ body.a11y-reduce-motion *::after {
 body.a11y-reduce-motion .reveal-on-scroll,
 body.a11y-reduce-motion.motion-enabled .reveal-on-scroll,
 body.a11y-reduce-motion.motion-enabled .reveal-on-scroll:not(.is-visible),
-body.a11y-reduce-motion.motion-enabled .reveal-on-scroll.is-visible {
+body.a11y-reduce-motion.motion-enabled .reveal-on-scroll.is-visible,
+body.a11y-reduce-motion .research-card:hover,
+body.a11y-reduce-motion .research-card:focus-within,
+body.a11y-reduce-motion .research-card:hover .poster,
+body.a11y-reduce-motion .research-card:focus-within .poster {
   opacity: 1 !important;
   transform: none !important;
   transition: none !important;
+  filter: none !important;
+  box-shadow: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1562,6 +1568,15 @@ body.a11y-reduce-motion.motion-enabled .reveal-on-scroll.is-visible {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+
+  .research-card:hover,
+  .research-card:focus-within,
+  .research-card:hover .poster,
+  .research-card:focus-within .poster {
+    transform: none !important;
+    filter: none !important;
+    box-shadow: none !important;
   }
 
   .accessibility-panel:not([hidden]) {
