@@ -865,7 +865,7 @@ a.pub-link:hover { border-color: var(--red); color: var(--red); }
   .feature-strip > p { max-width: 100%; flex-basis: 100%; }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .site-header { min-height: 66px; padding: 10px 18px; }
   .menu-toggle { display: flex; flex-direction: column; align-items: center; justify-content: center; }
   .site-nav {
@@ -2298,6 +2298,21 @@ body.a11y-reduce-motion .research-card:focus-within .poster::before {
 .culture-back-link .culture-terminal-label { margin-bottom: 7px; }
 
 .culture-footer .footer-blog-link { display: none; }
+
+@media (min-width: 761px) and (max-width: 900px) {
+  .site-nav a { white-space: nowrap; }
+  .site-nav { font-size: 11px; }
+}
+
+.site-nav a[aria-current="page"] { color: var(--text); }
+.site-nav a[aria-current="page"]::after {
+  content: "";
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin-top: 5px;
+  background: #8eb9fa;
+}
 
 @media (max-width: 1000px) {
   .culture-hero-stamp { right: 30px; width: 125px; height: 125px; opacity: .5; }
