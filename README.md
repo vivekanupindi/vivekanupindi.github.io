@@ -43,3 +43,10 @@ These controls are user preferences, not a substitute for a formal WCAG conforma
 
 
 Motion is intentionally subtle: the hero elements enter in sequence, the ambient background drifts slowly, research visuals respond gently to hover, and selected content reveals as it enters the viewport. The in-site Reduce Motion option and the operating system's reduced-motion preference disable these effects.
+
+
+## Motion and interaction
+
+The portfolio uses brief hero entrance transitions, slow ambient background glows, scroll-triggered section and card reveals, existing research-card hover states, and a restrained research-dialog entrance. The scroll reveals activate progressively as content enters the viewport.
+
+Motion respects the operating system's `prefers-reduced-motion` setting. Visitors can also enable **Reduce Motion** in the Accessibility panel; this disables decorative animation and ensures reveal targets remain visible.
