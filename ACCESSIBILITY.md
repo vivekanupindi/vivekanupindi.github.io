@@ -42,13 +42,3 @@ The portfolio uses a short hero entrance, a slow ambient background drift, restr
 - Scroll reveals use `IntersectionObserver` when available; if it is not available, content stays visible without scroll animations.
 
 Test the motion with the in-site Reduce Motion preference enabled and with reduced motion enabled in the operating system. These measures are not a substitute for manual accessibility testing.
-
-
-## Motion behavior
-
-The portfolio uses a short hero entrance, slow decorative background movement, scroll-triggered content reveals, and a subtle research-dialog transition. Motion is decorative; content and controls remain available without animation.
-
-- Verify the site with the operating system's reduced-motion preference enabled.
-- Enable **Reduce Motion** in the site's Accessibility panel and confirm hero, ambient, scroll-reveal, and dialog animations stop.
-- Confirm content is visible when reduced motion is enabled, including on initial load and after scrolling.
-- Check that the existing card hover styling and keyboard focus remain usable.
