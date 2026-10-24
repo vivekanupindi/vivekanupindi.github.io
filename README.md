@@ -1,6 +1,6 @@
 # Vivek Anupindi — Research Portfolio
 
-Personal research portfolio for **Vivek Anupindi**, a Computer Science Ph.D. student at the University of Maryland, Baltimore County (UMBC). The site brings together research interests, publications and manuscripts, professional experience, education, technical skills, and contact information.
+Personal research portfolio for **Vivek Anupindi**
 
 **Live portfolio:** [https://vivekanupindi.github.io/](https://vivekanupindi.github.io/)
 
