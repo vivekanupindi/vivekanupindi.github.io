@@ -1385,6 +1385,12 @@ body.motion-enabled .reveal-on-scroll.is-visible {
   filter: saturate(1.08) brightness(1.06);
 }
 
+/* Keep the existing lift interaction after a scroll reveal has completed. */
+body.motion-enabled .research-card.reveal-on-scroll.is-visible:hover,
+body.motion-enabled .research-card.reveal-on-scroll.is-visible:focus-within {
+  transform: translateY(-4px);
+}
+
 /* Light entrance for project detail dialogs. */
 @keyframes portfolio-dialog-enter {
   from {
@@ -1408,12 +1414,6 @@ body.a11y-reduce-motion .hero-feature,
 body.a11y-reduce-motion .hero-backdrop .orb,
 body.a11y-reduce-motion .detail-dialog[open] {
   animation: none !important;
-}
-
-body.a11y-reduce-motion .reveal-on-scroll,
-body.a11y-reduce-motion.motion-enabled .reveal-on-scroll,
-body.motion-enabled .reveal-on-scroll {
-  transition-duration: .01ms;
 }
 
 body.a11y-reduce-motion .reveal-on-scroll,
