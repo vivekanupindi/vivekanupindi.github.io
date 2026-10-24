@@ -1300,10 +1300,10 @@ body.a11y-highlight-headings :is(h1, h2, h3) {
 }
 
 /* =========================================
-   Subtle portfolio motion
+   Motion, graphics, and reduced-motion behavior
    ========================================= */
 
-/* A short, staggered entrance for the hero content. */
+/* Cinematic but restrained entrance for the hero content. */
 @keyframes portfolio-fade-up {
   from {
     opacity: 0;
@@ -1335,7 +1335,7 @@ body.a11y-highlight-headings :is(h1, h2, h3) {
   animation: portfolio-fade-up 720ms cubic-bezier(.2, .7, .2, 1) 220ms both;
 }
 
-/* Slowly shifting background light: decorative, never essential to content. */
+/* Slow ambient light behind the content. */
 @keyframes portfolio-orb-drift-one {
   from { transform: translate3d(0, 0, 0) scale(.96); }
   to { transform: translate3d(-18px, 14px, 0) scale(1.08); }
@@ -1354,8 +1354,41 @@ body.a11y-highlight-headings :is(h1, h2, h3) {
   animation: portfolio-orb-drift-two 20s ease-in-out infinite alternate;
 }
 
-/* Scroll reveals are enabled only by JavaScript after feature detection.
-   Without JavaScript or IntersectionObserver, every element stays visible. */
+/* Add a small glowing clinical waveform to the featured research graphic. */
+.art-wave {
+  display: block;
+  position: absolute;
+  top: 22px;
+  right: 10px;
+  width: 48%;
+  height: 76px;
+  overflow: visible;
+  opacity: .82;
+  pointer-events: none;
+}
+
+.art-wave::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #ff4b55;
+  clip-path: polygon(
+    0 52%, 11% 50%, 19% 20%, 27% 78%, 37% 43%, 46% 52%,
+    56% 15%, 64% 80%, 74% 48%, 85% 51%, 100% 45%,
+    100% 52%, 85% 58%, 75% 55%, 65% 91%, 56% 29%,
+    47% 59%, 37% 51%, 27% 88%, 19% 33%, 12% 57%, 0 59%
+  );
+  filter: drop-shadow(0 0 7px #e50914);
+  animation: portfolio-wave-glow 3.8s ease-in-out infinite alternate;
+}
+
+@keyframes portfolio-wave-glow {
+  from { opacity: .6; filter: drop-shadow(0 0 3px #e50914); }
+  to { opacity: 1; filter: drop-shadow(0 0 9px #e50914); }
+}
+
+/* Scroll reveals are added only after JavaScript feature detection.
+   When JavaScript or IntersectionObserver is unavailable, content remains visible. */
 body.motion-enabled .reveal-on-scroll {
   opacity: 0;
   transform: translateY(18px);
@@ -1370,9 +1403,14 @@ body.motion-enabled .reveal-on-scroll.is-visible {
   transform: translateY(0);
 }
 
-/* A restrained lift works with both pointer hover and keyboard focus. */
+/* Card feedback stays subtle and works for keyboard users too. */
+.research-card {
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.research-card:hover,
 .research-card:focus-within {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: #e5091477;
 }
 
@@ -1385,13 +1423,7 @@ body.motion-enabled .reveal-on-scroll.is-visible {
   filter: saturate(1.08) brightness(1.06);
 }
 
-/* Keep the existing lift interaction after a scroll reveal has completed. */
-body.motion-enabled .research-card.reveal-on-scroll.is-visible:hover,
-body.motion-enabled .research-card.reveal-on-scroll.is-visible:focus-within {
-  transform: translateY(-4px);
-}
-
-/* Light entrance for project detail dialogs. */
+/* Small dialog entrance when opening project details. */
 @keyframes portfolio-dialog-enter {
   from {
     opacity: 0;
@@ -1404,84 +1436,134 @@ body.motion-enabled .research-card.reveal-on-scroll.is-visible:focus-within {
 }
 
 .detail-dialog[open] {
-  animation: portfolio-dialog-in 210ms ease-out both;
-}
-
-/* The in-panel preference and the operating-system preference both win. */
-body.a11y-reduce-motion .hero-content .headshot-wrap,
-body.a11y-reduce-motion .hero-content > .eyebrow,
-body.a11y-reduce-motion .hero-content > h1,
-body.a11y-reduce-motion .hero-content > .hero-lede,
-body.a11y-reduce-motion .hero-content > .hero-actions,
-body.a11y-reduce-motion .hero-content > .hero-meta,
-body.a11y-reduce-motion .hero-feature,
-body.a11y-reduce-motion .scroll-cue,
-body.a11y-reduce-motion .hero-backdrop .orb,
-body.a11y-reduce-motion .detail-dialog[open] {
-  animation: none !important;
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-body.a11y-reduce-motion .motion-reveal,
-body.a11y-reduce-motion .motion-ready .motion-reveal:not(.is-visible),
-body.a11y-reduce-motion .motion-ready .motion-reveal.is-visible {
   animation: portfolio-dialog-enter 220ms ease-out both;
 }
 
-/* The visitor's Reduce Motion switch overrides every optional effect,
-   including scroll reveals, so content stays visible immediately. */
-body.a11y-reduce-motion .hero-content > *,
-body.a11y-reduce-motion .hero-feature,
-body.a11y-reduce-motion .hero-backdrop .orb,
-body.a11y-reduce-motion .detail-dialog[open] {
-  animation: none !important;
+/* Accessibility panel motion and decorative edge lighting. */
+@keyframes accessibility-panel-enter {
+  from {
+    opacity: .6;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-body.a11y-reduce-motion .reveal-on-scroll,
-body.motion-enabled.a11y-reduce-motion .reveal-on-scroll {
-  opacity: 1 !important;
-  transform: none !important;
+.accessibility-panel {
+  isolation: isolate;
+}
+
+.accessibility-panel::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: -95px;
+  right: -85px;
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #75c2e43b 0%, #75c2e410 44%, transparent 72%);
+  pointer-events: none;
+}
+
+.accessibility-panel::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #75c2e4, #e33447 55%, transparent);
+  opacity: .8;
+  pointer-events: none;
+}
+
+.accessibility-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.accessibility-panel:not([hidden]) {
+  animation: accessibility-panel-enter 260ms cubic-bezier(.2, .7, .2, 1) both;
+}
+
+.accessibility-toggle-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 21px;
+  height: 21px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  font-size: 14px;
+}
+
+/* Keep selected settings and panel controls legible in high-contrast mode. */
+body.a11y-high-contrast .accessibility-panel {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #ffff00 !important;
+}
+
+body.a11y-high-contrast .accessibility-panel-header h2,
+body.a11y-high-contrast .accessibility-kicker,
+body.a11y-high-contrast .accessibility-group h3,
+body.a11y-high-contrast .accessibility-panel-intro,
+body.a11y-high-contrast .accessibility-option,
+body.a11y-high-contrast .accessibility-panel-footer p {
+  color: #fff !important;
+}
+
+body.a11y-high-contrast .accessibility-group {
+  background: #000 !important;
+  border-color: #ffff00 !important;
+}
+
+body.a11y-high-contrast .accessibility-reset,
+body.a11y-high-contrast .accessibility-toggle {
+  background: #ffff00 !important;
+  color: #000 !important;
+  border-color: #ffff00 !important;
+}
+
+/* In-panel and operating-system reduced-motion preferences both win.
+   Reveal all content immediately, and disable optional animation/transitions. */
+body.a11y-reduce-motion *,
+body.a11y-reduce-motion *::before,
+body.a11y-reduce-motion *::after {
+  scroll-behavior: auto !important;
+  animation: none !important;
   transition: none !important;
 }
 
+body.a11y-reduce-motion .reveal-on-scroll,
+body.a11y-reduce-motion.motion-enabled .reveal-on-scroll,
+body.a11y-reduce-motion.motion-enabled .reveal-on-scroll:not(.is-visible),
+body.a11y-reduce-motion.motion-enabled .reveal-on-scroll.is-visible,
 body.a11y-reduce-motion .research-card:hover,
-body.a11y-reduce-motion .research-card:hover .poster-graphic,
-body.a11y-reduce-motion .research-card:hover .pulse-chart,
-body.a11y-reduce-motion .research-card:hover .data-stack,
-body.a11y-reduce-motion .research-card:hover .burnout-art,
-body.a11y-reduce-motion .research-card:hover .monitor-grid {
+body.a11y-reduce-motion .research-card:focus-within,
+body.a11y-reduce-motion .research-card:hover .poster,
+body.a11y-reduce-motion .research-card:focus-within .poster {
+  opacity: 1 !important;
   transform: none !important;
+  transition: none !important;
+  filter: none !important;
+  box-shadow: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-content .headshot-wrap,
-  .hero-content > .eyebrow,
-  .hero-content > h1,
-  .hero-content > .hero-lede,
-  .hero-content > .hero-actions,
-  .hero-content > .hero-meta,
-  .hero-feature,
-  .scroll-cue,
-  .hero-backdrop .orb,
-  .detail-dialog[open] {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
     animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  .motion-ready .motion-reveal,
-  .motion-ready .motion-reveal:not(.is-visible),
-  .motion-ready .motion-reveal.is-visible {
-@media (prefers-reduced-motion: reduce) {
-  .hero-content > *,
-  .hero-feature,
-  .hero-backdrop .orb,
-  .detail-dialog[open] {
-    animation: none !important;
+    transition: none !important;
   }
 
   body.motion-enabled .reveal-on-scroll,
+  body.motion-enabled .reveal-on-scroll:not(.is-visible),
   body.motion-enabled .reveal-on-scroll.is-visible {
     opacity: 1 !important;
     transform: none !important;
@@ -1489,14 +1571,27 @@ body.a11y-reduce-motion .research-card:hover .monitor-grid {
   }
 
   .research-card:hover,
-  .research-card:hover .poster-graphic,
-  .research-card:hover .pulse-chart,
-  .research-card:hover .data-stack,
-  .research-card:hover .burnout-art,
-  .research-card:hover .monitor-grid {
+  .research-card:focus-within,
+  .research-card:hover .poster,
+  .research-card:focus-within .poster {
     transform: none !important;
-  .research-card,
-  .research-card .poster {
-    transition: none !important;
+    filter: none !important;
+    box-shadow: none !important;
+  }
+
+  .accessibility-panel:not([hidden]) {
+    animation: none !important;
+  }
+}
+
+/* Avoid motion-specific styling overrides for touch and narrow screens. */
+@media (hover: none) {
+  .research-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .research-card:hover .poster {
+    filter: none;
   }
 }
