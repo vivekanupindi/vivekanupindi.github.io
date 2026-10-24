@@ -1595,3 +1595,198 @@ body.a11y-reduce-motion .research-card:focus-within .poster {
     filter: none;
   }
 }
+
+/* =========================================================
+   Visible motion pass — stronger detail, still restrained
+   ========================================================= */
+
+/* The ambient glow was intentionally faint; raise its visibility enough
+   to be perceptible on normal laptop displays. */
+.hero-backdrop .orb-one {
+  opacity: .24;
+  filter: blur(72px);
+  animation: portfolio-orb-drift-one 9s ease-in-out infinite alternate;
+}
+
+.hero-backdrop .orb-two {
+  opacity: .14;
+  filter: blur(78px);
+  animation: portfolio-orb-drift-two 12s ease-in-out infinite alternate;
+}
+
+@keyframes portfolio-grid-drift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 44px 22px, 22px 44px; }
+}
+
+.hero-backdrop .grid-glow {
+  opacity: .3;
+  animation: portfolio-grid-drift 18s linear infinite;
+}
+
+/* Add a visible accent line beneath section titles. */
+@keyframes portfolio-accent-sweep {
+  0% { background-position: 0% 50%; transform: scaleX(.72); }
+  50% { background-position: 100% 50%; transform: scaleX(1); }
+  100% { background-position: 0% 50%; transform: scaleX(.72); }
+}
+
+.section-heading h2 {
+  position: relative;
+}
+
+.section-heading h2::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 3px;
+  margin-top: 13px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--red), #ff7078, #75c2e4);
+  background-size: 200% 100%;
+  transform-origin: left center;
+  animation: portfolio-accent-sweep 4s ease-in-out infinite;
+}
+
+/* Give the timeline's progress rail a quiet pulse. */
+@keyframes portfolio-timeline-pulse {
+  0%, 100% { box-shadow: 0 0 0 1px var(--red), 0 0 0 0 #e5091400; }
+  50% { box-shadow: 0 0 0 1px var(--red), 0 0 0 7px #e509141c; }
+}
+
+.timeline-mark {
+  animation: portfolio-timeline-pulse 2.8s ease-in-out infinite;
+}
+
+/* Motion makes the research graphics feel alive without moving the card text. */
+@keyframes portfolio-graphic-float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-6px); }
+}
+
+@keyframes portfolio-graphic-pulse {
+  0%, 100% { opacity: .72; filter: brightness(1); }
+  50% { opacity: 1; filter: brightness(1.28); }
+}
+
+.poster-graphic,
+.pulse-chart,
+.data-stack,
+.burnout-art,
+.monitor-grid {
+  animation: portfolio-graphic-float 3.2s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.clinical-graphic i,
+.poster-glucose .pulse-chart svg,
+.monitor-grid span {
+  animation: portfolio-graphic-pulse 2.2s ease-in-out infinite;
+}
+
+.data-stack span:nth-child(2),
+.monitor-grid span:nth-child(2) { animation-delay: 180ms; }
+.data-stack span:nth-child(3),
+.monitor-grid span:nth-child(3) { animation-delay: 360ms; }
+.data-stack span:nth-child(4) { animation-delay: 540ms; }
+
+/* Make the clinical waveform in the featured graphic actually render. */
+.feature-art .art-wave {
+  display: block !important;
+  z-index: 0;
+}
+
+/* A soft, diagonal light sweep on poster art adds movement on hover. */
+@keyframes portfolio-poster-sheen {
+  from { transform: translateX(-155%) skewX(-18deg); opacity: 0; }
+  15% { opacity: .22; }
+  65% { opacity: .1; }
+  to { transform: translateX(245%) skewX(-18deg); opacity: 0; }
+}
+
+.poster {
+  isolation: isolate;
+}
+
+.poster::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: -10%;
+  bottom: -10%;
+  left: 0;
+  width: 34%;
+  background: linear-gradient(90deg, transparent, #ffffff3a, transparent);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.research-card:hover .poster::before,
+.research-card:focus-within .poster::before {
+  animation: portfolio-poster-sheen 900ms ease-out both;
+}
+
+/* Increase the travel distance and duration of scroll reveals so visitors
+   can perceive them, while the matching reduced-motion rules below disable them. */
+body.motion-enabled .reveal-on-scroll {
+  transform: translateY(28px) scale(.985);
+  transition:
+    opacity 720ms cubic-bezier(.2, .7, .2, 1),
+    transform 720ms cubic-bezier(.2, .7, .2, 1);
+}
+
+body.motion-enabled .reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Ensure the in-page Reduce Motion setting wins over every new effect. */
+body.a11y-reduce-motion .hero-backdrop .grid-glow,
+body.a11y-reduce-motion .section-heading h2::after,
+body.a11y-reduce-motion .timeline-mark,
+body.a11y-reduce-motion .poster-graphic,
+body.a11y-reduce-motion .pulse-chart,
+body.a11y-reduce-motion .data-stack,
+body.a11y-reduce-motion .burnout-art,
+body.a11y-reduce-motion .monitor-grid,
+body.a11y-reduce-motion .clinical-graphic i,
+body.a11y-reduce-motion .poster-glucose .pulse-chart svg,
+body.a11y-reduce-motion .monitor-grid span,
+body.a11y-reduce-motion .poster::before {
+  animation: none !important;
+}
+
+body.a11y-reduce-motion .hero-backdrop .grid-glow {
+  background-position: 0 0 !important;
+}
+
+body.a11y-reduce-motion .research-card:hover .poster::before,
+body.a11y-reduce-motion .research-card:focus-within .poster::before {
+  opacity: 0 !important;
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-backdrop .grid-glow,
+  .section-heading h2::after,
+  .timeline-mark,
+  .poster-graphic,
+  .pulse-chart,
+  .data-stack,
+  .burnout-art,
+  .monitor-grid,
+  .clinical-graphic i,
+  .poster-glucose .pulse-chart svg,
+  .monitor-grid span,
+  .poster::before {
+    animation: none !important;
+  }
+
+  body.motion-enabled .reveal-on-scroll,
+  body.motion-enabled .reveal-on-scroll:not(.is-visible),
+  body.motion-enabled .reveal-on-scroll.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
