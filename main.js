@@ -342,6 +342,135 @@
     });
 
     // --------------------------------------
+    // Interactive research console
+    // --------------------------------------
+
+    const consoleForm = document.getElementById("research-console-form");
+    const consoleInput = document.getElementById("research-console-input");
+    const consoleOutput = document.getElementById("research-console-output");
+
+    if (consoleForm && consoleInput && consoleOutput) {
+      const commandHelp = [
+        "help                         List every available command",
+        "whoami                       Show my research profile",
+        "cat current_focus.md         Show my current research themes",
+        "ls active_projects/          List featured research directions",
+        "open research                Jump to Topics I'm exploring",
+        "open publications            Jump to publications",
+        "open experience              Jump to experience",
+        "open about                   Jump to the about section",
+        "open contact                 Jump to contact information",
+        "open fun-corner              Open the Fun Corner (books and films)",
+        "clear                        Clear the console output"
+      ];
+
+      function writeConsoleLine(text, kind = "output") {
+        const line = document.createElement("p");
+        line.className = "terminal-console-line terminal-console-" + kind;
+        line.textContent = text;
+        consoleOutput.appendChild(line);
+        consoleOutput.scrollTop = consoleOutput.scrollHeight;
+      }
+
+      function clearConsole() {
+        consoleOutput.textContent = "";
+      }
+
+      function scrollToPortfolioSection(id, label) {
+        const target = document.getElementById(id);
+        if (!target) {
+          writeConsoleLine("Section not found: " + label, "error");
+          return;
+        }
+
+        writeConsoleLine("Opening " + label + " ...", "success");
+        const reduceMotion = shouldReduceMotion();
+        target.scrollIntoView({
+          behavior: reduceMotion ? "auto" : "smooth",
+          block: "start"
+        });
+      }
+
+      function runConsoleCommand(rawCommand) {
+        const command = rawCommand.trim().toLowerCase().replace(/\s+/g, " ");
+        if (!command) return;
+
+        if (command === "clear") {
+          clearConsole();
+          writeConsoleLine("Console cleared. Type 'help' to see available commands.", "success");
+          return;
+        }
+
+        writeConsoleLine("$ " + rawCommand.trim(), "command");
+
+        if (command === "help" || command === "?") {
+          writeConsoleLine("Available commands:", "heading");
+          commandHelp.forEach((item) => writeConsoleLine(item, "help"));
+          writeConsoleLine("This is a portfolio console: commands are predefined and do not execute system commands.", "muted");
+          return;
+        }
+
+        if (command === "whoami" || command === "whoami --research") {
+          writeConsoleLine("Vivek Anupindi — Computer Science Ph.D. student at UMBC.", "success");
+          writeConsoleLine("Focus: clinical NLP, healthcare AI, predictive modeling, and reliable data systems.");
+          return;
+        }
+
+        if (command === "cat current_focus.md" || command === "focus") {
+          writeConsoleLine("# Clinical NLP · Healthcare AI · Reliable data systems", "success");
+          writeConsoleLine("Current directions include clinical text classification, exploratory time-series prediction, and dependable analytics pipelines.");
+          return;
+        }
+
+        if (command === "ls" || command === "ls active_projects" || command === "ls active_projects/") {
+          writeConsoleLine("clinical-nlp/       Clinical text and multi-label ICD-10 coding", "help");
+          writeConsoleLine("health-forecasting/ Exploratory glucose time-series prediction", "help");
+          writeConsoleLine("data-systems/       Pipelines, analytics, and dependable data", "help");
+          return;
+        }
+
+        const commandsToSections = {
+          "research": ["research", "research topics"],
+          "open research": ["research", "research topics"],
+          "publications": ["publications", "publications"],
+          "open publications": ["publications", "publications"],
+          "experience": ["experience", "experience"],
+          "open experience": ["experience", "experience"],
+          "about": ["about", "about"],
+          "open about": ["about", "about"],
+          "contact": ["contact", "contact"],
+          "open contact": ["contact", "contact"]
+        };
+
+        if (commandsToSections[command]) {
+          const [id, label] = commandsToSections[command];
+          scrollToPortfolioSection(id, label);
+          return;
+        }
+
+        if (command === "open fun-corner" ||
+            command === "open blog" ||
+            command === "open off-the-clock" ||
+            command === "open books-and-films" ||
+            command === "fun-corner") {
+          writeConsoleLine("Opening Fun Corner — books, films, and personal notes ...", "success");
+          window.location.href = "blog.html";
+          return;
+        }
+
+        writeConsoleLine("Command not found: " + rawCommand.trim(), "error");
+        writeConsoleLine("Type 'help' to list supported commands.", "muted");
+      }
+
+      consoleForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const value = consoleInput.value;
+        consoleInput.value = "";
+        runConsoleCommand(value);
+      });
+    }
+
+    // --------------------------------------
     // Research detail dialog
     // --------------------------------------
 
