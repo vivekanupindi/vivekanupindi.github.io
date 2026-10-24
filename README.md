@@ -40,3 +40,6 @@ Available controls:
 6. Run an automated check with Lighthouse or axe, then manually review contrast, zoom/reflow, keyboard order, and screen-reader announcements.
 
 These controls are user preferences, not a substitute for a formal WCAG conformance audit. Please run automated and manual accessibility tests before describing the site as WCAG-compliant.
+
+
+Motion is intentionally subtle: the hero elements enter in sequence, the ambient background drifts slowly, research visuals respond gently to hover, and selected content reveals as it enters the viewport. The in-site Reduce Motion option and the operating system's reduced-motion preference disable these effects.
