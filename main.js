@@ -241,47 +241,6 @@
     }
 
     // --------------------------------------
-    // Scroll-triggered reveals
-    // Added only when IntersectionObserver is available so content remains
-    // visible if motion support cannot be initialized.
-    // --------------------------------------
-
-    if ("IntersectionObserver" in window) {
-      const revealTargets = document.querySelectorAll([
-        ".content-section",
-        ".feature-strip",
-        ".contact-section",
-        ".research-card",
-        ".publication-item",
-        ".timeline-item",
-        ".education-item",
-        ".skills-grid article",
-        ".highlight-card"
-      ].join(", "));
-
-      if (revealTargets.length) {
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-revealed");
-              observer.unobserve(entry.target);
-            }
-          });
-        }, {
-          threshold: 0.12,
-          rootMargin: "0px 0px -36px 0px"
-        });
-
-        revealTargets.forEach((element) => {
-          element.classList.add("reveal-on-scroll");
-          revealObserver.observe(element);
-        });
-
-        body.classList.add("motion-ready");
-      }
-    }
-
-    // --------------------------------------
     // Mobile navigation
     // --------------------------------------
 
