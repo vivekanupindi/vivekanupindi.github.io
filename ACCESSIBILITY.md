@@ -27,6 +27,16 @@ Selections are saved with `localStorage` in the visitor's browser. The reset con
 - Run automated checks with Lighthouse or axe and inspect color contrast manually.
 - Test that reduced-motion settings minimize movement and transitions.
 
+## Motion behavior
+
+Optional motion includes a brief staggered hero entrance, slowly shifting decorative background glows, subtle card hover/focus feedback, scroll-triggered reveals, and a short project-dialog entrance.
+
+- Motion is decorative; it does not add information needed to understand the portfolio.
+- Scroll-reveal styles are only activated when JavaScript and `IntersectionObserver` are available. Without them, content stays visible.
+- The system-level `prefers-reduced-motion: reduce` preference and the visitor's **Reduce motion** setting disable decorative animations and reveal transitions.
+- Verify the site with reduced motion both enabled before loading and toggled on while the page is open. Confirm all sections remain visible and usable.
+- Test keyboard focus on cards and ensure visual movement never obscures focus indicators or hides content.
+
 ## Scope note
 
 These controls improve customization, but their presence does not establish WCAG 2.2 AA conformance. Formal conformance requires automated and manual testing across the full page, interactions, content, and responsive states.

@@ -241,6 +241,60 @@
     }
 
     // --------------------------------------
+    // Subtle motion and scroll reveals
+    // --------------------------------------
+
+    // Keep content fully visible when motion is reduced, or when the browser
+    // lacks IntersectionObserver. The page remains usable without this feature.
+    const systemPrefersReducedMotion =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (
+      !systemPrefersReducedMotion &&
+      !body.classList.contains("a11y-reduce-motion") &&
+      "IntersectionObserver" in window
+    ) {
+      const motionTargets = document.querySelectorAll([
+        ".research-card",
+        ".feature-strip",
+        ".publication-item",
+        ".timeline-item",
+        ".education-item",
+        ".skills-grid article",
+        ".highlight-card",
+        ".contact-content"
+      ].join(", "));
+
+      motionTargets.forEach((element, index) => {
+        element.classList.add("reveal-on-scroll");
+        element.style.setProperty(
+          "--reveal-delay",
+          String((index % 4) * 65) + "ms"
+        );
+      });
+
+      if (motionTargets.length > 0) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          root: null,
+          rootMargin: "0px 0px -8% 0px",
+          threshold: 0.12
+        });
+
+        // Enable hiding only after targets and the observer have been prepared.
+        body.classList.add("motion-enabled");
+        motionTargets.forEach((element) => revealObserver.observe(element));
+      }
+    }
+
+    // --------------------------------------
     // Mobile navigation
     // --------------------------------------
 
