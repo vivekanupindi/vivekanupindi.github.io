@@ -40,3 +40,12 @@ Available controls:
 6. Run an automated check with Lighthouse or axe, then manually review contrast, zoom/reflow, keyboard order, and screen-reader announcements.
 
 These controls are user preferences, not a substitute for a formal WCAG conformance audit. Please run automated and manual accessibility tests before describing the site as WCAG-compliant.
+
+## Motion and reduced-motion support
+
+The portfolio uses restrained decorative motion: a staggered hero entrance, slow ambient background movement, subtle research-card interactions, and scroll-triggered reveals for lower-page sections. Motion is an enhancement, not a requirement for understanding the content.
+
+- Scroll reveals are enabled only when JavaScript and `IntersectionObserver` are available; otherwise, content remains visible.
+- The browser's `prefers-reduced-motion` preference and the Accessibility panel's **Reduce motion** option disable optional animations and keep revealed content visible.
+- When reviewing motion, test the first page load, the research cards, scroll reveals, and project detail dialog on desktop and mobile.
+- Motion should remain subtle and should never prevent keyboard users from identifying or reaching content.
