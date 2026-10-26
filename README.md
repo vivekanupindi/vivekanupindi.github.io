@@ -94,20 +94,19 @@ Some entries describe ongoing or exploratory work rather than validated clinical
 
 There is no framework, package manager, build pipeline, or backend required for the current site. Google Fonts are requested from Google's font service, so the selected web fonts may fall back to system fonts when the service is unavailable.
 
-## Repository structure
-
-```text
+Repository Structure
 .
-├── index.html                  # Portfolio, research console, and accessibility panel
-├── blog.html                   # Separate Fun Corner (Books & Films) page
-├── styles.css                  # Main styles, responsive rules, themes, and motion
-├── main.js                     # Interactions, stored preferences, and motion behavior
-├── README.md                   # Project overview and maintenance guide
-├── ACCESSIBILITY.md            # Accessibility settings and manual test checklist
-└── assets/
-    ├── headshot.jpeg           # Hero profile image
-    ├── Vivek_Anupindi_CV.pdf   # CV linked from the portfolio
-    └── favicon.svg             # Browser tab icon
+├── index.html                  # Main portfolio page
+├── blog.html                   # Secondary page for Books & Films content
+├── styles.css                  # Main styling, layout, responsiveness, and theme behavior
+├── main.js                    # Interactions, theme toggling, dialogs, accessibility settings
+├── README.md                  # Project overview and maintenance guide
+├── ACCESSIBILITY.md           # Accessibility settings and review checklist
+├── assets/
+│   ├── headshot.jpeg          # Profile image
+│   ├── Vivek_Anupindi_CV.pdf  # Curriculum vitae
+│   └── favicon.svg            # Browser tab icon
+└── .github/                   # Optional repo-level workflows and configuration
 ```
 
 ## Run locally
