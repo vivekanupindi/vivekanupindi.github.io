@@ -1,56 +1,55 @@
 # Vivek Anupindi — Research Portfolio
 
-This repository contains the personal research portfolio for Vivek Anupindi, published as a static website via GitHub Pages.
-
-The site highlights research interests, projects, publications, experience, academic background, and contact information in a responsive, modern portfolio layout.
+This repository hosts the professional research portfolio of Vivek Anupindi, presented as a static website and published through GitHub Pages. The site is designed to communicate academic interests, research activity, professional experience, and selected projects in a clear and accessible digital format.
 
 Live site: https://vivekanupindi.github.io/
 
 ## Overview
 
-This project is a static portfolio website that includes:
-- a research-focused landing page
-- featured projects and publication highlights
-- academic and professional experience sections
-- contact and social links
-- responsive behavior across desktop, tablet, and mobile screens
-- light and dark theme support
-- accessibility preferences and reduced-motion options
-- no backend or dependency installation required
+The portfolio functions as a lightweight, static academic web presence for showcasing:
+- research interests and ongoing work
+- project highlights and technical contributions
+- publications and scholarly outputs
+- educational and professional background
+- contact information and professional links
+- a responsive layout suitable for desktop, tablet, and mobile viewing
 
-## Features
+The site is intentionally simple in architecture: it requires no backend, database, or package manager and is optimized for straightforward hosting and maintenance.
 
-- Research portfolio and project library
-- Featured research highlights and publications
+## Key Features
+
+- Research-driven portfolio structure
+- Project and publication highlights
 - Experience timeline and academic background
-- Contact and profile links
-- Responsive layout for multiple screen sizes
-- Theme switching for light and dark modes
-- Accessibility support, including contrast and motion preferences
+- Contact and professional links
+- Responsive design for multiple screen sizes
+- Light and dark mode support
+- Accessibility-oriented interface options and reduced-motion settings
 - Interactive research console and project detail dialogs
-- Separate Books & Films page for media and reading notes
+- Separate Books & Films section for curated reading and media notes
 
 ## Repository Structure
 
 ```text
 .
-├── index.html                  # Main portfolio page
+├── index.html                  # Main portfolio page and primary content
 ├── blog.html                   # Secondary page for Books & Films content
-├── styles.css                  # Main styling, layout, responsiveness, and theme behavior
-├── main.js                     # Interactions, dialogs, theme toggling, and accessibility settings
-├── README.md                   # Project overview and maintenance guide
-├── ACCESSIBILITY.md            # Accessibility settings and manual review checklist
+├── styles.css                  # Main styling, responsive layout, theming, and accessibility rules
+├── main.js                     # Interactivity, dialogs, theme switching, and UI behavior
+├── README.md                   # Project overview and repository usage guidance
+├── ACCESSIBILITY.md            # Accessibility settings and manual verification checklist
 ├── assets/
-│   ├── headshot.jpeg           # Profile image
+│   ├── headshot.jpeg           # Profile photo for the portfolio
 │   ├── Vivek_Anupindi_CV.pdf   # Curriculum vitae
 │   └── favicon.svg             # Browser tab icon
-├── .github/                    # Optional repository workflows or configuration
-└── .gitignore                  # Git ignore rules (if present)
+├── .github/                    # Optional repository configuration and workflow files
+├── .gitignore                  # Git ignore rules
+└── LICENSE                     # License file, if applicable
 ```
 
 ## Local Development
 
-This is a static site, so no package installation or build process is required.
+This project is a static website and does not require a build pipeline or dependency installation.
 
 1. Clone the repository:
 
@@ -65,98 +64,95 @@ This is a static site, so no package installation or build process is required.
    python -m http.server 8000
    ```
 
-3. Open the page in a browser:
+3. Open the portfolio in a browser:
 
    ```text
    http://localhost:8000
    ```
 
-A local server is preferred over opening `index.html` directly, because it more closely matches the deployed site behavior.
+Using a local web server is recommended because it more closely matches the deployment behavior of the published GitHub Pages site.
 
-## How to Update the Portfolio
+## Maintaining the Portfolio
 
-### Update content
-Edit `index.html` to revise:
+### Content updates
+Edit `index.html` to revise sections including:
 - research interests
 - featured projects
 - publications
 - experience details
 - education and background
-- contact links
+- professional links
 
-Keep section IDs and navigation anchors consistent.
+Maintain consistent heading structure and section IDs to preserve navigation integrity.
 
-### Update styling
+### Design updates
 Edit `styles.css` to adjust:
 - layout and spacing
-- colors and typography
-- theme behavior
-- mobile responsiveness
+- typography and hierarchy
+- color palette and theme behavior
+- responsive design rules
 - motion and accessibility styling
 
-### Update interactions
-Edit `main.js` to change:
+### Interaction updates
+Edit `main.js` to revise:
 - theme switching
-- mobile navigation
-- dialogs
-- research card behavior
-- accessibility settings
-- scroll-reveal behavior
+- mobile navigation behavior
+- project dialogs
+- accessibility controls
+- scroll-reveal effects and motion preferences
 
-### Update assets
-Replace files in `assets/` as needed:
-- headshot
+### Asset updates
+Replace or update files in `assets/` as needed:
+- profile image
 - CV
 - favicon
 
-If the filename changes, update the corresponding reference in `index.html`.
+If an asset filename changes, ensure the corresponding reference in `index.html` is updated.
 
-### Keep information accurate
-Before publishing changes, verify that:
-- project summaries are current
-- dates and experience details are correct
+### Accuracy and review
+Before publishing updates, confirm that:
+- project descriptions are accurate and current
+- professional and academic dates are correct
 - publication status is up to date
-- contact links work
-- academic content matches the latest CV and records
+- links and contact details are valid
+- the content remains consistent with the latest CV or institutional records
 
 ## Deployment
 
-This site is hosted with GitHub Pages.
+This portfolio is deployed through GitHub Pages.
 
-To publish or verify a deployment:
-1. Merge the changes into the `main` branch.
-2. Confirm the repository's Pages settings are configured correctly.
-3. Check the latest deployment in the repository Actions tab.
-4. Verify the homepage and supporting pages after deployment.
+To publish or validate a deployment:
+1. Merge changes into the `main` branch.
+2. Confirm the repository Pages settings are configured correctly.
+3. Review deployment status in the repository Actions tab.
+4. Verify the live site after publication.
 
 ## Accessibility
 
-Accessibility is treated as an ongoing improvement rather than a final claim of conformance.
+Accessibility is treated as an ongoing design consideration rather than a final claim of conformance.
 
-The site includes:
-- keyboard-friendly navigation
-- visible focus states
-- reduced-motion support
-- theme and readability preferences
-- contrast-enhancing controls
-- semantic structure and labels
+The site includes support for:
+- keyboard navigation
+- visible focus indicators
+- reduced-motion settings
+- theme and readability controls
+- contrast enhancement options
+- semantic structure and descriptive labeling
 
-See [ACCESSIBILITY.md](ACCESSIBILITY.md) for more detail and the manual review checklist.
+For implementation details and manual testing guidance, see [ACCESSIBILITY.md](ACCESSIBILITY.md).
 
 ## Testing Checklist
 
-Before merging substantial changes, confirm that:
-- all links resolve correctly
-- the CV and profile image load properly
-- the layout works on desktop, tablet, and mobile widths
-- light and dark themes render correctly
-- dialogs and interactive elements work with both mouse and keyboard
-- accessibility settings behave as expected
-- motion preferences reduce unnecessary animation
-- published content reflects current academic and professional information
+Before merging substantive changes, verify that:
+- all navigation and contact links function correctly
+- the profile image and CV load successfully
+- the site renders correctly across desktop, tablet, and mobile dimensions
+- light and dark themes display appropriately
+- interactive elements work with both pointer and keyboard input
+- accessibility controls behave as expected
+- motion preferences minimize unnecessary animation
+- content remains aligned with current academic and professional records
 
 ## Notes
 
-This is a personal portfolio and research site. It is intentionally lightweight, static, and easy to maintain using GitHub Pages.
-
-The project is designed for clarity, portability, and straightforward hosting without a backend or framework.
+This repository hosts a personal research portfolio and is intentionally designed to be lightweight, maintainable, and easy to deploy through GitHub Pages. The project emphasizes clarity, accessibility, and straightforward static hosting without a backend or complex application architecture.
