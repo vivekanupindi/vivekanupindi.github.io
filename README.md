@@ -1,158 +1,76 @@
 # Vivek Anupindi — Research Portfolio
 
-This repository hosts the professional research portfolio of Vivek Anupindi, presented as a static website and published through GitHub Pages. The site is designed to communicate academic interests, research activity, professional experience, and selected projects in a clear and accessible digital format.
+A static, GitHub Pages portfolio for Vivek Anupindi, featuring research, projects, publications, professional experience, and academic background.
 
-Live site: https://vivekanupindi.github.io/
+**Live site:** [vivekanupindi.github.io](https://vivekanupindi.github.io/)
 
-## Overview
+## Contents
 
-The portfolio functions as a lightweight, static academic web presence for showcasing:
-- research interests and ongoing work
-- project highlights and technical contributions
-- publications and scholarly outputs
-- educational and professional background
-- contact information and professional links
-- a responsive layout suitable for desktop, tablet, and mobile viewing
+- [Highlights](#highlights)
+- [Technology](#technology)
+- [Repository structure](#repository-structure)
+- [Run locally](#run-locally)
+- [Maintain the site](#maintain-the-site)
+- [Accessibility](#accessibility)
+- [Deploy](#deploy)
 
-The site is intentionally simple in architecture: it requires no backend, database, or package manager and is optimized for straightforward hosting and maintenance.
+## Highlights
 
-## Key Features
+- Research portfolio covering clinical NLP, healthcare machine learning, time-series modeling, and data systems
+- Project, publication, experience, education, and contact sections
+- A separate **Books & Films** page at [blog.html](blog.html)
+- Interactive research console with a fixed set of navigation and information commands; it does not run shell commands
+- Project detail dialogs, mobile navigation, and light/dark themes
+- Optional accessibility preferences for contrast, text size, font styling, motion, focus, links, and line spacing
 
-- Research-driven portfolio structure
-- Project and publication highlights
-- Experience timeline and academic background
-- Contact and professional links
-- Responsive design for multiple screen sizes
-- Light and dark mode support
-- Accessibility-oriented interface options and reduced-motion settings
-- Interactive research console and project detail dialogs
-- Separate Books & Films section for curated reading and media notes
+Publication and project statuses are presented as listed on the site. They should be checked against current records before being reused elsewhere.
 
-## Repository Structure
+## Technology
+
+The site uses semantic HTML, CSS, and vanilla JavaScript. It has no application backend, package manager, or build step. Google Fonts supplies the preferred typefaces when available; system fonts remain the fallback.
+
+## Repository structure
 
 ```text
 .
-├── index.html                  # Main portfolio page and primary content
-├── blog.html                   # Secondary page for Books & Films content
-├── styles.css                  # Main styling, responsive layout, theming, and accessibility rules
-├── main.js                     # Interactivity, dialogs, theme switching, and UI behavior
-├── README.md                   # Project overview and repository usage guidance
-├── ACCESSIBILITY.md            # Accessibility settings and manual verification checklist
-├── assets/
-│   ├── headshot.jpeg           # Profile photo for the portfolio
-│   ├── Vivek_Anupindi_CV.pdf   # Curriculum vitae
-│   └── favicon.svg             # Browser tab icon
-├── .github/                    # Optional repository configuration and workflow files
-├── .gitignore                  # Git ignore rules
-└── LICENSE                     # License file, if applicable
+├── index.html                 # Main portfolio and research console
+├── blog.html                  # Books & Films page
+├── styles.css                 # Layout, themes, responsive styles, and accessibility preferences
+├── main.js                    # Navigation, dialogs, preferences, and page interactions
+├── ACCESSIBILITY.md           # Accessibility features and manual review guidance
+├── README.md
+└── assets/
+    ├── headshot.jpeg
+    ├── Vivek_Anupindi_CV.pdf
+    └── favicon.svg
 ```
 
-## Local Development
+## Run locally
 
-This project is a static website and does not require a build pipeline or dependency installation.
+No dependencies are required. From the repository directory, start a local server:
 
-1. Clone the repository:
+```bash
+python -m http.server 8000
+```
 
-   ```bash
-   git clone https://github.com/vivekanupindi/vivekanupindi.github.io.git
-   cd vivekanupindi.github.io
-   ```
+Then visit [http://localhost:8000](http://localhost:8000). A local server exercises the site more like its GitHub Pages deployment than opening the HTML file directly.
 
-2. Start a local web server:
+## Maintain the site
 
-   ```bash
-   python -m http.server 8000
-   ```
+- **Portfolio content:** edit `index.html`. Keep section IDs aligned with the navigation links.
+- **Books & Films content:** edit `blog.html`.
+- **Layout and visual styling:** edit `styles.css`.
+- **Interactions:** edit `main.js`. Keep controls usable by keyboard and respect reduced-motion preferences.
+- **Images, CV, and icon:** update the matching files in `assets/`; update page references if filenames change.
 
-3. Open the portfolio in a browser:
-
-   ```text
-   http://localhost:8000
-   ```
-
-Using a local web server is recommended because it more closely matches the deployment behavior of the published GitHub Pages site.
-
-## Maintaining the Portfolio
-
-### Content updates
-Edit `index.html` to revise sections including:
-- research interests
-- featured projects
-- publications
-- experience details
-- education and background
-- professional links
-
-Maintain consistent heading structure and section IDs to preserve navigation integrity.
-
-### Design updates
-Edit `styles.css` to adjust:
-- layout and spacing
-- typography and hierarchy
-- color palette and theme behavior
-- responsive design rules
-- motion and accessibility styling
-
-### Interaction updates
-Edit `main.js` to revise:
-- theme switching
-- mobile navigation behavior
-- project dialogs
-- accessibility controls
-- scroll-reveal effects and motion preferences
-
-### Asset updates
-Replace or update files in `assets/` as needed:
-- profile image
-- CV
-- favicon
-
-If an asset filename changes, ensure the corresponding reference in `index.html` is updated.
-
-### Accuracy and review
-Before publishing updates, confirm that:
-- project descriptions are accurate and current
-- professional and academic dates are correct
-- publication status is up to date
-- links and contact details are valid
-- the content remains consistent with the latest CV or institutional records
-
-## Deployment
-
-This portfolio is deployed through GitHub Pages.
-
-To publish or validate a deployment:
-1. Merge changes into the `main` branch.
-2. Confirm the repository Pages settings are configured correctly.
-3. Review deployment status in the repository Actions tab.
-4. Verify the live site after publication.
+Before publishing content changes, verify project descriptions, dates, publication status, contact details, and links against current records.
 
 ## Accessibility
 
-Accessibility is treated as an ongoing design consideration rather than a final claim of conformance.
+The site provides keyboard-accessible controls, visible focus styling, reduced-motion support, and optional display and reading preferences. These features do not establish conformance with an accessibility standard. See [ACCESSIBILITY.md](ACCESSIBILITY.md) for implementation notes and a manual review checklist.
 
-The site includes support for:
-- keyboard navigation
-- visible focus indicators
-- reduced-motion settings
-- theme and readability controls
-- contrast enhancement options
-- semantic structure and descriptive labeling
+When changing the interface, check keyboard navigation, both themes, narrow viewports, dialogs and menus, and the accessibility preferences. Automated checks can help identify issues but should be paired with manual review.
 
-For implementation details and manual testing guidance, see [ACCESSIBILITY.md](ACCESSIBILITY.md).
+## Deploy
 
-## Testing Checklist
-
-Before merging substantive changes, verify that:
-- all navigation and contact links function correctly
-- the profile image and CV load successfully
-- the site renders correctly across desktop, tablet, and mobile dimensions
-- light and dark themes display appropriately
-- interactive elements work with both pointer and keyboard input
-- accessibility controls behave as expected
-- motion preferences minimize unnecessary animation
-- content remains aligned with current academic and professional records
-
-## Notes
-
-This repository hosts a personal research portfolio and is intentionally designed to be lightweight, maintainable, and easy to deploy through GitHub Pages. The project emphasizes clarity, accessibility, and straightforward static hosting without a backend or complex application architecture.
+The repository is published with GitHub Pages at [vivekanupindi.github.io](https://vivekanupindi.github.io/). Merge changes into `main`, confirm the Pages deployment has completed in the repository’s **Actions** tab, and review the live pages and key interactions after deployment.
