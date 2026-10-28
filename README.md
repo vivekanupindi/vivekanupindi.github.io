@@ -1,224 +1,76 @@
 # Vivek Anupindi — Research Portfolio
 
-Personal research portfolio for **Vivek Anupindi**
+A static, GitHub Pages portfolio for Vivek Anupindi, featuring research, projects, publications, professional experience, and academic background.
 
-**Live portfolio:** [https://vivekanupindi.github.io/](https://vivekanupindi.github.io/)
-
-The visual design takes inspiration from cinematic streaming interfaces—dark surfaces, bold typography, red accents, and horizontal project cards—adapted for a personal academic portfolio. This is an independently built portfolio and is not affiliated with Netflix.
-
----
+**Live site:** [vivekanupindi.github.io](https://vivekanupindi.github.io/)
 
 ## Contents
 
-- [Features](#features)
-- [Research areas represented](#research-areas-represented)
-- [Technology stack](#technology-stack)
+- [Highlights](#highlights)
+- [Technology](#technology)
 - [Repository structure](#repository-structure)
 - [Run locally](#run-locally)
-- [How to update the portfolio](#how-to-update-the-portfolio)
+- [Maintain the site](#maintain-the-site)
 - [Accessibility](#accessibility)
-- [Motion and reduced-motion support](#motion-and-reduced-motion-support)
-- [Deployment](#deployment)
-- [Testing checklist](#testing-checklist)
-- [Limitations and scope](#limitations-and-scope)
+- [Deploy](#deploy)
 
-## Features
+## Highlights
 
-### Portfolio content
+- Research portfolio covering clinical NLP, healthcare machine learning, time-series modeling, and data systems
+- Project, publication, experience, education, and contact sections
+- A separate **Books & Films** page at [blog.html](blog.html)
+- Interactive research console with a fixed set of navigation and information commands; it does not run shell commands
+- Project detail dialogs, mobile navigation, and light/dark themes
+- Optional accessibility preferences for contrast, text size, font styling, motion, focus, links, and line spacing
 
-- **Introduction and featured research** — overview of my research interests and a featured clinical NLP project.
-- **Research library** — project cards for automated ICD-10 coding, glucose prediction, cloud-native analytics, physician burnout analysis, and smart health monitoring.
-- **Project details** — open a dialog with additional context from a research card.
-- **Publications and manuscripts** — separate entries for published work and manuscripts listed as under review.
-- **Experience timeline** — teaching, data engineering, and IT systems experience.
-- **About and education** — background, academic programs, and research interests.
-- **Technical toolkit and academic highlights** — grouped skills, certifications, awards, coursework, and activities.
-- **Contact links** — email, GitHub, and LinkedIn.
-- **Interactive research console** — a terminal-inspired command prompt that accepts predefined commands such as `help`, `whoami`, `cat current_focus.md`, `ls active_projects/`, `open research`, `open publications`, `open experience`, `open about`, `open contact`, `open fun-corner`, and `clear`. The console does not execute arbitrary shell commands.
-- **Fun Corner** — a separate, editorial-style Books & Films page for personal book notes, movie favorites, watchlists, and short reviews.
+Publication and project statuses are presented as listed on the site. They should be checked against current records before being reused elsewhere.
 
-Publication statuses and project descriptions reflect the information currently listed on the portfolio. They should be kept synchronized with the current CV and publication records.
+## Technology
 
-### Interface
-
-- Responsive layout for desktop, tablet, and mobile.
-- Dark and light themes.
-- Mobile navigation menu.
-- Horizontally scrollable research-card rail with previous/next controls.
-- Project detail dialogs.
-- Footer year updated automatically by JavaScript.
-- Subtle hero entrance, ambient background movement, scroll-triggered reveals, card feedback, and dialog transitions.
-
-### Visitor accessibility preferences
-
-The floating **Accessibility** panel provides optional presentation and reading settings:
-
-- High contrast
-- Large text
-- Dyslexia-friendly font styling (system font stack with increased letter and word spacing)
-- Reduced motion
-- Enhanced keyboard focus indicators
-- Underlined links
-- Increased line spacing
-- Highlighted headings
-
-Preferences are stored in the visitor's browser using `localStorage`. The reset control clears the saved custom preferences. If browser storage is blocked, the controls should still apply during the current page session.
-
-See [ACCESSIBILITY.md](ACCESSIBILITY.md) for the available settings and manual verification checklist.
-
-### Interactive research console
-
-The homepage terminal accepts a small set of predefined commands. Type `help` in the console to see the available commands. Supported commands include `whoami`, `cat current_focus.md`, `ls active_projects/`, `open research`, `open publications`, `open experience`, `open about`, `open contact`, `open fun-corner`, and `clear`. Commands navigate within the portfolio or open the Fun Corner; they do not execute shell commands or access a real terminal.
-
-## Research areas represented
-
-The portfolio currently highlights these interests and project directions:
-
-- Clinical natural language processing (NLP) and diagnostic-code classification
-- Machine learning for healthcare
-- Short-term glucose prediction and time-series modeling
-- Healthcare analytics
-- Data engineering, cloud-native analytics, and data quality
-- Intelligent and dependable data systems
-
-Some entries describe ongoing or exploratory work rather than validated clinical systems. The portfolio is intended to present research interests and projects, not to provide medical advice or clinical predictions.
-
-## Technology stack
-
-| Technology | Purpose |
-| --- | --- |
-| HTML5 | Semantic page structure and content |
-| CSS3 | Responsive layout, themes, visual design, animation, and accessibility preference styles |
-| Vanilla JavaScript | Mobile navigation, theme preference, research rail controls, dialogs, accessibility settings, and scroll reveals |
-| Google Fonts | DM Sans and Manrope typography |
-
-There is no framework, package manager, build pipeline, or backend required for the current site. Google Fonts are requested from Google's font service, so the selected web fonts may fall back to system fonts when the service is unavailable.
+The site uses semantic HTML, CSS, and vanilla JavaScript. It has no application backend, package manager, or build step. Google Fonts supplies the preferred typefaces when available; system fonts remain the fallback.
 
 ## Repository structure
 
 ```text
 .
-├── index.html                  # Portfolio, research console, and accessibility panel
-├── blog.html                   # Separate Fun Corner (Books & Films) page
-├── styles.css                  # Main styles, responsive rules, themes, and motion
-├── main.js                     # Interactions, stored preferences, and motion behavior
-├── README.md                   # Project overview and maintenance guide
-├── ACCESSIBILITY.md            # Accessibility settings and manual test checklist
+├── index.html                 # Main portfolio and research console
+├── blog.html                  # Books & Films page
+├── styles.css                 # Layout, themes, responsive styles, and accessibility preferences
+├── main.js                    # Navigation, dialogs, preferences, and page interactions
+├── ACCESSIBILITY.md           # Accessibility features and manual review guidance
+├── README.md
 └── assets/
-    ├── headshot.jpeg           # Hero profile image
-    ├── Vivek_Anupindi_CV.pdf   # CV linked from the portfolio
-    └── favicon.svg             # Browser tab icon
+    ├── headshot.jpeg
+    ├── Vivek_Anupindi_CV.pdf
+    └── favicon.svg
 ```
 
 ## Run locally
 
-Because this is a static site, you do not need to install dependencies.
+No dependencies are required. From the repository directory, start a local server:
 
-1. Clone the repository:
+```bash
+python -m http.server 8000
+```
 
-   ```bash
-   git clone https://github.com/vivekanupindi/vivekanupindi.github.io.git
-   cd vivekanupindi.github.io
-   ```
+Then visit [http://localhost:8000](http://localhost:8000). A local server exercises the site more like its GitHub Pages deployment than opening the HTML file directly.
 
-2. Start a local web server from the repository directory. For example, with Python:
+## Maintain the site
 
-   ```bash
-   python -m http.server 8000
-   ```
+- **Portfolio content:** edit `index.html`. Keep section IDs aligned with the navigation links.
+- **Books & Films content:** edit `blog.html`.
+- **Layout and visual styling:** edit `styles.css`.
+- **Interactions:** edit `main.js`. Keep controls usable by keyboard and respect reduced-motion preferences.
+- **Images, CV, and icon:** update the matching files in `assets/`; update page references if filenames change.
 
-3. Open [http://localhost:8000](http://localhost:8000) in your browser.
-
-You can also use a local editor extension such as Live Server. A local server is preferable to opening `index.html` directly because it more closely resembles the deployed website.
-
-## How to update the portfolio
-
-### Update text or page sections
-
-Edit `index.html`. Keep navigation links matched to the corresponding section IDs (for example, `#research` and `#experience`). Preserve semantic headings and descriptive labels for interactive controls.
-
-### Update design or responsive behavior
-
-Edit `styles.css`. Test both themes and narrow viewport sizes. Keep keyboard-focus indicators visible and ensure visual changes still work when the accessibility preference classes are active.
-
-### Update interactions
-
-Edit `main.js`. Current features include theme switching, mobile navigation, research-card scrolling, research detail dialogs, accessibility settings, saved preferences, and scroll-reveal behavior. When changing an interaction, retain keyboard support and appropriate behavior when browser APIs or storage are unavailable.
-
-### Update the headshot, CV, or favicon
-
-Replace the matching file under `assets/` while keeping its filename and relative path, or update the corresponding reference in `index.html` if the filename changes.
-
-### Keep academic information accurate
-
-Before publishing changes, verify that project summaries, experience dates, publication status, certifications, and links match the latest CV and original records. Label ongoing, exploratory, and under-review work accurately.
+Before publishing content changes, verify project descriptions, dates, publication status, contact details, and links against current records.
 
 ## Accessibility
 
-Accessibility is treated as an ongoing improvement, not a claim of conformance. The page includes a skip link, named navigation and controls, focus styles, labels for accessibility settings, a keyboard-operable settings panel, and a reduced-motion option. These features should be tested in the browser rather than assumed to guarantee accessibility.
+The site provides keyboard-accessible controls, visible focus styling, reduced-motion support, and optional display and reading preferences. These features do not establish conformance with an accessibility standard. See [ACCESSIBILITY.md](ACCESSIBILITY.md) for implementation notes and a manual review checklist.
 
-Recommended checks:
+When changing the interface, check keyboard navigation, both themes, narrow viewports, dialogs and menus, and the accessibility preferences. Automated checks can help identify issues but should be paired with manual review.
 
-- Navigate the full site with the keyboard alone.
-- Confirm the accessibility panel opens and closes correctly, including with `Escape`, and that focus returns sensibly.
-- Check headings, landmark structure, control names, dialog behavior, and image alternatives with a screen reader.
-- Test contrast in both themes and with high contrast enabled.
-- Zoom to 200% and check for clipping, overlap, and horizontal page scrolling.
-- Try large text, line spacing, link underlining, and combinations of preferences.
-- Run Lighthouse or axe and manually review every reported issue.
+## Deploy
 
-See [ACCESSIBILITY.md](ACCESSIBILITY.md) for the fuller checklist.
-
-## Motion and reduced-motion support
-
-Motion is decorative and should never be necessary to find or understand content.
-
-- The hero and featured research card use a short entrance animation.
-- Decorative background glows move slowly.
-- Research cards provide subtle hover and focus feedback.
-- Lower sections can reveal as they enter the viewport.
-- Research-detail dialogs use a brief entrance transition.
-- The browser's `prefers-reduced-motion: reduce` preference and the Accessibility panel's **Reduce motion** setting suppress optional movement and keep scroll-reveal content visible.
-- If JavaScript or `IntersectionObserver` is unavailable, scroll-reveal styles should not hide content.
-
-When adding new animation, include reduced-motion behavior and test both the system preference and the in-page setting.
-
-## Deployment
-
-The site is hosted on GitHub Pages using the default address [https://vivekanupindi.github.io/](https://vivekanupindi.github.io/). No custom domain is configured.
-
-1. Review and merge the changes into `main`.
-2. Confirm the repository's **Settings → Pages** is publishing the intended branch/source.
-3. Check the latest Pages deployment in the **Actions** tab.
-4. Verify the homepage and [Books & Films page](https://vivekanupindi.github.io/blog.html), the CV link, navigation, theme toggle, accessibility panel, and project dialogs.
-5. If a change does not appear, hard-refresh the browser and check the Pages deployment status before making further code changes.
-
-## Testing checklist
-
-Before merging a meaningful change, verify:
-
-- [ ] All navigation and contact links lead to the expected destination.
-- [ ] The CV, headshot, and favicon load correctly.
-- [ ] The page works at desktop, tablet, and mobile widths.
-- [ ] Dark and light theme switching works.
-- [ ] The research rail and project-detail dialogs work with a pointer and keyboard.
-- [ ] Each accessibility setting works individually and in combination.
-- [ ] Settings persist after reload and reset cleanly.
-- [ ] System-level and in-page reduced-motion settings keep all content available.
-- [ ] Keyboard focus is visible and the accessibility panel can be closed.
-- [ ] Automated accessibility checks and manual review have been performed.
-- [ ] Publication and experience information has been fact-checked.
-
-## Limitations and scope
-
-- This is a static portfolio; it currently has no server-side application or database.
-- Accessibility controls let visitors personalize presentation but do not replace assistive technology or constitute a formal WCAG audit.
-- Automated checks alone cannot establish conformance. Do not describe the site as WCAG-compliant until suitable automated and manual testing has been completed.
-- The project descriptions are informational. Healthcare-related project concepts should not be interpreted as clinically validated tools.
-
----
-
-These controls are user preferences, not a substitute for a formal WCAG conformance audit. Please run automated and manual accessibility tests before describing the site as WCAG-compliant.
-
-
-Motion is intentionally subtle: the hero elements enter in sequence, the ambient background drifts slowly, research visuals respond gently to hover, and selected content reveals as it enters the viewport. The in-site Reduce Motion option and the operating system's reduced-motion preference disable these effects.
+The repository is published with GitHub Pages at [vivekanupindi.github.io](https://vivekanupindi.github.io/). Merge changes into `main`, confirm the Pages deployment has completed in the repository’s **Actions** tab, and review the live pages and key interactions after deployment.
