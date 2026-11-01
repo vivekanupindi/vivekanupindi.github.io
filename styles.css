@@ -2991,3 +2991,71 @@ body.a11y-reduce-motion .site-footer .footer-blog-link:focus-visible {
 .terminal-caret {
   background: #ff837a;
 }
+
+/* =========================================================
+   Hero typewriter headline
+   ========================================================= */
+
+.hero h1.typewriter-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  max-width: 850px;
+}
+
+.hero h1.typewriter-title .typewriter-line {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 1.02em;
+}
+
+.hero h1.typewriter-title .typewriter-line-main {
+  color: var(--text) !important;
+}
+
+.hero h1.typewriter-title .typewriter-line-accent {
+  color: var(--red) !important;
+  text-shadow: 0 0 26px #e5091420;
+}
+
+.typewriter-title .typewriter-line.is-typing-current::after {
+  content: "";
+  display: inline-block;
+  width: .065em;
+  height: .78em;
+  margin-left: .12em;
+  border-radius: 1px;
+  background: var(--red);
+  vertical-align: -.02em;
+  box-shadow: 0 0 12px #e5091466;
+  animation: hero-typewriter-cursor 820ms steps(2, end) infinite;
+}
+
+@keyframes hero-typewriter-cursor {
+  0%, 48% { opacity: 1; }
+  49%, 100% { opacity: 0; }
+}
+
+/* Make the typing rhythm comfortable on narrow screens too. */
+@media (max-width: 760px) {
+  .hero h1.typewriter-title {
+    max-width: 100%;
+  }
+
+  .hero h1.typewriter-title .typewriter-line {
+    width: auto;
+  }
+}
+
+/* Motion preferences disable the cursor blink; JavaScript finishes the text. */
+body.a11y-reduce-motion .typewriter-title .typewriter-line::after {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-title .typewriter-line::after {
+    animation: none !important;
+  }
+}
