@@ -158,6 +158,100 @@
         Boolean(reducedMotionQuery && reducedMotionQuery.matches);
     }
 
+    // --------------------------------------
+    // Hero headline typewriter
+    // --------------------------------------
+
+    const typewriterTitle = document.querySelector(".typewriter-title");
+    const typewriterLines = typewriterTitle
+      ? Array.from(typewriterTitle.querySelectorAll("[data-typewriter-line]"))
+      : [];
+    let typewriterTimer = null;
+    let typewriterHasRun = false;
+
+    function finishTypewriter() {
+      if (typewriterTimer !== null) {
+        window.clearTimeout(typewriterTimer);
+        typewriterTimer = null;
+      }
+
+      typewriterLines.forEach((line) => {
+        line.textContent = line.dataset.typewriterLine || "";
+        line.classList.remove("is-typing-current");
+      });
+
+      if (typewriterTitle) {
+        typewriterTitle.classList.remove("is-typing");
+        typewriterTitle.classList.add("typing-complete");
+      }
+
+      typewriterHasRun = true;
+    }
+
+    function startTypewriter() {
+      if (!typewriterTitle || !typewriterLines.length ||
+          typewriterHasRun || shouldReduceMotion()) {
+        return;
+      }
+
+      typewriterHasRun = true;
+      typewriterTitle.classList.add("is-typing");
+      typewriterTitle.classList.remove("typing-complete");
+
+      typewriterLines.forEach((line) => {
+        line.textContent = "";
+        line.classList.remove("is-typing-current");
+      });
+
+      let lineIndex = 0;
+      let characterIndex = 0;
+
+      function typeNextCharacter() {
+        if (shouldReduceMotion()) {
+          finishTypewriter();
+          return;
+        }
+
+        const currentLine = typewriterLines[lineIndex];
+        const fullText = currentLine.dataset.typewriterLine || "";
+        currentLine.classList.add("is-typing-current");
+
+        if (characterIndex < fullText.length) {
+          const character = fullText.charAt(characterIndex);
+          currentLine.textContent += character;
+          characterIndex += 1;
+
+          const pause = character === " " ? 38 : /[.,!?]/.test(character) ? 105 : 48;
+          typewriterTimer = window.setTimeout(typeNextCharacter, pause);
+          return;
+        }
+
+        currentLine.classList.remove("is-typing-current");
+        if (lineIndex < typewriterLines.length - 1) {
+          lineIndex += 1;
+          characterIndex = 0;
+          typewriterTimer = window.setTimeout(typeNextCharacter, 260);
+          return;
+        }
+
+        typewriterTitle.classList.remove("is-typing");
+        typewriterTitle.classList.add("typing-complete");
+        typewriterTimer = null;
+      }
+
+      typewriterTimer = window.setTimeout(typeNextCharacter, 320);
+    }
+
+    function syncTypewriterMotion() {
+      if (shouldReduceMotion()) {
+        if (typewriterHasRun && typewriterTimer !== null) {
+          finishTypewriter();
+        }
+      } else {
+        startTypewriter();
+      }
+    }
+
     function disconnectRevealObserver() {
       if (revealObserver) {
         revealObserver.disconnect();
@@ -222,9 +316,11 @@
       } else if (!body.classList.contains("motion-enabled")) {
         startMotionReveals(true);
       }
+      syncTypewriterMotion();
     }
 
     startMotionReveals();
+    startTypewriter();
 
     // --------------------------------------
     // Accessibility panel open/close behavior
