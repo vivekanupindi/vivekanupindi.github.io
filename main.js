@@ -166,6 +166,11 @@
     const typewriterLines = typewriterTitle
       ? Array.from(typewriterTitle.querySelectorAll("[data-typewriter-line]"))
       : [];
+    // Capture the original text before any animation starts. Do not rely on
+    // an empty data attribute, and never leave the heading blank on failure.
+    const typewriterTexts = typewriterLines.map((line) =>
+      (line.getAttribute("data-typewriter-line") || line.textContent || "").trim()
+    );
     let typewriterTimer = null;
     let typewriterHasRun = false;
 
@@ -175,8 +180,8 @@
         typewriterTimer = null;
       }
 
-      typewriterLines.forEach((line) => {
-        line.textContent = line.dataset.typewriterLine || "";
+      typewriterLines.forEach((line, index) => {
+        line.textContent = typewriterTexts[index] || "";
         line.classList.remove("is-typing-current");
       });
 
@@ -194,6 +199,12 @@
         return;
       }
 
+      // Refuse to clear the static HTML headline unless every source line exists.
+      if (typewriterTexts.some((text) => !text)) {
+        finishTypewriter();
+        return;
+      }
+
       typewriterHasRun = true;
       typewriterTitle.classList.add("is-typing");
       typewriterTitle.classList.remove("typing-complete");
@@ -207,44 +218,56 @@
       let characterIndex = 0;
 
       function typeNextCharacter() {
-        if (shouldReduceMotion()) {
+        try {
+          if (shouldReduceMotion()) {
+            finishTypewriter();
+            return;
+          }
+
+          const currentLine = typewriterLines[lineIndex];
+          const fullText = typewriterTexts[lineIndex] || "";
+          if (!currentLine || !fullText) {
+            finishTypewriter();
+            return;
+          }
+
+          currentLine.classList.add("is-typing-current");
+
+          if (characterIndex < fullText.length) {
+            const character = fullText.charAt(characterIndex);
+            currentLine.textContent += character;
+            characterIndex += 1;
+
+            const pause = /[.,!?]/.test(character) ? 120 : character === " " ? 26 : 38;
+            typewriterTimer = window.setTimeout(typeNextCharacter, pause);
+            return;
+          }
+
+          currentLine.classList.remove("is-typing-current");
+          if (lineIndex < typewriterLines.length - 1) {
+            lineIndex += 1;
+            characterIndex = 0;
+            typewriterTimer = window.setTimeout(typeNextCharacter, 220);
+            return;
+          }
+
           finishTypewriter();
-          return;
+        } catch (error) {
+          // Preserve a complete headline if the animation encounters an error.
+          finishTypewriter();
         }
-
-        const currentLine = typewriterLines[lineIndex];
-        const fullText = currentLine.dataset.typewriterLine || "";
-        currentLine.classList.add("is-typing-current");
-
-        if (characterIndex < fullText.length) {
-          const character = fullText.charAt(characterIndex);
-          currentLine.textContent += character;
-          characterIndex += 1;
-
-          const pause = character === " " ? 38 : /[.,!?]/.test(character) ? 105 : 48;
-          typewriterTimer = window.setTimeout(typeNextCharacter, pause);
-          return;
-        }
-
-        currentLine.classList.remove("is-typing-current");
-        if (lineIndex < typewriterLines.length - 1) {
-          lineIndex += 1;
-          characterIndex = 0;
-          typewriterTimer = window.setTimeout(typeNextCharacter, 260);
-          return;
-        }
-
-        typewriterTitle.classList.remove("is-typing");
-        typewriterTitle.classList.add("typing-complete");
-        typewriterTimer = null;
       }
 
-      typewriterTimer = window.setTimeout(typeNextCharacter, 320);
+      try {
+        typewriterTimer = window.setTimeout(typeNextCharacter, 260);
+      } catch (error) {
+        finishTypewriter();
+      }
     }
 
     function syncTypewriterMotion() {
       if (shouldReduceMotion()) {
-        if (typewriterHasRun && typewriterTimer !== null) {
+        if (typewriterHasRun || typewriterTimer !== null) {
           finishTypewriter();
         }
       } else {
