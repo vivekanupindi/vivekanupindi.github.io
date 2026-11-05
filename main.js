@@ -91,6 +91,12 @@
     const accessibilityPanel = document.getElementById("accessibility-panel");
     const accessibilityClose = document.querySelector(".accessibility-close");
     const accessibilityReset = document.querySelector(".accessibility-reset");
+    const speechStartButton = document.getElementById("a11y-speak-page");
+    const speechPauseButton = document.getElementById("a11y-speech-pause");
+    const speechStopButton = document.getElementById("a11y-speech-stop");
+    const speechStatus = document.getElementById("a11y-speech-status");
+    const speechAvailable = "speechSynthesis" in window &&
+      typeof window.SpeechSynthesisUtterance === "function";
 
     const accessibilitySettings = {
       highContrast: "a11y-high-contrast",
@@ -400,6 +406,124 @@
         if (key === "reduceMotion") syncMotionPreference();
       });
     });
+
+    // Browser-native page narration using the speech voices available to the browser.
+    let speechRunId = 0;
+    let speechChunks = [];
+    let speechChunkIndex = 0;
+
+    function setSpeechIdle(message) {
+      speechChunks = [];
+      speechChunkIndex = 0;
+      if (speechPauseButton) {
+        speechPauseButton.disabled = true;
+        speechPauseButton.textContent = "Pause";
+      }
+      if (speechStopButton) speechStopButton.disabled = true;
+      if (speechStatus) speechStatus.textContent = message;
+    }
+
+    function stopPageSpeech(message = "Speech stopped.") {
+      speechRunId += 1;
+      if (speechAvailable) window.speechSynthesis.cancel();
+      setSpeechIdle(message);
+    }
+
+    function pageTextForSpeech() {
+      const mainContent = document.querySelector("main");
+      if (!mainContent) return "";
+      const copy = mainContent.cloneNode(true);
+      copy.querySelectorAll(
+        "script, style, noscript, svg, button, input, textarea, select, [aria-hidden='true'], [hidden]"
+      ).forEach((element) => element.remove());
+      return (copy.innerText || copy.textContent || "").replace(/\s+/g, " ").trim();
+    }
+
+    function splitSpeechText(text, maxLength = 220) {
+      const sentences = text.match(/[^.!?]+(?:[.!?]+|$)/g) || [text];
+      const chunks = [];
+      sentences.forEach((sentence) => {
+        let remainder = sentence.trim();
+        while (remainder.length > maxLength) {
+          let splitAt = remainder.lastIndexOf(" ", maxLength);
+          if (splitAt < 1) splitAt = maxLength;
+          chunks.push(remainder.slice(0, splitAt).trim());
+          remainder = remainder.slice(splitAt).trim();
+        }
+        if (remainder) chunks.push(remainder);
+      });
+      return chunks;
+    }
+
+    function speakNextChunk(runId) {
+      if (!speechAvailable || runId !== speechRunId) return;
+      if (speechChunkIndex >= speechChunks.length) {
+        setSpeechIdle("Finished reading the page.");
+        return;
+      }
+
+      try {
+        const utterance = new window.SpeechSynthesisUtterance(speechChunks[speechChunkIndex]);
+        utterance.onend = () => {
+          if (runId !== speechRunId) return;
+          speechChunkIndex += 1;
+          speakNextChunk(runId);
+        };
+        utterance.onerror = () => {
+          if (runId !== speechRunId) return;
+          stopPageSpeech("Speech could not continue. You can try again.");
+        };
+        window.speechSynthesis.speak(utterance);
+      } catch {
+        stopPageSpeech("Speech could not start in this browser.");
+      }
+    }
+
+    if (!speechAvailable) {
+      if (speechStartButton) speechStartButton.disabled = true;
+      if (speechStatus) speechStatus.textContent = "Page speech is not supported in this browser.";
+    } else {
+      if (speechStartButton) {
+        speechStartButton.addEventListener("click", () => {
+          const chunks = splitSpeechText(pageTextForSpeech());
+          if (!chunks.length) {
+            setSpeechIdle("There is no page text available to read.");
+            return;
+          }
+
+          speechRunId += 1;
+          const runId = speechRunId;
+          window.speechSynthesis.cancel();
+          speechChunks = chunks;
+          speechChunkIndex = 0;
+          if (speechPauseButton) {
+            speechPauseButton.disabled = false;
+            speechPauseButton.textContent = "Pause";
+          }
+          if (speechStopButton) speechStopButton.disabled = false;
+          if (speechStatus) speechStatus.textContent = "Reading page aloud.";
+          speakNextChunk(runId);
+        });
+      }
+
+      if (speechPauseButton) {
+        speechPauseButton.addEventListener("click", () => {
+          if (window.speechSynthesis.paused) {
+            window.speechSynthesis.resume();
+            speechPauseButton.textContent = "Pause";
+            if (speechStatus) speechStatus.textContent = "Reading page aloud.";
+          } else if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.pause();
+            speechPauseButton.textContent = "Resume";
+            if (speechStatus) speechStatus.textContent = "Speech paused.";
+          }
+        });
+      }
+
+      if (speechStopButton) {
+        speechStopButton.addEventListener("click", () => stopPageSpeech());
+      }
+    }
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && accessibilityPanel && !accessibilityPanel.hidden) {

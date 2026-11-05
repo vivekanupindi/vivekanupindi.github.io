@@ -1110,6 +1110,50 @@ a.pub-link:hover { border-color: var(--red); color: var(--red); }
   outline: 2px solid var(--red-soft);
   outline-offset: 4px;
 }
+.accessibility-speech-tools {
+  margin-top: 19px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
+}
+.accessibility-speech-copy,
+.accessibility-speech-status {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.accessibility-speech-copy { margin: 0 0 12px; }
+.accessibility-speech-status { min-height: 1.6em; margin: 12px 0 0; }
+.accessibility-speech-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.accessibility-speech-controls button {
+  min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.accessibility-speech-start {
+  border-color: var(--red) !important;
+  background: var(--red);
+  color: #fff;
+}
+.accessibility-speech-secondary {
+  background: var(--panel);
+  color: var(--text);
+}
+.accessibility-speech-controls button:hover:not(:disabled) {
+  border-color: var(--red);
+}
+.accessibility-speech-controls button:disabled {
+  cursor: not-allowed;
+  opacity: .55;
+}
 .accessibility-panel-footer {
   padding: 12px 26px 22px;
   background: var(--panel);
@@ -1525,7 +1569,8 @@ body.a11y-high-contrast .accessibility-group {
 }
 
 body.a11y-high-contrast .accessibility-reset,
-body.a11y-high-contrast .accessibility-toggle {
+body.a11y-high-contrast .accessibility-toggle,
+body.a11y-high-contrast .accessibility-speech-start {
   background: #ffff00 !important;
   color: #000 !important;
   border-color: #ffff00 !important;
