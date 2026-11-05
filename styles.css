@@ -1112,7 +1112,7 @@ a.pub-link:hover { border-color: var(--red); color: var(--red); }
 }
 .accessibility-panel-footer {
   padding: 12px 26px 22px;
-  background: #1b2745;
+  background: var(--panel);
 }
 .accessibility-reset {
   display: block;
