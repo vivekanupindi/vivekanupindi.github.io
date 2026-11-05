@@ -407,7 +407,7 @@
       });
     });
 
-    // Browser-native page narration. Text is read locally by SpeechSynthesis.
+    // Browser-native page narration using the speech voices available to the browser.
     let speechRunId = 0;
     let speechChunks = [];
     let speechChunkIndex = 0;
