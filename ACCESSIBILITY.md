@@ -12,8 +12,11 @@ This portfolio provides an optional side panel for visitor-controlled presentati
 - **Underline links** — adds persistent underlines to links.
 - **Increase line spacing** — gives text content more vertical space.
 - **Highlight headings** — underlines section headings.
+- **Speak this page aloud** — reads the main page content with the browser's built-in speech voice; pause, resume, or stop playback.
 
 Selections are saved with `localStorage` in the visitor's browser. The reset control clears saved custom preferences. When browser storage is unavailable, the controls should still work for the current page.
+
+Page speech uses the browser's built-in Web Speech API to read text from the main content area. The control does not send page text to a remote service. Available voices depend on the visitor's browser and operating system; browsers without speech support disable the speak button.
 
 ## Manual verification checklist
 
@@ -26,6 +29,7 @@ Selections are saved with `localStorage` in the visitor's browser. The reset con
 - Check the site with a screen reader and confirm controls have names and state.
 - Run automated checks with Lighthouse or axe and inspect color contrast manually.
 - Test that reduced-motion settings minimize movement and transitions.
+- Test page speech start, pause, resume, stop, and the unsupported-browser message.
 
 ## Motion behavior
 
