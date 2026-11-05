@@ -16,7 +16,7 @@ This portfolio provides an optional side panel for visitor-controlled presentati
 
 Selections are saved with `localStorage` in the visitor's browser. The reset control clears saved custom preferences. When browser storage is unavailable, the controls should still work for the current page.
 
-Page speech uses the browser's built-in Web Speech API to read text from the main content area. The control does not send page text to a remote service. Available voices depend on the visitor's browser and operating system; browsers without speech support disable the speak button.
+Page speech passes text from the main content area to the browser's built-in Web Speech API. The portfolio does not submit text to its own backend. Processing depends on the selected browser or operating-system voice; some voices may use network services. Available voices vary by device, and browsers without speech support disable the speak button.
 
 ## Manual verification checklist
 
