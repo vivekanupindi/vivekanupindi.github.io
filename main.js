@@ -436,7 +436,7 @@
       copy.querySelectorAll(
         "script, style, noscript, svg, button, input, textarea, select, [aria-hidden='true'], [hidden]"
       ).forEach((element) => element.remove());
-      return (copy.innerText || copy.textContent || "").replace(/\\s+/g, " ").trim();
+      return (copy.innerText || copy.textContent || "").replace(/\s+/g, " ").trim();
     }
 
     function splitSpeechText(text, maxLength = 220) {
