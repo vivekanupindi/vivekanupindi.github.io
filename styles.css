@@ -2103,12 +2103,82 @@ body.a11y-reduce-motion .research-card:focus-within .poster::before {
   line-height: .99;
 }
 
-.culture-hero h1 span {
+.culture-hero h1 .culture-title-line-first {
+  color: var(--text);
+}
+
+.culture-hero h1 .culture-title-line-second {
+  position: relative;
   color: #8eb9fa;
-  background: linear-gradient(95deg, #b1d5ff, #7faaf0 60%, #d4a1bb);
+  background: linear-gradient(95deg, #b1d5ff, #7faaf0 60%, #d4a1bb, #b1d5ff);
+  background-size: 200% 100%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.culture-hero h1 .culture-title-line {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.culture-title-motion .culture-title-line {
+  animation: culture-title-reveal 1.05s cubic-bezier(.2, .75, .2, 1) both;
+}
+
+.culture-title-motion .culture-title-line-first { animation-delay: 100ms; }
+
+.culture-title-motion .culture-title-line-second {
+  animation:
+    culture-title-reveal 1.05s cubic-bezier(.2, .75, .2, 1) 380ms both,
+    culture-title-shimmer 8s ease-in-out 1.55s infinite;
+}
+
+.culture-title-motion .culture-title-line-second::after {
+  content: "";
+  position: absolute;
+  right: .08em;
+  bottom: -.08em;
+  left: 0;
+  height: max(2px, .045em);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #8eb9fa, #d4a1bb 72%, transparent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: culture-title-underline 680ms cubic-bezier(.2, .8, .2, 1) 1.42s both;
+}
+
+@keyframes culture-title-reveal {
+  0% { opacity: 0; clip-path: inset(0 100% 0 0); transform: translateY(16px); }
+  24% { opacity: 1; }
+  100% { opacity: 1; clip-path: inset(0); transform: translateY(0); }
+}
+
+@keyframes culture-title-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes culture-title-underline {
+  to { transform: scaleX(1); }
+}
+
+body.a11y-reduce-motion .culture-title-motion .culture-title-line,
+body.a11y-reduce-motion .culture-title-motion .culture-title-line-second::after {
+  animation: none !important;
+  opacity: 1;
+  clip-path: none;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .culture-title-motion .culture-title-line,
+  .culture-title-motion .culture-title-line-second::after {
+    animation: none !important;
+    opacity: 1;
+    clip-path: none;
+    transform: none;
+  }
 }
 
 .culture-lede {
