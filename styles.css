@@ -3177,3 +3177,179 @@ body.a11y-reduce-motion .typewriter-title .typewriter-line::after {
     animation: none !important;
   }
 }
+
+/* Expandable full book catalogue on the Fun Corner page. */
+.full-reading-list {
+  margin-top: 24px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--red) 8%, transparent), transparent 34%),
+    var(--panel);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, .12);
+}
+
+.full-reading-list > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 23px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.full-reading-list > summary::-webkit-details-marker { display: none; }
+
+.full-reading-list > summary:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: -4px;
+  border-radius: var(--radius);
+}
+
+.full-reading-list-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.full-reading-list-kicker {
+  color: var(--red-soft);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.full-reading-list-title strong {
+  color: var(--text);
+  font-family: "Manrope", "DM Sans", Arial, sans-serif;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.35;
+}
+
+.full-reading-list-description {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.full-reading-list-meta {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 13px;
+}
+
+.full-reading-list-count {
+  padding: 6px 9px;
+  border: 1px solid color-mix(in srgb, var(--red) 32%, var(--line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--red) 8%, transparent);
+  color: var(--red-soft);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .8px;
+  white-space: nowrap;
+}
+
+.full-reading-list-chevron {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.full-reading-list[open] > summary {
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--panel2) 65%, transparent);
+}
+
+.full-reading-list[open] .full-reading-list-chevron {
+  transform: rotate(180deg);
+  border-color: color-mix(in srgb, var(--red) 45%, var(--line));
+  background: color-mix(in srgb, var(--red) 9%, transparent);
+}
+
+.full-reading-list-content {
+  padding: 20px 23px 23px;
+}
+
+.full-reading-list-note {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.full-reading-list-items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.full-reading-list-items li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+  min-height: 62px;
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  border-left: 2px solid color-mix(in srgb, var(--red) 70%, var(--line));
+  border-radius: 7px;
+  background: var(--panel2);
+}
+
+.full-reading-list-items li strong {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.full-reading-list-items li span {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .full-reading-list > summary {
+    align-items: flex-start;
+    gap: 12px;
+    padding: 17px;
+  }
+
+  .full-reading-list-meta {
+    gap: 7px;
+    padding-top: 1px;
+  }
+
+  .full-reading-list-count {
+    padding: 5px 7px;
+    font-size: 8px;
+  }
+
+  .full-reading-list-description { font-size: 11px; }
+  .full-reading-list-content { padding: 16px; }
+  .full-reading-list-items { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .full-reading-list-chevron { transition: none; }
+}
