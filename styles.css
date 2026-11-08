@@ -3353,3 +3353,234 @@ body.a11y-reduce-motion .typewriter-title .typewriter-line::after {
 @media (prefers-reduced-motion: reduce) {
   .full-reading-list-chevron { transition: none; }
 }
+
+/* =========================================================
+   Fun Corner — richer, reduced-motion-aware visual movement
+   All effects are decorative; no page copy or content changes.
+   ========================================================= */
+
+/* The circular stamp drifts gently while its fine rings rotate independently. */
+.culture-hero-stamp {
+  transform-origin: 50% 50%;
+  animation: fun-stamp-drift 7.5s ease-in-out infinite;
+}
+
+.culture-hero-stamp::before {
+  animation: fun-stamp-ring 28s linear infinite;
+}
+
+.culture-hero-stamp::after {
+  animation: fun-stamp-ring 42s linear infinite reverse;
+}
+
+@keyframes fun-stamp-drift {
+  0%, 100% { transform: rotate(10deg) translate3d(0, 0, 0); }
+  50% { transform: rotate(7deg) translate3d(0, -7px, 0); }
+}
+
+@keyframes fun-stamp-ring {
+  to { rotate: 360deg; }
+}
+
+/* Bookshelf and screen-room cards enter with a soft stagger. */
+.culture-grid .culture-card {
+  animation: fun-card-arrive 760ms cubic-bezier(.2, .75, .25, 1) both;
+  will-change: transform, opacity;
+}
+
+.culture-grid .culture-card:nth-child(1) { animation-delay: 80ms; }
+.culture-grid .culture-card:nth-child(2) { animation-delay: 190ms; }
+.culture-grid .culture-card:nth-child(3) { animation-delay: 300ms; }
+
+@keyframes fun-card-arrive {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(.985);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Cover artwork gets a quiet orbit, a floating glyph, and a hover-only light sweep. */
+.culture-cover::before {
+  transform-origin: center;
+  animation: fun-cover-orbit 24s linear infinite;
+}
+
+@keyframes fun-cover-orbit {
+  from { transform: rotate(0deg) scale(.96); }
+  50% { transform: rotate(180deg) scale(1.04); }
+  to { transform: rotate(360deg) scale(.96); }
+}
+
+.culture-cover::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: -40% auto -40% -65%;
+  width: 38%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, #ffffff20, #ffffff08, transparent);
+  transform: translateX(-130%) skewX(-18deg);
+  opacity: 0;
+}
+
+.culture-card:hover .culture-cover::after,
+.culture-card:focus-within .culture-cover::after {
+  opacity: 1;
+  animation: fun-cover-sweep 850ms cubic-bezier(.2, .7, .2, 1) both;
+}
+
+@keyframes fun-cover-sweep {
+  from { transform: translateX(-130%) skewX(-18deg); }
+  to { transform: translateX(510%) skewX(-18deg); }
+}
+
+.culture-cover .cover-symbol {
+  transform-origin: center;
+  animation: fun-cover-symbol 4.8s ease-in-out infinite;
+}
+
+@keyframes fun-cover-symbol {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-5px) rotate(2deg); }
+}
+
+/* Cards respond with a little depth without shifting their text layout. */
+.culture-card {
+  transform-style: preserve-3d;
+}
+
+.culture-card:hover,
+.culture-card:focus-within {
+  transform: translateY(-7px);
+  border-color: color-mix(in srgb, var(--red) 55%, var(--line));
+  box-shadow: 0 22px 46px #0003, 0 0 0 1px color-mix(in srgb, var(--red) 12%, transparent);
+}
+
+.culture-card .culture-cover {
+  transition: filter 320ms ease;
+}
+
+.culture-card:hover .culture-cover,
+.culture-card:focus-within .culture-cover {
+  filter: saturate(1.12) brightness(1.06);
+}
+
+/* Make the notes panel feel gently illuminated on hover or keyboard focus. */
+.culture-notes-panel {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.culture-notes-panel::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -1px;
+  pointer-events: none;
+  background: radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--red) 13%, transparent), transparent 48%);
+  opacity: .45;
+  transition: opacity 260ms ease;
+}
+
+.culture-notes-panel:hover,
+.culture-notes-panel:focus-within {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--red) 42%, var(--line));
+  box-shadow: 0 16px 36px #0002;
+}
+
+.culture-notes-panel:hover::after,
+.culture-notes-panel:focus-within::after { opacity: 1; }
+
+/* The expanded full catalogue reveals its entries in a short sequence. */
+.full-reading-list[open] .full-reading-list-content {
+  animation: fun-list-reveal 420ms cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.full-reading-list-items li {
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.full-reading-list-items li:hover {
+  transform: translateX(3px);
+  border-color: color-mix(in srgb, var(--red) 42%, var(--line));
+  border-left-color: var(--red);
+}
+
+@keyframes fun-list-reveal {
+  from { opacity: 0; transform: translateY(9px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Keep the motion calm on smaller screens. */
+@media (max-width: 760px) {
+  .culture-grid .culture-card { animation-duration: 620ms; }
+  .culture-card:hover,
+  .culture-card:focus-within { transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .culture-hero-stamp,
+  .culture-hero-stamp::before,
+  .culture-hero-stamp::after,
+  .culture-grid .culture-card,
+  .culture-cover::before,
+  .culture-cover::after,
+  .culture-cover .cover-symbol,
+  .culture-notes-panel,
+  .full-reading-list[open] .full-reading-list-content,
+  .full-reading-list-items li {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+    will-change: auto !important;
+  }
+
+  .culture-card:hover,
+  .culture-card:focus-within,
+  .culture-notes-panel:hover,
+  .culture-notes-panel:focus-within,
+  .full-reading-list-items li:hover {
+    transform: none !important;
+  }
+
+  .culture-card:hover .culture-cover::after,
+  .culture-card:focus-within .culture-cover::after {
+    opacity: 0;
+  }
+}
+
+body.a11y-reduce-motion .culture-hero-stamp,
+body.a11y-reduce-motion .culture-hero-stamp::before,
+body.a11y-reduce-motion .culture-hero-stamp::after,
+body.a11y-reduce-motion .culture-grid .culture-card,
+body.a11y-reduce-motion .culture-cover::before,
+body.a11y-reduce-motion .culture-cover::after,
+body.a11y-reduce-motion .culture-cover .cover-symbol,
+body.a11y-reduce-motion .culture-notes-panel,
+body.a11y-reduce-motion .full-reading-list[open] .full-reading-list-content,
+body.a11y-reduce-motion .full-reading-list-items li {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  will-change: auto !important;
+}
+
+body.a11y-reduce-motion .culture-card:hover,
+body.a11y-reduce-motion .culture-card:focus-within,
+body.a11y-reduce-motion .culture-notes-panel:hover,
+body.a11y-reduce-motion .culture-notes-panel:focus-within,
+body.a11y-reduce-motion .full-reading-list-items li:hover {
+  transform: none !important;
+}
+
+body.a11y-reduce-motion .culture-card:hover .culture-cover::after,
+body.a11y-reduce-motion .culture-card:focus-within .culture-cover::after {
+  opacity: 0;
+}
