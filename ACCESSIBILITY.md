@@ -22,6 +22,7 @@ Page speech passes text from the main content area to the browser's built-in Web
 
 - Open and close the panel with the keyboard and pointer.
 - Verify that `Escape` closes the panel and returns focus to the accessibility trigger.
+- On a narrow viewport, open the navigation, move focus into a link, press `Escape`, and confirm focus returns to the menu toggle.
 - Tab through every checkbox and button; confirm focus indicators are visible.
 - Toggle each option individually, combine options, reload, and reset.
 - Verify behavior in dark mode, light mode, desktop, and mobile layouts.

@@ -52,7 +52,7 @@ A separate personal page for books, films, reading lists, watchlists, and notes.
 - Personal notes and recommendations
 - Shared theme and accessibility controls
 
-The page is maintained separately from the main portfolio. Edit `blog.html) to update its content.
+The page is maintained separately from the main portfolio. Edit `blog.html` to update its content.
 
 ---
 
@@ -109,6 +109,9 @@ There is no application framework, package manager, build step, or backend requi
 .
 ├── index.html                  # Main portfolio, hero, research console, and accessibility panel
 ├── blog.html                   # Fun Corner / Off the Clock (Books & Films)
+├── 404.html                    # Branded not-found page
+├── robots.txt                  # Crawler rules and sitemap location
+├── sitemap.xml                 # Public page discovery for search engines
 ├── styles.css                  # Shared layout, responsive styles, themes, accessibility, and motion
 ├── main.js                     # Navigation, console, dialogs, preferences, speech, and interactions
 ├── ACCESSIBILITY.md            # Accessibility feature notes and manual review checklist
@@ -156,13 +159,15 @@ There is currently no custom domain configured.
 
 1. Create a feature branch for changes.
 2. Review the change and open a pull request against `main`.
-3. After merging, check the repository's **Actions** tab for the GitHub Pages deployment.
+3. After merging, check the repository's **Actions** tab for the GitHub Pages deployment and confirm the custom 404 page is served for an unknown path.
 4. Verify the homepage and [Fun Corner](https://vivekanupindi.github.io/blog.html) after deployment.
 
 ## Pre-merge review checklist
 
 - [ ] Homepage and Fun Corner load at desktop, tablet, and mobile widths.
 - [ ] Navigation links and section anchors reach the correct sections.
+- [ ] Escape closes the mobile menu and returns focus to its toggle.
+- [ ] The custom 404 page links visitors back to the homepage and Fun Corner.
 - [ ] The hero headline remains readable with JavaScript disabled or reduced motion enabled.
 - [ ] All research console commands listed by `help` work as described.
 - [ ] Research dialogs open and close with pointer and keyboard.

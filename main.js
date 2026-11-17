@@ -66,19 +66,38 @@
     }
 
     const themePreference = savedTheme();
-    const prefersLight = Boolean(
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: light)").matches
-    );
+    const hasSavedTheme = themePreference === "light" || themePreference === "dark";
+    const colorSchemeQuery = window.matchMedia
+      ? window.matchMedia("(prefers-color-scheme: light)")
+      : null;
+
+    function applySystemTheme(event) {
+      // Follow OS changes only until the visitor chooses a theme explicitly.
+      if (!hasSavedTheme && !hasExplicitThemePreference) {
+        applyTheme(event.matches ? "light" : "dark", false);
+      }
+    }
+
+    let hasExplicitThemePreference = hasSavedTheme;
     applyTheme(
-      themePreference === "light" || themePreference === "dark"
+      hasSavedTheme
         ? themePreference
-        : prefersLight ? "light" : "dark",
+        : colorSchemeQuery && colorSchemeQuery.matches ? "light" : "dark",
       false
     );
 
+    if (colorSchemeQuery) {
+      if (typeof colorSchemeQuery.addEventListener === "function") {
+        colorSchemeQuery.addEventListener("change", applySystemTheme);
+      } else if (typeof colorSchemeQuery.addListener === "function") {
+        // Older Safari versions use the legacy MediaQueryList listener API.
+        colorSchemeQuery.addListener(applySystemTheme);
+      }
+    }
+
     if (themeToggle) {
       themeToggle.addEventListener("click", () => {
+        hasExplicitThemePreference = true;
         applyTheme(body.classList.contains("light-theme") ? "dark" : "light");
       });
     }
@@ -539,24 +558,35 @@
     // Mobile navigation
     // --------------------------------------
 
-    function closeMenu() {
+    function closeMenu(returnFocus = false) {
       if (!menuToggle || !nav) return;
+      const focusWasInMenu = nav.contains(document.activeElement);
       nav.classList.remove("open");
       menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation");
+      if (returnFocus && focusWasInMenu) menuToggle.focus();
     }
 
     if (menuToggle && nav) {
+      menuToggle.setAttribute(
+        "aria-label",
+        nav.classList.contains("open") ? "Close navigation" : "Open navigation"
+      );
+
       menuToggle.addEventListener("click", () => {
         const isOpen = nav.classList.toggle("open");
         menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
       });
 
       nav.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", closeMenu);
+        link.addEventListener("click", () => closeMenu());
       });
 
       document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeMenu();
+        if (event.key === "Escape" && nav.classList.contains("open")) {
+          closeMenu(true);
+        }
       });
 
       window.addEventListener("resize", () => {
