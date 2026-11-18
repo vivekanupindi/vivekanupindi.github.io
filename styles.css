@@ -2598,6 +2598,48 @@ body.a11y-reduce-motion .culture-card {
   font: 10px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
+.terminal-command-suggestion {
+  display: inline;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.terminal-command-suggestion kbd {
+  display: inline-block;
+  transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.terminal-command-suggestion:hover kbd,
+.terminal-command-suggestion:focus-visible kbd {
+  border-color: #9bbcff;
+  background: #31496f;
+  color: #ffffff;
+}
+
+.terminal-command-suggestion:focus-visible {
+  outline: 2px solid #9bbcff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.terminal-command-selection-status {
+  min-height: 0;
+  margin: 3px 0 0 24px;
+  color: #9bd66e;
+  font: 11px/1.5 "DM Sans", Arial, sans-serif;
+}
+
+.terminal-command-selection-status:empty {
+  display: none;
+}
+
 .terminal-command-input:focus-visible,
 .terminal-run:focus-visible {
   outline: 2px solid #9bbcff;

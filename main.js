@@ -623,6 +623,25 @@
     const consoleOutput = document.getElementById("research-console-output");
 
     if (consoleForm && consoleInput && consoleOutput) {
+      const selectionStatus = document.getElementById("research-console-selection-status");
+
+      // Suggested command buttons load exact text into the input. Visitors
+      // choose when to execute it by pressing Enter or activating Run.
+      document.querySelectorAll("[data-console-command]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const command = button.dataset.consoleCommand || "";
+          if (!command.trim()) return;
+
+          consoleInput.value = command;
+          consoleInput.focus();
+          consoleInput.setSelectionRange(command.length, command.length);
+
+          if (selectionStatus) {
+            selectionStatus.textContent = "Loaded: " + command + ". Press Enter or select Run to execute.";
+          }
+        });
+      });
+
       const commandHelp = [
         "help                         List every available command",
         "whoami                       Show my research profile",
