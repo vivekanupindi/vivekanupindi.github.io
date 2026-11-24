@@ -4344,3 +4344,163 @@ body.a11y-reduce-motion .field-note-card:focus-within {
     transform: none !important;
   }
 }
+
+
+/* =========================================
+   Field Notes refinement — unified memory and flowing prose
+   ========================================= */
+
+/* Keep the four memory fragments together as one shared composition,
+   rather than styling each fragment as its own card. */
+.field-note-card-memory {
+  padding: 0;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--red);
+  background:
+    radial-gradient(ellipse at 92% 0%, color-mix(in srgb, var(--red) 10%, transparent), transparent 42%),
+    color-mix(in srgb, var(--panel) 94%, var(--bg));
+}
+
+.field-note-memory-lines {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  padding: clamp(14px, 2.2vw, 26px);
+  counter-reset: none;
+}
+
+.field-note-memory-lines p,
+.field-note-memory-lines p:last-child {
+  min-width: 0;
+  padding: 18px clamp(14px, 2vw, 24px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text);
+  counter-increment: none;
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.field-note-memory-lines p::before {
+  content: none;
+  display: none;
+}
+
+.field-note-memory-lines p:nth-child(odd) {
+  padding-left: 5px;
+}
+
+.field-note-memory-lines p:nth-child(even) {
+  border-left: 1px solid color-mix(in srgb, var(--red) 25%, var(--line));
+}
+
+.field-note-memory-lines p:nth-child(n + 3) {
+  border-top: 1px solid var(--line);
+}
+
+.field-note-memory-lines p:last-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* The voyage keeps its strong vertical path, but the prose no longer
+   receives one marker per paragraph. A single pointed finish carries
+   the eye through the passage without turning it into a bullet list. */
+.field-note-voyage-lines {
+  position: relative;
+  padding-left: clamp(23px, 3vw, 34px);
+  border-left: 0;
+}
+
+.field-note-voyage-lines::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  bottom: 10px;
+  left: 4px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--red) 80%, transparent),
+    color-mix(in srgb, var(--red) 46%, #e6b86c) 76%,
+    transparent
+  );
+}
+
+.field-note-voyage-lines::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid #e6b86c;
+  opacity: .85;
+}
+
+.field-note-voyage-lines p,
+.field-note-voyage-lines p:last-child {
+  padding: 0 18px 19px 0;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.field-note-voyage-lines p::before,
+.field-note-voyage-lines p:last-child::before {
+  content: none;
+  display: none;
+}
+
+.field-note-voyage-lines p:last-child {
+  padding-bottom: 0;
+  font-weight: 650;
+}
+
+@media (max-width: 760px) {
+  .field-note-memory-lines {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 12px 18px;
+  }
+
+  .field-note-memory-lines p,
+  .field-note-memory-lines p:last-child {
+    padding: 16px 4px;
+  }
+
+  .field-note-memory-lines p:nth-child(even) {
+    border-left: 0;
+  }
+
+  .field-note-memory-lines p:nth-child(n + 2) {
+    border-top: 1px solid var(--line);
+  }
+
+  .field-note-voyage-lines {
+    padding-left: 23px;
+  }
+
+  .field-note-voyage-lines::before {
+    left: 3px;
+  }
+
+  .field-note-voyage-lines::after {
+    left: -1px;
+  }
+
+  .field-note-voyage-lines p,
+  .field-note-voyage-lines p:last-child {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .field-note-memory-lines {
+    padding: 9px 14px;
+  }
+
+  .field-note-voyage-lines {
+    padding-left: 20px;
+  }
+}
