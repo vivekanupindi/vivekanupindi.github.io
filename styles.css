@@ -3854,3 +3854,493 @@ body.a11y-reduce-motion .culture-card:focus-within .culture-cover::after {
     transform: none !important;
   }
 }
+
+
+/* =========================================
+   Editorial field notes — layered reading cards
+   ========================================= */
+
+.culture-note-strip.field-notes-composition {
+  display: block;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(20px, 3.2vw, 38px);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse at 92% 4%, color-mix(in srgb, var(--red) 13%, transparent), transparent 36%),
+    linear-gradient(135deg, var(--panel), color-mix(in srgb, var(--panel) 80%, var(--bg)));
+  box-shadow: 0 22px 55px rgba(0, 0, 0, .13);
+}
+
+.field-notes-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.field-notes-topline .culture-note-index {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--red-soft);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+.field-notes-topline .culture-note-index::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--red);
+}
+
+.field-notes-topline .culture-note-mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid color-mix(in srgb, var(--red) 35%, var(--line));
+  border-radius: 50%;
+  color: #e6b86c;
+  font-size: 18px;
+}
+
+.field-notes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(13px, 2vw, 20px);
+}
+
+.field-note-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  isolation: isolate;
+  padding: clamp(21px, 2.8vw, 32px);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--panel) 92%, var(--bg));
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .09);
+  transition:
+    transform 260ms cubic-bezier(.2, .7, .2, 1),
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    background-color 260ms ease;
+}
+
+.field-note-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--red) 12%, transparent), transparent 45%);
+  opacity: .55;
+  transition: opacity 260ms ease;
+}
+
+.field-note-card:hover,
+.field-note-card:focus-within {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--red) 50%, var(--line));
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .16);
+}
+
+.field-note-card:hover::after,
+.field-note-card:focus-within::after {
+  opacity: 1;
+}
+
+.field-note-card-opening {
+  min-height: 205px;
+  display: flex;
+  align-items: center;
+  border-top: 3px solid var(--red);
+  background:
+    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--red) 17%, transparent), transparent 40%),
+    color-mix(in srgb, var(--panel) 92%, var(--bg));
+}
+
+.field-note-card-opening p {
+  max-width: 580px;
+  margin: 0;
+  color: var(--text);
+  font-family: "Manrope", "DM Sans", Arial, sans-serif;
+  font-size: clamp(20px, 2.35vw, 29px);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1.42;
+}
+
+.field-note-ornament {
+  position: absolute;
+  top: -28px;
+  right: 18px;
+  color: color-mix(in srgb, var(--red) 23%, transparent);
+  font-family: Georgia, serif;
+  font-size: clamp(110px, 16vw, 178px);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.field-note-card-observation {
+  min-height: 205px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-top: 3px solid #e6b86c;
+  background:
+    radial-gradient(circle at 90% 8%, #e6b86c1b, transparent 48%),
+    color-mix(in srgb, var(--panel) 92%, var(--bg));
+}
+
+.field-note-card-observation .field-note-ornament {
+  top: 8px;
+  right: 22px;
+  color: #e6b86c35;
+  font-size: 76px;
+}
+
+.field-note-card-observation p {
+  max-width: 500px;
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(16px, 1.55vw, 19px);
+  font-weight: 600;
+  line-height: 1.75;
+}
+
+.field-note-card-memory,
+.field-note-card-voyage {
+  grid-column: 1 / -1;
+}
+
+.field-note-card-memory {
+  padding: clamp(20px, 3vw, 34px);
+  background:
+    linear-gradient(115deg, color-mix(in srgb, var(--panel) 94%, var(--bg)), var(--panel));
+}
+
+.field-note-lines {
+  position: relative;
+  display: grid;
+  gap: 13px;
+}
+
+.field-note-lines p {
+  position: relative;
+  margin: 0;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.field-note-memory-lines {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px clamp(22px, 4vw, 52px);
+  counter-reset: memory-line;
+}
+
+.field-note-memory-lines p {
+  padding: 12px 15px 12px 22px;
+  border-left: 2px solid color-mix(in srgb, var(--red) 62%, var(--line));
+  border-radius: 0 9px 9px 0;
+  background: color-mix(in srgb, var(--panel) 72%, var(--bg));
+  counter-increment: memory-line;
+}
+
+.field-note-memory-lines p::before {
+  content: counter(memory-line, decimal-leading-zero);
+  display: block;
+  margin-bottom: 5px;
+  color: var(--red-soft);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.field-note-memory-lines p:last-child {
+  border-left-color: #e6b86c;
+}
+
+.field-note-card-voyage {
+  padding: clamp(23px, 3.4vw, 40px);
+  border-color: color-mix(in srgb, var(--red) 28%, var(--line));
+  background:
+    radial-gradient(ellipse at 88% 50%, color-mix(in srgb, var(--red) 13%, transparent), transparent 36%),
+    linear-gradient(135deg, var(--panel), color-mix(in srgb, var(--panel) 76%, var(--bg)));
+}
+
+.field-note-voyage-art {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  right: clamp(16px, 6vw, 90px);
+  width: clamp(145px, 23vw, 270px);
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--red) 25%, transparent);
+  border-radius: 50%;
+  opacity: .55;
+  transform: translateY(-50%);
+  pointer-events: none;
+  animation: field-note-orbit 34s linear infinite;
+}
+
+.field-note-voyage-art::before,
+.field-note-voyage-art::after,
+.field-note-voyage-art span {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border: 1px solid color-mix(in srgb, var(--red) 35%, transparent);
+  border-radius: 42% 58% 56% 44% / 48% 42% 58% 52%;
+  transform: rotate(24deg);
+}
+
+.field-note-voyage-art::after {
+  inset: 25%;
+  border-color: color-mix(in srgb, #e6b86c 48%, transparent);
+  transform: rotate(-32deg);
+}
+
+.field-note-voyage-art span {
+  inset: 39%;
+  border-color: color-mix(in srgb, var(--red) 55%, transparent);
+  transform: rotate(68deg);
+}
+
+.field-note-voyage-lines {
+  max-width: min(100%, 900px);
+  gap: 0;
+  padding-left: 24px;
+  border-left: 1px solid color-mix(in srgb, var(--red) 42%, var(--line));
+}
+
+.field-note-voyage-lines p {
+  padding: 0 18px 18px 0;
+}
+
+.field-note-voyage-lines p::before {
+  content: "";
+  position: absolute;
+  top: .72em;
+  left: -29px;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--panel);
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--red) 17%, transparent);
+}
+
+.field-note-voyage-lines p:last-child {
+  padding-bottom: 0;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.field-note-voyage-lines p:last-child::before {
+  background: #e6b86c;
+  box-shadow: 0 0 0 3px #e6b86c25;
+}
+
+.culture-notes-panel {
+  display: grid;
+  gap: 20px;
+  padding: clamp(20px, 3vw, 32px);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 96% 4%, color-mix(in srgb, var(--red) 14%, transparent), transparent 36%),
+    var(--panel);
+}
+
+.culture-margin-note {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(12px, 2vw, 24px);
+}
+
+.culture-margin-ornament {
+  align-self: start;
+  color: color-mix(in srgb, var(--red) 70%, var(--text));
+  font-family: Georgia, serif;
+  font-size: 78px;
+  line-height: .9;
+}
+
+.culture-margin-copy {
+  min-width: 0;
+}
+
+.culture-margin-copy .terminal-line {
+  margin-bottom: 12px;
+}
+
+.culture-margin-copy .terminal-command {
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 700;
+}
+
+.culture-margin-copy .culture-notes-empty {
+  margin: 0;
+  font-size: clamp(14px, 1.35vw, 16px);
+  line-height: 1.75;
+}
+
+.culture-margin-spark {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: 1px solid color-mix(in srgb, #e6b86c 42%, var(--line));
+  border-radius: 50%;
+  color: #e6b86c;
+  font-size: 24px;
+  animation: field-note-spark 8s ease-in-out infinite;
+}
+
+.culture-margin-action {
+  padding-top: 16px;
+  padding-left: 60px;
+  border-top: 1px solid var(--line);
+}
+
+.culture-margin-action .text-link {
+  font-size: 13px;
+}
+
+@keyframes field-note-orbit {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
+
+@keyframes field-note-spark {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(14deg) scale(1.06); }
+}
+
+@media (max-width: 760px) {
+  .culture-note-strip.field-notes-composition {
+    padding: 18px;
+  }
+
+  .field-notes-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .field-note-card-opening,
+  .field-note-card-observation {
+    min-height: 0;
+  }
+
+  .field-note-card-opening { padding-top: 36px; }
+  .field-note-card-observation { min-height: 165px; }
+
+  .field-note-card-memory,
+  .field-note-card-voyage {
+    grid-column: auto;
+  }
+
+  .field-note-memory-lines {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .field-note-card-voyage {
+    padding: 24px 19px;
+  }
+
+  .field-note-voyage-art {
+    right: -45px;
+    width: 170px;
+    opacity: .28;
+  }
+
+  .culture-margin-note {
+    grid-template-columns: 34px minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+  }
+
+  .culture-margin-ornament {
+    font-size: 58px;
+  }
+
+  .culture-margin-spark {
+    display: none;
+  }
+
+  .culture-margin-action {
+    padding-left: 44px;
+  }
+}
+
+@media (max-width: 420px) {
+  .culture-note-strip.field-notes-composition {
+    padding: 14px;
+  }
+
+  .field-note-card {
+    padding: 19px;
+  }
+
+  .field-note-card-opening p {
+    font-size: 20px;
+  }
+
+  .field-note-memory-lines p {
+    padding: 10px 12px 10px 17px;
+  }
+
+  .field-note-voyage-lines {
+    padding-left: 18px;
+  }
+
+  .field-note-voyage-lines p::before {
+    left: -23px;
+  }
+
+  .culture-margin-action {
+    padding-left: 0;
+  }
+}
+
+body.a11y-reduce-motion .field-note-card,
+body.a11y-reduce-motion .field-note-voyage-art,
+body.a11y-reduce-motion .field-note-voyage-art::before,
+body.a11y-reduce-motion .field-note-voyage-art::after,
+body.a11y-reduce-motion .field-note-voyage-art span,
+body.a11y-reduce-motion .culture-margin-spark {
+  animation: none !important;
+  transition: none !important;
+}
+
+body.a11y-reduce-motion .field-note-card:hover,
+body.a11y-reduce-motion .field-note-card:focus-within {
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .field-note-card,
+  .field-note-voyage-art,
+  .field-note-voyage-art::before,
+  .field-note-voyage-art::after,
+  .field-note-voyage-art span,
+  .culture-margin-spark {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .field-note-card:hover,
+  .field-note-card:focus-within {
+    transform: none !important;
+  }
+}
